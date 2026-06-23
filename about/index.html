@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Annapurna Agentic Solutions</title>
+  <meta name="description" content="Annapurna Agentic Solutions — open-source AI tools, education platforms, and software. Built in India, for the world." />
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="stylesheet" href="../assets/portal.css" />
+  <style>
+    .license-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .license-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .license-card .lic-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .lic-badge.mit { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .lic-badge.royalty { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+    .lic-badge.service { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+    .license-card h3 { margin: 0 0 8px; font-size: 1.05rem; font-weight: 600; }
+    .license-card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+    .roadmap-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .roadmap-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .roadmap-item .rm-icon {
+      width: 32px; height: 32px;
+      display: grid; place-items: center;
+      border-radius: 8px;
+      background: var(--accent-soft); color: var(--accent-dark);
+      border: 1px solid var(--accent-border);
+      font-weight: 700; font-size: 0.72rem;
+      flex-shrink: 0;
+    }
+    .roadmap-item h4 { margin: 0 0 2px; font-size: 0.92rem; font-weight: 600; }
+    .roadmap-item p { margin: 0; font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .roadmap-item .rm-status {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--accent); margin-top: 4px; display: block;
+    }
+    @media (max-width: 900px) {
+      .license-grid { grid-template-columns: 1fr; }
+      .roadmap-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#story">Skip to content</a>
+
+  <header class="site-header" aria-label="About header">
+    <nav class="nav-shell">
+      <a class="brand" href="../" aria-label="Annapurna home">
+        <span class="brand-mark">A</span>
+        <span>
+          <strong>About</strong>
+          <small>Annapurna Agentic Solutions</small>
+        </span>
+      </a>
+      <div class="nav-actions" aria-label="Primary navigation">
+        <a href="../">Portfolios</a>
+        <a href="../contact/">Contact</a>
+        <a href="https://github.com/annapurnaagenticsolutions" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../">&larr; Back to Portal</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-pad">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">About Us</p>
+          <h1>Built in India, for the world.</h1>
+          <p class="hero-text">
+            Annapurna Agentic Solutions builds AI tools, education platforms, MSME applications, and websites.
+            We believe in honesty, simplicity, and building things that work for everyone &mdash; not just those
+            with fast internet and expensive devices. Most of our work is open source. Some premium products
+            use a royalty model that keeps code open while funding continued development.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://github.com/annapurnaagenticsolutions" target="_blank" rel="noopener noreferrer">GitHub Organization</a>
+            <a class="btn secondary" href="../contact/">Contact Us</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Company summary">
+          <div class="panel-card focus-card">
+            <span class="focus-icon">A</span>
+            <div>
+              <strong>Annapurna Agentic Solutions</strong>
+              <p>Open source by default. Built in India, for the world.</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div><strong>MIT</strong><span>License</span></div>
+            <div><strong>Open</strong><span>Source</span></div>
+            <div><strong>Free</strong><span>Forever</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="story" class="section-pad">
+      <div class="section-head centered">
+        <p class="eyebrow">Our Story</p>
+        <h2>Honesty first. Open source by default. Built in India, for the world.</h2>
+      </div>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>What We Build</h3>
+          <p>AI governance tools, agent infrastructure, a typed DSL for agent workflows, education platforms, MSME applications, and client websites. Some products are free under MIT. A few premium products use a royalty model &mdash; code stays open, commercial use funds development.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Who We Serve</h3>
+          <p>Developers, students, parents, educators, small business owners, and schools across India and globally. Our free products serve everyone. Our premium products serve businesses that need specialized, production-grade tools with commercial licensing.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>How We Work</h3>
+          <p>Static-first, offline-capable, minimal dependencies. Simple, maintainable, honestly presented. No fake stats, no inflated claims. What we say exists, exists.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-pad soft-section">
+      <div class="section-head centered">
+        <p class="eyebrow">Our Values</p>
+        <h2>Principles that guide every product.</h2>
+      </div>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>Open Source by Default</h3>
+          <p>Most of what we build is MIT licensed &mdash; free for commercial and non-commercial use, no attribution required. We believe open source builds adoption and trust. Premium products use Apache 2.0 with a royalty rider, not restrictive closed-source licensing.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Honesty First</h3>
+          <p>No fake statistics, no inflated claims, no marketing fluff. What we say exists, exists. What we say works, works. Transparency over hype.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>Built in India, for the World</h3>
+          <p>Offline-capable, multi-language, low-bandwidth, mobile-first. Designed for India's constraints &mdash; millions of small businesses, 22 official languages, uneven internet access. Then made available to everyone, everywhere.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Licensing Model</p>
+          <h2>Free for most. Royalty for premium.</h2>
+        </div>
+        <p>Our licensing strategy keeps the majority of products free while sustaining development through a small set of premium products.</p>
+      </div>
+      <div class="license-grid">
+        <div class="license-card">
+          <span class="lic-badge mit">MIT Licensed</span>
+          <h3>Free Community Products</h3>
+          <p>Education platforms, developer tools, and utilities. Free forever for everyone &mdash; commercial and non-commercial. No attribution required.</p>
+        </div>
+        <div class="license-card">
+          <span class="lic-badge royalty">Apache 2.0 + Royalty</span>
+          <h3>Premium Products</h3>
+          <p>A small set of products with natural paywalls. Apache 2.0 for non-commercial use; commercial use requires a royalty agreement. Code stays open &mdash; we believe in transparency, not lock-in.</p>
+        </div>
+        <div class="license-card">
+          <span class="lic-badge service">Client Services</span>
+          <h3>Project Work</h3>
+          <p>One-time builds and retainer arrangements for clients needing custom websites, PWAs, AI integrations, or education platforms.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad soft-section">
+      <div class="section-head centered">
+        <p class="eyebrow">Community Service</p>
+        <h2>Building for those who need it most.</h2>
+      </div>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>Free Education for All</h3>
+          <p>We build education platforms that work offline, in multiple languages, on low-end devices. No paywalls, no ads, no data collection. Built for students, parents, and educators who cannot afford paid platforms. Because education shouldn't depend on internet speed or device quality.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Tools for Small Businesses</h3>
+          <p>India has millions of small businesses that can't afford SaaS subscriptions. We build free tools that work offline, in local languages, on basic phones. No sign-ups, no data harvesting, no hidden costs. Just tools that help.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>Open Source as Public Infrastructure</h3>
+          <p>We treat open source as public infrastructure &mdash; roads and bridges for the digital economy. Free to use, free to modify, free to build upon. The royalty model on premium products funds the free ones. Sustainable by design.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Roadmap</p>
+          <h2>What's coming next.</h2>
+        </div>
+        <p>A glimpse of what we're building. Some are days away. Some are weeks. All are designed to solve real problems.</p>
+      </div>
+      <div class="roadmap-list">
+        <div class="roadmap-item">
+          <div class="rm-icon">AX</div>
+          <div>
+            <h4>AXON &mdash; Agent DSL</h4>
+            <p>A typed language for AI agent workflows. Define, validate, execute. Coming very soon.</p>
+            <span class="rm-status">Launching Soon</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">PH</div>
+          <div>
+            <h4>Python Hidden Gems</h4>
+            <p>Python mini-projects using packages you've probably never heard of. For developers who love discovering tools.</p>
+            <span class="rm-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">NS</div>
+          <div>
+            <h4>Illustrated Storybooks</h4>
+            <p>Cultural heritage meets modern storytelling. Beautifully illustrated storybooks for children. Premium product.</p>
+            <span class="rm-status">In Development</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">DG</div>
+          <div>
+            <h4>Compliance Tools</h4>
+            <p>Helping businesses navigate India's evolving data protection landscape. Built for compliance teams.</p>
+            <span class="rm-status">Planned</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">AT</div>
+          <div>
+            <h4>Security Scanners</h4>
+            <p>Browser and IDE scanners for agentic AI. Catch vulnerabilities before they reach production.</p>
+            <span class="rm-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">PC</div>
+          <div>
+            <h4>Patterns Cookbook</h4>
+            <p>Reusable solution patterns for enterprise AI. Problem &rarr; Pattern &rarr; Code &rarr; When Not to Use.</p>
+            <span class="rm-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">EE</div>
+          <div>
+            <h4>Expert Evaluator Suite</h4>
+            <p>Expert-level evaluation prompts for AI systems. Multi-category assessments with weighted scorecards and verdicts.</p>
+            <span class="rm-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="rm-icon">SF</div>
+          <div>
+            <h4>Project Intake Tools</h4>
+            <p>From idea to proposal to delivery. Tools for agencies and consultants who manage multiple projects.</p>
+            <span class="rm-status">Planned</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad soft-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What We Do</p>
+          <h2>Six product lines. One company.</h2>
+        </div>
+        <p>Each portfolio is a dedicated hub with its own products, demos, and documentation.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card" data-accent="amber">
+          <div class="portfolio-icon">WH</div>
+          <h3>WonderHub</h3>
+          <p>Education discovery hub &mdash; STEM Labs, Jigyasu, AI Concepts Lab, storybooks, games, and more.</p>
+          <div class="portfolio-tags">
+            <span>Education</span><span>K-12</span><span>Free</span>
+          </div>
+          <a class="portfolio-link" href="../wonderhub-by-AnnapurnaAgenticSolutions/">Explore &rarr;</a>
+        </div>
+        <div class="portfolio-card" data-accent="green">
+          <div class="portfolio-icon">IH</div>
+          <h3>Idea Hub</h3>
+          <p>MSME and digital literacy applications for India's small businesses.</p>
+          <div class="portfolio-tags">
+            <span>MSME</span><span>PWA</span><span>Digital Literacy</span>
+          </div>
+          <a class="portfolio-link" href="../idea-hub/">Explore &rarr;</a>
+        </div>
+        <div class="portfolio-card" data-accent="blue">
+          <div class="portfolio-icon">AI</div>
+          <h3>AI Solutions</h3>
+          <p>Developer tools and infrastructure for agentic AI. Governance, evaluation, security, patterns.</p>
+          <div class="portfolio-tags">
+            <span>Dev Tools</span><span>MIT</span><span>Governance</span>
+          </div>
+          <a class="portfolio-link" href="../ai-solutions/">Explore &rarr;</a>
+        </div>
+        <div class="portfolio-card" data-accent="purple">
+          <div class="portfolio-icon">AX</div>
+          <h3>AXON</h3>
+          <p>A typed domain-specific language for defining, validating, and executing AI agent workflows.</p>
+          <div class="portfolio-tags">
+            <span>DSL</span><span>Agents</span><span>Language</span>
+          </div>
+          <a class="portfolio-link" href="../axon/">Explore &rarr;</a>
+        </div>
+        <div class="portfolio-card" data-accent="rose">
+          <div class="portfolio-icon">WS</div>
+          <h3>Website Studio</h3>
+          <p>Client website templates and demos. Static HTML, fast, clean, mobile-responsive.</p>
+          <div class="portfolio-tags">
+            <span>Websites</span><span>Client Work</span><span>Demos</span>
+          </div>
+          <a class="portfolio-link" href="../website-studio/">Explore &rarr;</a>
+        </div>
+        <div class="portfolio-card" data-accent="teal">
+          <div class="portfolio-icon">SL</div>
+          <h3>Software Lab</h3>
+          <p>Open-source software collections. Python Hidden Gems &mdash; mini-projects using lesser-known packages.</p>
+          <div class="portfolio-tags">
+            <span>Open Source</span><span>Python</span><span>Coming Soon</span>
+          </div>
+          <span class="portfolio-link disabled">Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad soft-section">
+      <div class="section-head centered">
+        <p class="eyebrow">Technology</p>
+        <h2>Our tech philosophy.</h2>
+      </div>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>Static-First</h3>
+          <p>HTML, CSS, and JavaScript. No build steps, no frameworks where avoidable. Fast, portable, easy to host on GitHub Pages or any static host.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Offline-Capable</h3>
+          <p>PWAs with service workers. Our products work without internet. Designed for India's uneven connectivity.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>Minimal Dependencies</h3>
+          <p>Zero or near-zero npm/pip dependencies. Simple, maintainable, long-lasting code. No framework churn.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>Annapurna Agentic Solutions</strong>
+      <p>Open-source AI tools, education platforms, and software from Bengaluru, India. MIT licensed.</p>
+      <p style="margin-top: 8px; font-size: 0.82rem; color: var(--muted-light);">
+        &copy; 2026 Annapurna Agentic Solutions. Bengaluru, Karnataka, India.<br />
+        <a href="mailto:annapurnaagenticsolutions@zohomail.in" style="color: var(--muted); text-decoration: none;">annapurnaagenticsolutions@zohomail.in</a>
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="../">Portal</a>
+      <a href="../contact/">Contact</a>
+      <a href="https://github.com/annapurnaagenticsolutions" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/annapurna-agentic-solutions/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="#top">Back to top &uarr;</a>
+    </div>
+  </footer>
+</body>
+</html>

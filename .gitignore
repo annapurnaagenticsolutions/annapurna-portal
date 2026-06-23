@@ -1,0 +1,13 @@
+# Launch announcements — not for public repo
+launch/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
