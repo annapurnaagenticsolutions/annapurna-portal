@@ -3,203 +3,230 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Menu - Our Restaurant</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4LaSxtcmaAaC5287VLFa1ka+XNp50TNcwlBLKyM4R+MNZhuY79wrPhgi6cdR7um9"
-      crossorigin="anonymous"
-    />
-    <!-- Font Awesome -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Menu - Feliciano</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      integrity="sha512-F8CN1+8RmjKxi/OE5MBj3OkZ6VNnzuMou9B5AxG/wqK5tXbg4+6g7bFvQ/76uGuNwAbQO4KOqtBm0H2CT7Lddg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Dotted Leader Line for Menu */
+      .menu-item-title {
+        position: relative;
+        overflow: hidden;
+      }
+      .menu-item-title::after {
+        content: "........................................................................................................................................";
+        position: absolute;
+        bottom: 4px;
+        margin-left: 8px;
+        letter-spacing: 2px;
+        color: #e5e7eb;
+        white-space: nowrap;
+      }
+      /* Simple sticky header styling */
+      .navbar.scrolled {
+        background-color: var(--color-brand-primary);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      }
+    </style>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Our Restaurant</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="menu.html">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="reserve.html">Reservations</a></li>
-            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          </ul>
+  <body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="navbar fixed top-0 w-full z-50 bg-brand-primary text-brand-light shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+          <a href="index.html" class="font-serif text-2xl font-bold tracking-wider uppercase text-white">
+            Feliciano<span class="text-brand-accent">.</span>
+          </a>
+          <nav class="hidden md:flex space-x-8 items-center font-medium">
+            <a href="index.html" class="hover:text-brand-accent transition">Home</a>
+            <a href="menu.html" class="text-brand-accent border-b-2 border-brand-accent pb-1">Menu</a>
+            <a href="about.html" class="hover:text-brand-accent transition">About</a>
+            <a href="gallery.html" class="hover:text-brand-accent transition">Gallery</a>
+            <a href="contact.html" class="hover:text-brand-accent transition">Contact</a>
+            <a href="reserve.html" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-6 py-2 rounded-sm transition">Reserve a Table</a>
+          </nav>
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-white hover:text-brand-accent focus:outline-none">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
         </div>
       </div>
-    </nav>
-    <main class="pt-5 mt-4">
-      <section class="py-5 bg-light">
-        <div class="container">
-          <h1 class="section-title">Our Menu</h1>
-          <p class="text-center">
-            Discover our delicious offerings crafted with fresh, local ingredients.
-          </p>
+      <div id="mobile-menu" class="hidden md:hidden bg-brand-primary/95 backdrop-blur-md absolute w-full left-0 top-full shadow-xl">
+        <div class="px-4 pt-2 pb-6 space-y-4">
+          <a href="index.html" class="block text-white hover:text-brand-accent">Home</a>
+          <a href="menu.html" class="block text-brand-accent font-medium">Menu</a>
+          <a href="about.html" class="block text-white hover:text-brand-accent">About</a>
+          <a href="gallery.html" class="block text-white hover:text-brand-accent">Gallery</a>
+          <a href="contact.html" class="block text-white hover:text-brand-accent">Contact</a>
         </div>
-      </section>
-      <section class="py-5 menu-section" id="starters">
-        <div class="container">
-          <h2 class="section-title">Starters</h2>
-          <div class="row">
-            <div class="col-md-6 menu-item">
-              <h5>Bruschetta<span class="price">₹250</span></h5>
-              <p>Grilled bread topped with fresh tomatoes, basil, and olive oil.</p>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-brand-light text-center border-b border-gray-200">
+      <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+        <h4 class="font-serif italic text-brand-accent text-xl mb-2">Discover</h4>
+        <h1 class="text-5xl font-serif text-brand-primary mb-6">Our Menu</h1>
+        <p class="text-gray-600 max-w-2xl mx-auto">Explore our carefully curated selection of dishes, featuring the finest seasonal ingredients prepared by our master chefs.</p>
+      </div>
+    </section>
+
+    <!-- Menu Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Starters -->
+        <div class="mb-20" id="starters" data-aos="fade-up">
+          <h2 class="text-4xl font-serif text-brand-primary mb-10 text-center">Starters</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+            <!-- Item 1 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Roasted Tomato Soup</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$12</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Oven-roasted plum tomatoes, fresh basil, garlic croutons</p>
             </div>
-            <div class="col-md-6 menu-item">
-              <h5>Stuffed Mushrooms<span class="price">₹300</span></h5>
-              <p>Button mushrooms filled with cheese and herbs, baked to perfection.</p>
+            <!-- Item 2 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Beef Carpaccio</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$18</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Thinly sliced tenderloin, arugula, shaved parmesan, truffle oil</p>
             </div>
-            <div class="col-md-6 menu-item">
-              <h5>Chicken Satay<span class="price">₹350</span></h5>
-              <p>Grilled chicken skewers served with peanut dipping sauce.</p>
+            <!-- Item 3 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Crispy Calamari</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$16</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Lightly dusted squid, lemon zest, smoked paprika aioli</p>
             </div>
-            <div class="col-md-6 menu-item">
-              <h5>Garlic Prawns<span class="price">₹400</span></h5>
-              <p>Prawns sautéed in garlic butter and white wine.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="py-5 menu-section bg-light" id="mains">
-        <div class="container">
-          <h2 class="section-title">Mains</h2>
-          <div class="row">
-            <div class="col-md-6 menu-item">
-              <h5>Grilled Salmon<span class="price">₹700</span></h5>
-              <p>Fresh salmon fillet with lemon herb butter, served with roasted vegetables.</p>
-            </div>
-            <div class="col-md-6 menu-item">
-              <h5>Lamb Curry<span class="price">₹650</span></h5>
-              <p>Tender lamb pieces simmered in a rich, aromatic curry sauce.</p>
-            </div>
-            <div class="col-md-6 menu-item">
-              <h5>Pasta Primavera<span class="price">₹550</span></h5>
-              <p>Seasonal vegetables tossed with penne pasta in a light garlic sauce.</p>
-            </div>
-            <div class="col-md-6 menu-item">
-              <h5>Chicken Biryani<span class="price">₹600</span></h5>
-              <p>Fragrant basmati rice layered with spiced chicken and saffron.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="py-5 menu-section" id="desserts">
-        <div class="container">
-          <h2 class="section-title">Desserts</h2>
-          <div class="row">
-            <div class="col-md-6 menu-item">
-              <h5>Tiramisu<span class="price">₹300</span></h5>
-              <p>Classic Italian dessert layered with mascarpone, coffee, and cocoa.</p>
-            </div>
-            <div class="col-md-6 menu-item">
-              <h5>Gulab Jamun Cheesecake<span class="price">₹350</span></h5>
-              <p>A fusion delight combining creamy cheesecake with traditional gulab jamun.</p>
-            </div>
-            <div class="col-md-6 menu-item">
-              <h5>Chocolate Lava Cake<span class="price">₹320</span></h5>
-              <p>Warm chocolate cake with a molten center, served with vanilla ice cream.</p>
-            </div>
-            <div class="col-md-6 menu-item">
-              <h5>Kesar Pista Kulfi<span class="price">₹280</span></h5>
-              <p>Traditional Indian ice cream flavored with saffron and pistachios.</p>
+            <!-- Item 4 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Burrata Caprese</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$19</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Fresh burrata, heirloom tomatoes, balsamic glaze, pine nuts</p>
             </div>
           </div>
         </div>
-      </section>
-      <section class="py-5 menu-section bg-light" id="drinks">
-        <div class="container">
-          <h2 class="section-title">Drinks</h2>
-          <div class="row">
-            <div class="col-md-6 menu-item">
-              <h5>Mango Lassi<span class="price">₹180</span></h5>
-              <p>Refreshing yogurt-based drink blended with ripe mangoes.</p>
+
+        <!-- Mains -->
+        <div class="mb-20" id="mains" data-aos="fade-up">
+          <h2 class="text-4xl font-serif text-brand-primary mb-10 text-center">Main Courses</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+            <!-- Item 1 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Signature Steak</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$45</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Premium 12oz ribeye, roasted fingerling potatoes, asparagus, red wine jus</p>
             </div>
-            <div class="col-md-6 menu-item">
-              <h5>Fresh Lime Soda<span class="price">₹150</span></h5>
-              <p>A zesty blend of lime juice, soda, and sugar syrup.</p>
+            <!-- Item 2 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Pan-Seared Salmon</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$36</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Wild-caught salmon, quinoa pilaf, baby spinach, lemon butter caper sauce</p>
             </div>
-            <div class="col-md-6 menu-item">
-              <h5>Masala Chai<span class="price">₹120</span></h5>
-              <p>Aromatic Indian tea brewed with spices and milk.</p>
+            <!-- Item 3 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Wild Mushroom Risotto</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$28</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Arborio rice, porcini and cremini mushrooms, parmesan crisps, truffle essence</p>
             </div>
-            <div class="col-md-6 menu-item">
-              <h5>Coffee Cappuccino<span class="price">₹200</span></h5>
-              <p>Espresso topped with steamed milk foam and cocoa dusting.</p>
+            <!-- Item 4 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Duck Confit</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$39</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Slow-cooked duck leg, sweet potato purée, haricots verts, cherry gastrique</p>
             </div>
           </div>
         </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <h5>Contact Us</h5>
-            <p>
-              456 Culinary Street<br />
-              Bengaluru, Karnataka, India<br />
-              Phone: +91 12345 67890<br />
-              Email: hello@ourrestaurant.com
-            </p>
-          </div>
-          <div class="col-md-4 mb-3">
-            <h5>Quick Links</h5>
-            <ul class="list-unstyled">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="reserve.html">Reservations</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 mb-3">
-            <h5>Follow Us</h5>
-            <a href="#" class="me-2" aria-label="Visit our Facebook page"
-              ><i class="fab fa-facebook fa-lg"></i
-            ></a>
-            <a href="#" class="me-2" aria-label="Visit our Twitter page"
-              ><i class="fab fa-twitter fa-lg"></i
-            ></a>
-            <a href="#" class="me-2" aria-label="Visit our Instagram page"
-              ><i class="fab fa-instagram fa-lg"></i
-            ></a>
-            <a href="#" aria-label="Visit our LinkedIn page"
-              ><i class="fab fa-linkedin fa-lg"></i
-            ></a>
-            <p class="mt-3">
-              <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms &amp; Conditions</a>
-            </p>
+
+        <!-- Desserts -->
+        <div id="desserts" data-aos="fade-up">
+          <h2 class="text-4xl font-serif text-brand-primary mb-10 text-center">Desserts</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+            <!-- Item 1 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Classic Tiramisu</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$12</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Espresso-soaked ladyfingers, mascarpone cream, cocoa powder</p>
+            </div>
+            <!-- Item 2 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Decadent Chocolate Tart</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$14</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Valrhona chocolate ganache, buttery crust, raspberry coulis, gold leaf</p>
+            </div>
+            <!-- Item 3 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Lemon Panna Cotta</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$11</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Silky Italian custard, lemon curd, mixed berry compote</p>
+            </div>
+            <!-- Item 4 -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-serif text-brand-primary font-medium menu-item-title flex-grow">Artisan Cheese Board</h3>
+                <span class="text-brand-accent font-serif italic text-xl ml-4 bg-white z-10 pl-2">$22</span>
+              </div>
+              <p class="text-sm text-gray-500 pr-12">Chef's selection of local and imported cheeses, honeycomb, candied walnuts</p>
+            </div>
           </div>
         </div>
-        <div class="text-center mt-3">
-          <p>&copy; 2026 Our Restaurant. All rights reserved.</p>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-secondary text-gray-400 py-12 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <a href="index.html" class="font-serif text-2xl font-bold tracking-wider uppercase text-white">
+            Feliciano<span class="text-brand-accent">.</span>
+          </a>
+        </div>
+        <div class="text-sm">
+          &copy; 2026 Feliciano Restaurant. All rights reserved.
         </div>
       </div>
     </footer>
-    <!-- Bootstrap JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-VOJO5pvFNc8WrQavLtLxVLJE4kM/fKzGUVSI0S8vDqvZ5XdP1u9p14UjFEfdE0UR"
-      crossorigin="anonymous"
-    ></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, offset: 50 });
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>
