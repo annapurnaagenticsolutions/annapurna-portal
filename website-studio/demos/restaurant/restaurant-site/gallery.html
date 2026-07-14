@@ -3,173 +3,173 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallery - Feliciano</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <style>
-      .masonry {
-        column-count: 1;
-        column-gap: 1.5rem;
-      }
-      @media (min-width: 640px) { .masonry { column-count: 2; } }
-      @media (min-width: 1024px) { .masonry { column-count: 3; } }
-      
-      .masonry-item {
-        break-inside: avoid;
-        margin-bottom: 1.5rem;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        border-radius: 2px;
-      }
-      .masonry-item img {
-        width: 100%;
-        display: block;
-        transition: transform 0.5s ease;
-      }
-      .masonry-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(26,26,26,0.6);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .masonry-item:hover img {
-        transform: scale(1.05);
-      }
-      .masonry-item:hover .masonry-overlay {
-        opacity: 1;
-      }
-      
-      /* Lightbox */
-      #lightbox {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.9);
-        z-index: 100;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-      }
-      #lightbox.active {
-        display: flex;
-      }
-      #lightbox img {
-        max-width: 100%;
-        max-height: 90vh;
-        border-radius: 4px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      }
-      #lightbox-close {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        z-index: 101;
-      }
-    </style>
+    <title>Gallery - Our Restaurant</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4LaSxtcmaAaC5287VLFa1ka+XNp50TNcwlBLKyM4R+MNZhuY79wrPhgi6cdR7um9"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-F8CN1+8RmjKxi/OE5MBj3OkZ6VNnzuMou9B5AxG/wqK5tXbg4+6g7bFvQ/76uGuNwAbQO4KOqtBm0H2CT7Lddg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="antialiased bg-brand-light">
-    
-    <!-- Header -->
-    <header class="navbar fixed top-0 w-full z-50 bg-brand-primary text-brand-light shadow-md">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-          <a href="index.html" class="font-serif text-2xl font-bold tracking-wider uppercase text-white">
-            Feliciano<span class="text-brand-accent">.</span>
-          </a>
-          <nav class="hidden md:flex space-x-8 items-center font-medium">
-            <a href="index.html" class="hover:text-brand-accent transition">Home</a>
-            <a href="menu.html" class="hover:text-brand-accent transition">Menu</a>
-            <a href="about.html" class="hover:text-brand-accent transition">About</a>
-            <a href="gallery.html" class="text-brand-accent border-b-2 border-brand-accent pb-1">Gallery</a>
-            <a href="contact.html" class="hover:text-brand-accent transition">Contact</a>
-            <a href="reserve.html" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-6 py-2 rounded-sm transition">Reserve a Table</a>
-          </nav>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Our Restaurant</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="reserve.html">Reservations</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
         </div>
       </div>
-    </header>
-
-    <!-- Page Header -->
-    <section class="pt-32 pb-16 text-center border-b border-gray-200">
-      <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
-        <h4 class="font-serif italic text-brand-accent text-xl mb-2">Our Moments</h4>
-        <h1 class="text-5xl font-serif text-brand-primary mb-6">Gallery</h1>
-      </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="masonry" data-aos="fade-up">
-          <div class="masonry-item" onclick="openLightbox('assets/images/dish1.jpg')">
-            <img src="assets/images/dish1.jpg" alt="Dish 1" />
-            <div class="masonry-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
-          </div>
-          <div class="masonry-item" onclick="openLightbox('assets/images/chef.jpg')">
-            <img src="assets/images/chef.jpg" alt="Chef" />
-            <div class="masonry-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
-          </div>
-          <div class="masonry-item" onclick="openLightbox('assets/images/dish2.jpg')">
-            <img src="assets/images/dish2.jpg" alt="Dish 2" />
-            <div class="masonry-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
-          </div>
-          <div class="masonry-item" onclick="openLightbox('assets/images/hero.jpg')">
-            <img src="assets/images/hero.jpg" alt="Interior" />
-            <div class="masonry-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
-          </div>
-          <div class="masonry-item" onclick="openLightbox('assets/images/dish1.jpg')">
-            <img src="assets/images/dish1.jpg" alt="Dessert" />
-            <div class="masonry-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
-          </div>
-          <div class="masonry-item" onclick="openLightbox('assets/images/dish2.jpg')">
-            <img src="assets/images/dish2.jpg" alt="Appetizer" />
-            <div class="masonry-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
+    </nav>
+    <main class="pt-5 mt-4">
+      <section class="py-5 bg-light">
+        <div class="container">
+          <h1 class="section-title">Photo Gallery</h1>
+          <p class="text-center">
+            Take a glimpse into our kitchen, dining experience, and delicious dishes.
+          </p>
+        </div>
+      </section>
+      <section class="py-5">
+        <div class="container">
+          <div class="row g-3">
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1546069901-5d98d4809f47?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Plating a gourmet dish"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Cozy dining area"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1514511016650-777d46be7671?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Table set with wine glasses"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1498579809087-ef1e558fd1e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Variety of fresh ingredients"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1551024709-8f23befc6e10?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Chef adding final touches to dish"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1528715471579-dc97eaf45052?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Assortment of desserts"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Family enjoying meal"
+                class="gallery-img"
+              />
+            </div>
+            <div class="col-6 col-md-3">
+              <img
+                src="https://images.unsplash.com/photo-1498579809087-ef1e558fd1e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Outdoor dining patio"
+                class="gallery-img"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Lightbox Element -->
-    <div id="lightbox" onclick="closeLightbox()">
-      <i id="lightbox-close" class="fas fa-times"></i>
-      <img id="lightbox-img" src="" alt="Fullscreen View" onclick="event.stopPropagation()" />
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-brand-secondary text-gray-400 py-12 border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        &copy; 2026 Feliciano Restaurant. All rights reserved.
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5>Contact Us</h5>
+            <p>
+              456 Culinary Street<br />
+              Bengaluru, Karnataka, India<br />
+              Phone: +91 12345 67890<br />
+              Email: hello@ourrestaurant.com
+            </p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="reserve.html">Reservations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="index.html">Home</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Follow Us</h5>
+            <a href="#" class="me-2" aria-label="Visit our Facebook page"
+              ><i class="fab fa-facebook fa-lg"></i
+            ></a>
+            <a href="#" class="me-2" aria-label="Visit our Twitter page"
+              ><i class="fab fa-twitter fa-lg"></i
+            ></a>
+            <a href="#" class="me-2" aria-label="Visit our Instagram page"
+              ><i class="fab fa-instagram fa-lg"></i
+            ></a>
+            <a href="#" aria-label="Visit our LinkedIn page"
+              ><i class="fab fa-linkedin fa-lg"></i
+            ></a>
+            <p class="mt-3">
+              <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms &amp; Conditions</a>
+            </p>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <p>&copy; 2026 Our Restaurant. All rights reserved.</p>
+        </div>
       </div>
     </footer>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init({ once: true });
-      
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      
-      function openLightbox(src) {
-        lightboxImg.src = src;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-      
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    </script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-VOJO5pvFNc8WrQavLtLxVLJE4kM/fKzGUVSI0S8vDqvZ5XdP1u9p14UjFEfdE0UR"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

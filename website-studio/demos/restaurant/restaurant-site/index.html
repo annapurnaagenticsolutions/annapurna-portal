@@ -4,320 +4,291 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Feliciano - Culinary Excellence</title>
-    <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Welcome to Our Restaurant</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4LaSxtcmaAaC5287VLFa1ka+XNp50TNcwlBLKyM4R+MNZhuY79wrPhgi6cdR7um9"
+      crossorigin="anonymous"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-F8CN1+8RmjKxi/OE5MBj3OkZ6VNnzuMou9B5AxG/wqK5tXbg4+6g7bFvQ/76uGuNwAbQO4KOqtBm0H2CT7Lddg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      .hero-overlay {
-        background: linear-gradient(to bottom, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.8) 100%);
-      }
-      .hover-zoom {
-        overflow: hidden;
-      }
-      .hover-zoom img {
-        transition: transform 0.5s ease;
-      }
-      .hover-zoom:hover img {
-        transform: scale(1.05);
-      }
-      .card-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .card-lift:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      }
-      /* Sticky Header Transition */
-      .navbar {
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .navbar.scrolled {
-        background-color: var(--color-brand-primary);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      }
-      .top-bar {
-        transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
-        max-height: 50px;
-        opacity: 1;
-        overflow: hidden;
-      }
-      .navbar.scrolled .top-bar {
-        max-height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        opacity: 0;
-      }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="antialiased">
-
-    <!-- Header & Navigation -->
-    <header class="navbar fixed top-0 w-full z-50 bg-transparent text-brand-light">
-      <!-- Top Bar -->
-      <div class="top-bar border-b border-white/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center text-sm">
-          <div class="flex items-center space-x-6">
-            <span><i class="fas fa-phone mr-2 text-brand-accent"></i> +91 12345 67890</span>
-            <span class="hidden md:inline"><i class="fas fa-clock mr-2 text-brand-accent"></i> Mon - Sun: 11:00 AM - 11:00 PM</span>
-          </div>
-          <div class="flex items-center space-x-4">
-            <a href="#" class="hover:text-brand-accent transition"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="hover:text-brand-accent transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="hover:text-brand-accent transition"><i class="fab fa-twitter"></i></a>
-          </div>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Our Restaurant</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="reserve.html">Reservations</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
         </div>
       </div>
-      <!-- Main Nav -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-          <a href="index.html" class="font-serif text-2xl font-bold tracking-wider uppercase text-white">
-            Feliciano<span class="text-brand-accent">.</span>
-          </a>
-          <!-- Desktop Menu -->
-          <nav class="hidden md:flex space-x-8 items-center font-medium">
-            <a href="index.html" class="text-brand-accent border-b-2 border-brand-accent pb-1">Home</a>
-            <a href="menu.html" class="hover:text-brand-accent transition">Menu</a>
-            <a href="about.html" class="hover:text-brand-accent transition">About</a>
-            <a href="gallery.html" class="hover:text-brand-accent transition">Gallery</a>
-            <a href="contact.html" class="hover:text-brand-accent transition">Contact</a>
-            <a href="reserve.html" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-6 py-2 rounded-sm transition shadow-lg">Reserve a Table</a>
-          </nav>
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden flex items-center">
-            <button id="mobile-menu-btn" class="text-white hover:text-brand-accent focus:outline-none">
-              <i class="fas fa-bars text-2xl"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- Mobile Menu Dropdown -->
-      <div id="mobile-menu" class="hidden md:hidden bg-brand-primary/95 backdrop-blur-md absolute w-full left-0 top-full">
-        <div class="px-4 pt-2 pb-6 space-y-4 shadow-xl">
-          <a href="index.html" class="block text-brand-accent font-medium">Home</a>
-          <a href="menu.html" class="block text-white hover:text-brand-accent">Menu</a>
-          <a href="about.html" class="block text-white hover:text-brand-accent">About</a>
-          <a href="gallery.html" class="block text-white hover:text-brand-accent">Gallery</a>
-          <a href="contact.html" class="block text-white hover:text-brand-accent">Contact</a>
-          <a href="reserve.html" class="block bg-brand-accent text-center text-white px-6 py-3 rounded-sm">Reserve a Table</a>
-        </div>
-      </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col justify-center items-center text-center pb-24 pt-32">
-      <div class="absolute inset-0 z-0">
-        <img src="assets/images/hero.jpg" alt="Restaurant Interior" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 hero-overlay"></div>
-      </div>
-      <div class="relative z-10 max-w-4xl px-4 my-auto" data-aos="fade-up" data-aos-duration="1000">
-        <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-black/50 border border-brand-accent/60 text-brand-accent text-sm tracking-widest font-serif uppercase mb-6 backdrop-blur-md shadow-[0_0_20px_rgba(196,154,99,0.4)]">
-          <i class="fas fa-sparkles mr-2 text-brand-accent"></i> Award-Winning Fine Dining & Private Events
-        </span>
-        <h1 class="text-5xl md:text-7xl font-serif text-white font-bold mb-6 leading-tight drop-shadow-lg">Experience Culinary <br/><span class="text-brand-accent">Excellence</span></h1>
-        <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-2xl mx-auto drop-shadow">Savor the taste of authentic cuisine crafted with passion, precision, and the freshest seasonal ingredients.</p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
-          <a href="reserve.html" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-8 py-4 rounded-sm text-lg font-medium transition duration-300 shadow-[0_4px_20px_0_rgba(196,154,99,0.5)] transform hover:-translate-y-1">Book Your Table</a>
-          <a href="menu.html" class="bg-black/30 backdrop-blur-md border border-white/60 text-white hover:bg-white hover:text-brand-primary px-8 py-4 rounded-sm text-lg font-medium transition duration-300 transform hover:-translate-y-1">View Full Menu</a>
-        </div>
-      </div>
-
-      <!-- Glassmorphic Quick-Book Bar -->
-      <div class="relative z-20 w-full max-w-5xl mx-auto px-4 -mb-36 mt-8" data-aos="fade-up" data-aos-delay="300">
-        <div class="bg-brand-primary/90 backdrop-blur-xl border border-brand-accent/40 p-6 sm:p-8 rounded-sm shadow-2xl">
-          <form action="reserve.html" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
-            <div class="text-left">
-              <label class="block text-xs uppercase tracking-widest text-brand-accent font-serif mb-1"><i class="fas fa-calendar-alt mr-1"></i> Date</label>
-              <input type="date" class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition" required />
-            </div>
-            <div class="text-left">
-              <label class="block text-xs uppercase tracking-widest text-brand-accent font-serif mb-1"><i class="fas fa-clock mr-1"></i> Time</label>
-              <select class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition">
-                <option value="18:00" class="text-black">6:00 PM (Dinner)</option>
-                <option value="19:00" class="text-black" selected>7:00 PM (Dinner)</option>
-                <option value="20:00" class="text-black">8:00 PM (Dinner)</option>
-                <option value="21:00" class="text-black">9:00 PM (Dinner)</option>
-              </select>
-            </div>
-            <div class="text-left">
-              <label class="block text-xs uppercase tracking-widest text-brand-accent font-serif mb-1"><i class="fas fa-users mr-1"></i> Guests</label>
-              <select class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition">
-                <option value="2" class="text-black" selected>2 Guests</option>
-                <option value="4" class="text-black">4 Guests</option>
-                <option value="6" class="text-black">6 Guests</option>
-                <option value="8+" class="text-black">8+ Private Dining</option>
-              </select>
-            </div>
-            <div class="pt-2 sm:pt-5">
-              <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accent-hover text-white font-serif uppercase tracking-widest text-sm py-3 px-6 rounded-sm transition duration-300 shadow-lg transform hover:scale-105">
-                Check Availability &rarr;
-              </button>
-            </div>
-          </form>
-        </div>
+    <section class="hero d-flex align-items-center justify-content-center">
+      <div class="container text-center">
+        <h1 class="display-4 fw-bold">Experience Culinary Excellence</h1>
+        <p class="lead">Savor the taste of authentic cuisine crafted with love and passion.</p>
+        <a href="reserve.html" class="btn btn-primary btn-lg me-2">Reserve a Table</a>
+        <a href="menu.html" class="btn btn-outline-light btn-lg">View Menu</a>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-brand-light">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div class="hover-zoom rounded-sm overflow-hidden shadow-2xl" data-aos="fade-right">
-            <img src="assets/images/chef.jpg" alt="Chef preparing meal" class="w-full h-auto object-cover aspect-[4/5]" />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img
+              src="https://images.unsplash.com/photo-1551024709-8f23befc6e10?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+              alt="Chef preparing meal in kitchen"
+              class="img-fluid rounded"
+            />
           </div>
-          <div data-aos="fade-left">
-            <h4 class="font-serif italic text-brand-accent text-xl mb-2">Our Story</h4>
-            <h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-6">A Tradition of <br/>Taste</h2>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              Founded in 2010, Feliciano has become a culinary destination known for its warm hospitality and exquisite dishes. Our master chefs source only the finest, freshest ingredients from local farmers and markets to create a menu that celebrates traditional recipes with a modern twist.
+          <div class="col-md-6">
+            <p>
+              Founded in 2010, Our Restaurant has become a culinary destination
+              known for its warm hospitality and exquisite dishes. Our chefs
+              source the freshest ingredients to create a menu that celebrates
+              traditional recipes with a modern twist. Join us for an
+              unforgettable dining experience.
             </p>
-            <p class="text-gray-600 mb-8 leading-relaxed">
-              Every dish that leaves our kitchen is a masterpiece, crafted with passion and designed to provide you with an unforgettable dining experience in a truly elegant setting.
-            </p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Signature_placeholder.svg" alt="Chef Signature" class="h-16 opacity-70" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Chef's Recommendations Section -->
-    <section class="py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-          <h4 class="font-serif italic text-brand-accent text-xl mb-2">Discover</h4>
-          <h2 class="text-4xl md:text-5xl font-serif text-brand-primary">Chef's Recommendations</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Dish 1 -->
-          <div class="bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-aos="fade-up" data-aos-delay="100">
-            <div class="hover-zoom h-64">
-              <img src="assets/images/dish1.jpg" alt="Signature Steak" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            </div>
-            <div class="p-8 text-center relative">
-              <span class="absolute -top-5 right-6 bg-brand-accent text-white font-serif italic px-4 py-1 rounded-sm shadow-md group-hover:bg-brand-accent-hover transition">$45</span>
-              <h3 class="text-2xl mb-3 font-serif">Signature Steak</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-6">Juicy and tender premium cut cooked to perfection, served with seasonal vegetables and our rich signature demi-glace.</p>
-            </div>
-          </div>
-          <!-- Dish 2 -->
-          <div class="bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-aos="fade-up" data-aos-delay="200">
-            <div class="hover-zoom h-64">
-              <img src="assets/images/dish2.jpg" alt="Seafood Platter" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            </div>
-            <div class="p-8 text-center relative">
-              <span class="absolute -top-5 right-6 bg-brand-accent text-white font-serif italic px-4 py-1 rounded-sm shadow-md group-hover:bg-brand-accent-hover transition">$55</span>
-              <h3 class="text-2xl mb-3 font-serif">Seafood Platter</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-6">A delightful assortment of fresh ocean catch, including grilled prawns, calamari, and line-caught fish with citrus aioli.</p>
+    <!-- Featured Dishes Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title">Chef's Recommendations</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                class="card-img-top"
+                alt="Signature steak dish"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Signature Steak</h5>
+                <p class="card-text">
+                  Juicy and tender steak cooked to perfection, served with
+                  seasonal vegetables and our signature sauce.
+                </p>
+              </div>
             </div>
           </div>
-          <!-- Dish 3 -->
-          <div class="bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-aos="fade-up" data-aos-delay="300">
-            <div class="hover-zoom h-64">
-              <img src="assets/images/dish1.jpg" alt="Decadent Dessert" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            </div>
-            <div class="p-8 text-center relative">
-              <span class="absolute -top-5 right-6 bg-brand-accent text-white font-serif italic px-4 py-1 rounded-sm shadow-md group-hover:bg-brand-accent-hover transition">$18</span>
-              <h3 class="text-2xl mb-3 font-serif">Decadent Dessert</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-6">A rich dark chocolate delight layered with velvety ganache, topped with fresh seasonal berries and gold leaf.</p>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                class="card-img-top"
+                alt="Fresh seafood platter"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Seafood Platter</h5>
+                <p class="card-text">
+                  A delightful assortment of fresh seafood, including prawns,
+                  calamari, and grilled fish, accompanied by citrus aioli.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="text-center mt-12">
-          <a href="menu.html" class="inline-block border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3 transition duration-300">View Complete Menu</a>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1516685018646-549d5bbb9ef5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                class="card-img-top"
+                alt="Decadent chocolate dessert"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Decadent Dessert</h5>
+                <p class="card-text">
+                  A rich chocolate delight layered with velvety ganache and
+                  topped with fresh berries.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Quick Info Cards -->
-    <section class="py-20 bg-brand-primary text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center border-y border-white/10 py-16">
-          <div data-aos="fade-up" data-aos-delay="100">
-            <i class="fas fa-map-marker-alt text-4xl text-brand-accent mb-6"></i>
-            <h3 class="text-2xl font-serif mb-4">Location</h3>
-            <p class="text-gray-400">456 Culinary Street<br/>Bengaluru, Karnataka, India</p>
+    <!-- Menu Preview Section -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title">Explore Our Menu</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center p-4">
+              <i class="fas fa-utensils fa-3x mb-3" aria-hidden="true"></i>
+              <h5 class="card-title">Starters</h5>
+              <p class="card-text">Kick off your meal with a selection of appetizers.</p>
+              <a href="menu.html#starters" class="stretched-link" aria-label="View starters section"></a>
+            </div>
           </div>
-          <div class="md:border-x md:border-white/10" data-aos="fade-up" data-aos-delay="200">
-            <i class="fas fa-clock text-4xl text-brand-accent mb-6"></i>
-            <h3 class="text-2xl font-serif mb-4">Opening Hours</h3>
-            <p class="text-gray-400">Mon - Fri: 11:00 AM - 11:00 PM<br/>Sat - Sun: 9:00 AM - 11:00 PM</p>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center p-4">
+              <i class="fas fa-drumstick-bite fa-3x mb-3" aria-hidden="true"></i>
+              <h5 class="card-title">Mains</h5>
+              <p class="card-text">Enjoy hearty entrees crafted with premium ingredients.</p>
+              <a href="menu.html#mains" class="stretched-link" aria-label="View mains section"></a>
+            </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="300">
-            <i class="fas fa-calendar-check text-4xl text-brand-accent mb-6"></i>
-            <h3 class="text-2xl font-serif mb-4">Reservations</h3>
-            <p class="text-gray-400">Call: +91 12345 67890<br/>hello@feliciano.com</p>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center p-4">
+              <i class="fas fa-ice-cream fa-3x mb-3" aria-hidden="true"></i>
+              <h5 class="card-title">Desserts</h5>
+              <p class="card-text">Indulge in our sweet and satisfying desserts.</p>
+              <a href="menu.html#desserts" class="stretched-link" aria-label="View desserts section"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Hours Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title">Visit Us</h2>
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h5>Location</h5>
+            <p>
+              456 Culinary Street<br />
+              Bengaluru, Karnataka, India
+            </p>
+            <h5>Hours</h5>
+            <p>
+              Monday – Friday: 11:00 AM – 11:00 PM<br />
+              Saturday – Sunday: 9:00 AM – 11:00 PM
+            </p>
+            <p><strong>Phone:</strong> <a href="tel:+911234567890">+91 12345 67890</a></p>
+          </div>
+          <div class="col-md-6">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387143.73538308506!2d-73.72912131262717!3d40.6978702625286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a316d101cf7%3A0x53c7ed7d7b2b100d!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1589876530918!5m2!1sen!2s"
+                width="600"
+                height="450"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Restaurant Location on Map"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title">Join Our Mailing List</h2>
+        <p class="text-center">Stay updated on specials, events, and promotions.</p>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form class="newsletter-form" aria-label="Newsletter subscription form">
+              <div class="mb-3">
+                <label for="newsletterEmail" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="newsletterEmail"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-secondary text-gray-400 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-          <a href="index.html" class="font-serif text-2xl font-bold tracking-wider uppercase text-white">
-            Feliciano<span class="text-brand-accent">.</span>
-          </a>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5>Contact Us</h5>
+            <p>
+              456 Culinary Street<br />
+              Bengaluru, Karnataka, India<br />
+              Phone: +91 12345 67890<br />
+              Email: hello@ourrestaurant.com
+            </p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="reserve.html">Reservations</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Follow Us</h5>
+            <a href="#" class="me-2" aria-label="Visit our Facebook page"
+              ><i class="fab fa-facebook fa-lg"></i
+            ></a>
+            <a href="#" class="me-2" aria-label="Visit our Twitter page"
+              ><i class="fab fa-twitter fa-lg"></i
+            ></a>
+            <a href="#" class="me-2" aria-label="Visit our Instagram page"
+              ><i class="fab fa-instagram fa-lg"></i
+            ></a>
+            <a href="#" aria-label="Visit our LinkedIn page"
+              ><i class="fab fa-linkedin fa-lg"></i
+            ></a>
+            <p class="mt-3">
+              <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms &amp; Conditions</a>
+            </p>
+          </div>
         </div>
-        <div class="flex space-x-6 mb-6 md:mb-0">
-          <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f text-xl"></i></a>
-          <a href="#" class="hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
-          <a href="#" class="hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
-          <a href="#" class="hover:text-white transition"><i class="fab fa-tripadvisor text-xl"></i></a>
-        </div>
-        <div class="text-sm">
-          &copy; 2026 Feliciano Restaurant. Built by <a href="#" class="text-brand-accent hover:text-white transition">Annapurna Agentic Solutions</a>.
+        <div class="text-center mt-3">
+          <p>&copy; 2026 Our Restaurant. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/911234567890" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition duration-300 z-50 animate-pulse" aria-label="Chat on WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      // Initialize AOS
-      AOS.init({
-        once: true,
-        offset: 50,
-      });
-
-      // Sticky Header & Scroll Behavior
-      const navbar = document.querySelector('.navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-          navbar.classList.remove('bg-transparent');
-        } else {
-          navbar.classList.remove('scrolled');
-          navbar.classList.add('bg-transparent');
-        }
-      });
-
-      // Mobile Menu Toggle
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    </script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-VOJO5pvFNc8WrQavLtLxVLJE4kM/fKzGUVSI0S8vDqvZ5XdP1u9p14UjFEfdE0UR"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
