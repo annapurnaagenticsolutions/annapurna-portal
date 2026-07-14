@@ -26,9 +26,9 @@
         <a href="#" class="font-display font-bold text-2xl tracking-widest hover:italic transition-all">I.A.D.</a>
       </div>
       <div class="pointer-events-auto flex flex-col items-end gap-2 text-sm uppercase tracking-widest">
-        <a href="#" class="hover-target hover:text-brand-primary transition">Exhibitions</a>
-        <a href="#" class="hover-target hover:text-brand-primary transition">Admissions</a>
-        <a href="#" class="hover-target hover:text-brand-primary transition">Manifesto</a>
+        <a href="exhibitions.html" class="hover-target hover:text-brand-primary transition">Exhibitions</a>
+        <a href="admissions.html" class="hover-target hover:text-brand-primary transition">Admissions</a>
+        <a href="manifesto.html" class="hover-target hover:text-brand-primary transition">Manifesto</a>
       </div>
     </nav>
 
@@ -51,9 +51,9 @@
           <p class="text-sm font-bold uppercase tracking-widest border-l-4 border-brand-primary pl-4 mb-8">
             The Institute of Art & Design is a radical incubator for the creative avant-garde. We do not teach rules; we teach you how to break them.
           </p>
-          <a href="#" class="hover-target inline-block brutalist-border px-8 py-4 font-display font-bold hover:bg-brand-dark hover:text-white transition-all w-full text-center">
+          <button onclick="openApplyModal()" class="hover-target inline-block brutalist-border px-8 py-4 font-display font-bold hover:bg-brand-dark hover:text-white transition-all w-full text-center">
             APPLY FALL '26
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -172,6 +172,13 @@
           cursor.classList.remove('hover');
         });
       });
+
+      function openApplyModal() {
+        const portfolio = prompt("Enter Portfolio URL (e.g., behance.net/yourportfolio):");
+        if (portfolio) {
+          alert(`Portfolio (${portfolio}) submitted to the IAD Admissions Board! You will receive an invitation for our studio critique interview within 48 hours.`);
+        }
+      }
     </script>
   </body>
 </html>

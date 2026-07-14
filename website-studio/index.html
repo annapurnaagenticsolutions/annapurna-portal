@@ -3,493 +3,1143 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Website Studio | Annapurna Agentic Solutions</title>
-  <meta name="description" content="Client website demos — restaurant, school, jewelry, and school management platform. Static HTML sites built by Annapurna." />
-  <meta name="theme-color" content="#fafafa" />
+  <title>Website Studio | The Versatility Vault | Annapurna Agentic Solutions</title>
+  <meta name="description" content="Explore our Versatility Vault: 12 distinct, fully functional, multi-page client website variations across 4 major industries." />
+  <meta name="theme-color" content="#0a0f1d" />
   <link rel="stylesheet" href="../assets/portal.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --vault-bg: #0b0f19;
+      --vault-card: rgba(22, 29, 46, 0.7);
+      --vault-card-hover: rgba(30, 41, 65, 0.95);
+      --vault-border: rgba(255, 255, 255, 0.08);
+      --vault-accent: #6366f1;
+      --vault-accent-glow: rgba(99, 102, 241, 0.25);
+      --vault-emerald: #10b981;
+      --vault-rose: #f43f5e;
+      --vault-amber: #f59e0b;
+      --vault-cyan: #06b6d4;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--vault-bg);
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand strong {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Vault Header Override */
+    .vault-header {
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--vault-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .vault-hero {
+      position: relative;
+      padding: 6rem 1.5rem 4rem;
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(11, 15, 25, 0) 70%),
+                  radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.1) 0%, rgba(11, 15, 25, 0) 60%);
+      border-bottom: 1px solid var(--vault-border);
+    }
+
+    .vault-hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .vault-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #818cf8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px var(--vault-accent-glow);
+    }
+
+    .vault-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .vault-hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 750px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    .vault-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--vault-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .metric-box:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-3px);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .metric-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* Controls & Filtering */
+    .vault-controls {
+      max-width: 1200px;
+      margin: 3rem auto 2rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.4rem;
+      border-radius: 12px;
+      border: 1px solid var(--vault-border);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .filter-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .filter-btn.active {
+      background: var(--vault-accent);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+      max-width: 350px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--vault-border);
+      border-radius: 10px;
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--vault-accent);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* Grid & Cards */
+    .vault-grid {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+
+    .vault-card {
+      background: var(--vault-card);
+      border: 1px solid var(--vault-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .vault-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--vault-accent), var(--vault-cyan));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .vault-card:hover {
+      transform: translateY(-6px);
+      background: var(--vault-card-hover);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
+    }
+
+    .vault-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+
+    .industry-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+    }
+
+    .version-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.9rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      margin-bottom: 1.25rem;
+    }
+
+    .spec-item span {
+      display: block;
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .spec-item strong {
+      font-size: 0.88rem;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-footer {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-launch {
+      flex: 1;
+      background: linear-gradient(135deg, var(--vault-accent) 0%, #4f46e5 100%);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.8rem 1.25rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-launch:hover {
+      background: linear-gradient(135deg, #818cf8 0%, var(--vault-accent) 100%);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-insights {
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid var(--vault-border);
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-insights:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* Interactive Insight Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 8, 16, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 650px;
+      padding: 2.5rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: #94a3b8;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .modal-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+      font-size: 0.95rem;
+      color: #818cf8;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .modal-body p {
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-highlight-box {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 4px solid var(--vault-accent);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+    }
+
+    .modal-highlight-box strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-highlight-box span {
+      color: #a5b4fc;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body id="top">
-  <a class="skip-link" href="#demos">Skip to demos</a>
-
-  <header class="site-header" aria-label="Website Studio header">
+  <header class="site-header vault-header">
     <nav class="nav-shell">
       <a class="brand" href="../" aria-label="Annapurna home">
-        <span class="brand-mark">A</span>
+        <span class="brand-mark" style="background: var(--vault-accent); color: white; border-radius: 8px; padding: 0.2rem 0.6rem; font-weight: 800;">A</span>
         <span>
-          <strong>Website Studio</strong>
-          <small>Annapurna Agentic Solutions</small>
+          <strong style="color: white; font-size: 1.1rem;">Website Studio</strong>
+          <small style="color: #94a3b8;">The Versatility Vault</small>
         </span>
       </a>
-      <div class="nav-actions" aria-label="Primary navigation">
-        <a href="#demos">Demos</a>
+      <div class="nav-actions">
+        <a href="#demos" style="color: #fff; font-weight: 600;">12 Demos</a>
         <a href="../about/">About</a>
         <a href="../contact/">Contact</a>
-        <a href="../">&larr; Back to Portal</a>
+        <a href="../" style="border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.8rem; border-radius: 8px;">&larr; Portal Root</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero section-pad">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Client Website Demos</p>
-          <h1>Static websites for small businesses.</h1>
-          <p class="hero-text">
-            Website Studio showcases static HTML websites built for clients — restaurants, schools, jewelry stores, and more. Each demo is a live, browsable site. No frameworks, no build steps, clean HTML and CSS.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#demos">View demos</a>
-            <a class="btn secondary" href="../">Back to Portal</a>
+    <section class="vault-hero">
+      <div class="vault-hero-content">
+        <div class="vault-badge">
+          <span>⚡ Architectural UI/UX Showcase</span>
+        </div>
+        <h1>The Versatility Vault</h1>
+        <p>
+          Why settle for one template when your client demands tailored excellence? We built <strong>12 fully functional, interactive client websites</strong> across 4 high-demand industries. Every button works, every page navigates, and every UI/UX decision is crafted for specific user personas.
+        </p>
+
+        <div class="vault-metrics">
+          <div class="metric-box">
+            <span class="metric-number">12</span>
+            <span class="metric-label">Interactive Live Websites</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-number">4</span>
+            <span class="metric-label">High-Impact Industries</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-number">100%</span>
+            <span class="metric-label">Functional Multi-Page & JS</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-number">0s</span>
+            <span class="metric-label">Build Complexity (Pure Static)</span>
           </div>
         </div>
-        <aside class="hero-panel" aria-label="Website Studio summary">
-          <div class="panel-card focus-card">
-            <span class="focus-icon">WS</span>
-            <div>
-              <strong>Static HTML Sites</strong>
-              <p>Clean, fast, zero dependencies. Suitable for small businesses that need a web presence.</p>
+
+        <div class="philosophy-matrix">
+          <div class="matrix-tabs">
+            <button class="matrix-tab active" onclick="switchMatrix('v1', this)">👑 V1: Classic & Trusted</button>
+            <button class="matrix-tab" onclick="switchMatrix('v2', this)">⚡ V2: Bold & Brutalist</button>
+            <button class="matrix-tab" onclick="switchMatrix('v3', this)">🚀 V3: High-Tech & Futuristic</button>
+          </div>
+          <div class="matrix-content-box" id="matrixContent">
+            <div class="matrix-title">
+              <span>Classic Heritage & Institutional Authority</span>
+              <span class="matrix-badge" style="color: #38bdf8;">Ideal for: Established Brands, Luxury, Traditional K-12</span>
+            </div>
+            <p class="matrix-desc" id="matrixDesc">
+              Our Version 1 architecture leverages timeless typographic hierarchies, multi-page deep navigation, warm editorial layouts, and high-trust booking/inquiry workflows. Designed to convey prestige, stability, and premium craftsmanship without overwhelming first-time visitors.
+            </p>
+            <div class="matrix-features" id="matrixFeatures">
+              <span class="matrix-badge">✨ Full-Screen Storytelling</span>
+              <span class="matrix-badge">✨ Formal Multi-Page Structure</span>
+              <span class="matrix-badge">✨ Interactive Modal Reservations</span>
+              <span class="matrix-badge">✨ Curated Editorial Grids</span>
             </div>
           </div>
-          <div class="mini-grid">
-            <div><strong>HTML</strong><span>+ CSS</span></div>
-            <div><strong>0</strong><span>Dependencies</span></div>
-            <div><strong>Free</strong><span>Quotes</span></div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="demos" class="section-pad">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Live Demos</p>
-          <h2>Browse the websites we build</h2>
         </div>
-        <p>Each demo is a complete, multi-page static website. Click to browse.</p>
+      </div>
+    </section>
+
+    <div class="persona-quiz">
+      <h2>💡 Interactive Client Persona Finder</h2>
+      <p>Click your client's business profile below to instantly filter our 12 variations to their exact architectural match:</p>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="quizFilter('fine dining')">🍽️ Upscale Michelin Restaurant</button>
+        <button class="quiz-btn" onclick="quizFilter('smash')">🍔 Trendy Fast-Casual Burger Brand</button>
+        <button class="quiz-btn" onclick="quizFilter('charter')">🎓 Next-Gen STEM Charter School</button>
+        <button class="quiz-btn" onclick="quizFilter('online')">🌐 Global Online University LMS</button>
+        <button class="quiz-btn" onclick="quizFilter('bespoke')">💍 Luxury Bespoke Ring Designer</button>
+        <button class="quiz-btn" onclick="quizFilter('all')" style="border-color: #a5b4fc; color: #a5b4fc;">🔄 Reset Show All</button>
+      </div>
+    </div>
+
+    <section id="demos">
+      <div class="vault-controls">
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all">✨ All (12)</button>
+          <button class="filter-btn" data-filter="restaurant">🍽️ Restaurant (3)</button>
+          <button class="filter-btn" data-filter="school">🎓 K-12 School (3)</button>
+          <button class="filter-btn" data-filter="college">🏛️ Higher Ed (3)</button>
+          <button class="filter-btn" data-filter="jewellery">💎 Jewellery (3)</button>
+        </div>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search style, tech, or features..." aria-label="Search demos" />
+        </div>
       </div>
 
-      <!-- RESTAURANT & HOSPITALITY -->
-      <div class="subsection-title">
-        <h3>Restaurant & Hospitality</h3>
-        <span>3 variations</span>
-      </div>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">R1</span>
-              <div>
-                <small>Fine Dining</small>
-                <h3>Restaurant V1: Fine Dining</h3>
+      <div class="vault-grid" id="demosGrid">
+        <!-- RESTAURANT V1 -->
+        <article class="vault-card" data-category="restaurant" data-tags="fine dining parallax reservations multi-page hospitality">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">Restaurant & Hospitality</span>
+              <span class="version-badge">Version 1.0</span>
+            </div>
+            <h3 class="card-title">Fine Dining Experience</h3>
+            <p class="card-desc">An appetizing, warm experience for upscale fine dining. Features full-screen parallax storytelling, elegant dotted leader line menus, and multi-page reservation flows.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Architecture</span>
+                <strong>8 HTML Pages</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Parallax & Warmth</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>An appetizing, warm experience for fine dining. Features full-screen parallax storytelling, elegant dotted leader line menus, and interactive table reservations.</p>
-            <div class="meta-row">
-              <div><span>Pages</span><strong>8 pages</strong></div>
-              <div><span>Style</span><strong>Parallax Hero</strong></div>
+            <div class="card-tags">
+              <span class="tag">Multi-page</span>
+              <span class="tag">Table Reservations</span>
+              <span class="tag">Gallery Grid</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Hospitality</span><span>Fine Dining</span><span>Reservations</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/restaurant/restaurant-site/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/restaurant/restaurant-site/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Fine Dining V1', 'Upscale Hospitality Architecture', 'Designed specifically for high-end restaurants where visual storytelling and brand prestige drive bookings. Instead of overwhelming the user with immediate ordering, V1 uses immersive full-width culinary imagery and multi-page separation (Menu, Gallery, About, Reserve) to build trust and appetite.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">R2</span>
-              <div>
-                <small>Fast Casual</small>
-                <h3>Restaurant V2: Food Truck</h3>
+        <!-- RESTAURANT V2 -->
+        <article class="vault-card" data-category="restaurant" data-tags="food truck brutalism neon horizontal scroll fast casual">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">Restaurant & Hospitality</span>
+              <span class="version-badge">Version 2.0</span>
+            </div>
+            <h3 class="card-title">Neon Brutalist Food Truck</h3>
+            <p class="card-desc">A high-energy, vibrant street food aesthetic with brutalist typography. Features interactive category filtering, horizontal scrolling highlights, and instant order drawer.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Neon Brutalism</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A high-energy, vibrant neon aesthetic with brutalist typography. Features a horizontal scrolling menu, punchy colors, and quick location highlights.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Neon Brutalism</strong></div>
+            <div class="card-tags">
+              <span class="tag">Interactive Filter</span>
+              <span class="tag">Slide-out Cart</span>
+              <span class="tag">Gen-Z UI</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Food Truck</span><span>Horizontal Scroll</span><span>Street Food</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/restaurant/restaurant-v2/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/restaurant/restaurant-v2/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Food Truck V2', 'Street Food & Fast Casual UX', 'Targeted at younger demographics, pop-ups, and street vendors where speed and bold personality are paramount. V2 abandons traditional multi-page navigation in favor of high-impact brutalism, instant category filters, and immediate interactive ordering right on the main feed.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">R3</span>
-              <div>
-                <small>Delivery</small>
-                <h3>Restaurant V3: Delivery App</h3>
+        <!-- RESTAURANT V3 -->
+        <article class="vault-card" data-category="restaurant" data-tags="delivery app ordering cart checkout mobile first">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">Restaurant & Hospitality</span>
+              <span class="version-badge">Version 3.0</span>
+            </div>
+            <h3 class="card-title">Mobile-First Delivery App</h3>
+            <p class="card-desc">A native app-like interface optimized for rapid online ordering. Features sticky category navigation, interactive item customization, plus a live floating checkout tray.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>App UI / Cart Bar</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A mobile-first, app-like interface. Features sticky category filters, an interactive slide-out cart, and a floating checkout action bar.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Mobile App</strong></div>
+            <div class="card-tags">
+              <span class="tag">Live Cart Logic</span>
+              <span class="tag">Tip Calculator</span>
+              <span class="tag">App Layout</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Online Ordering</span><span>Slide-out Cart</span><span>App UI</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/restaurant/restaurant-v3/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
-          </div>
-        </article>
-      </div>
-
-      <!-- K-12 EDUCATION -->
-      <div class="subsection-title" style="margin-top: 3rem;">
-        <h3>K-12 Education</h3>
-        <span>3 variations</span>
-      </div>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">S1</span>
-              <div>
-                <small>Traditional</small>
-                <h3>School V1: Traditional Academy</h3>
-              </div>
-            </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A trustworthy academic portal designed to engage parents and students. Features animated counter metrics, academic highlights, and an event calendar.</p>
-            <div class="meta-row">
-              <div><span>Pages</span><strong>10 pages</strong></div>
-              <div><span>Style</span><strong>Corporate Blue</strong></div>
-            </div>
-          </div>
-          <div class="card-tags">
-            <span>K-12</span><span>Admissions</span><span>Animated Counters</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/school/school-site/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/restaurant/restaurant-v3/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Delivery App V3', 'Conversion-Optimized Ordering UX', 'Built for ghost kitchens, delivery franchises, and fast-paced takeout spots. V3 mimics a mobile food delivery app (like Swiggy or UberEats) on both desktop and mobile, keeping the cart sticky at the bottom and enabling frictionless one-click item additions.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">S2</span>
-              <div>
-                <small>Charter</small>
-                <h3>School V2: Progressive Charter</h3>
+        <!-- SCHOOL V1 -->
+        <article class="vault-card" data-category="school" data-tags="traditional academy k-12 admissions multi-page education">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">K-12 Education</span>
+              <span class="version-badge">Version 1.0</span>
+            </div>
+            <h3 class="card-title">Traditional Academy Portal</h3>
+            <p class="card-desc">A trustworthy, institutional web portal for parents and prospective students. Features multi-page navigation (Academics, Admissions, Campus Life) and interactive booking modals.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Architecture</span>
+                <strong>Multi-Page + Modals</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Corporate Navy & Gold</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A playful, vibrant design using organic blob shapes and glassmorphism. Focuses on creativity, arts integration, and modern learning approaches.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Glassmorphism</strong></div>
+            <div class="card-tags">
+              <span class="tag">Parent Portal</span>
+              <span class="tag">Admissions Modal</span>
+              <span class="tag">Campus Tour</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Charter School</span><span>Creative</span><span>Vibrant UI</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/school/school-v2/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/school/school-site/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Traditional Academy V1', 'Institutional Trust & Clarity', 'Designed for established K-12 private academies and preparatory schools. Parents evaluate trust and academic rigor; therefore, V1 uses authoritative serif headings, structured multi-page deep-dives, and transparent tour booking workflows.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">S3</span>
-              <div>
-                <small>EdTech</small>
-                <h3>School V3: E-Learning Dashboard</h3>
+        <!-- SCHOOL V2 -->
+        <article class="vault-card" data-category="school" data-tags="charter progressive glassmorphism creative k-12">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">K-12 Education</span>
+              <span class="version-badge">Version 2.0</span>
+            </div>
+            <h3 class="card-title">Progressive Charter School</h3>
+            <p class="card-desc">A playful, vibrant design using organic blob shapes and glassmorphism. Features interactive curriculum tabs, arts integration spotlights, and live classroom tour scheduling.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Glassmorphism & Blob UI</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A dark-mode cyber aesthetic portal for students. Features real-time course progress tracking, interactive sidebar navigation, and tech metrics.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Dark Mode UI</strong></div>
+            <div class="card-tags">
+              <span class="tag">Interactive Curriculum</span>
+              <span class="tag">Creative Arts</span>
+              <span class="tag">Modern UI</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Dashboard</span><span>E-Learning</span><span>Student Portal</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/school/school-v3/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
-          </div>
-        </article>
-      </div>
-
-      <!-- HIGHER EDUCATION -->
-      <div class="subsection-title" style="margin-top: 3rem;">
-        <h3>Higher Education</h3>
-        <span>3 variations</span>
-      </div>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">C1</span>
-              <div>
-                <small>University</small>
-                <h3>College V1: Research University</h3>
-              </div>
-            </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A prestigious higher-education platform built for global recruitment. Features a high-impact split-screen hero and quick employment statistics.</p>
-            <div class="meta-row">
-              <div><span>Pages</span><strong>Multi-page</strong></div>
-              <div><span>Style</span><strong>Split Hero</strong></div>
-            </div>
-          </div>
-          <div class="card-tags">
-            <span>University</span><span>Higher Ed</span><span>Virtual Tour</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/college/college-site/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/school/school-v2/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Progressive Charter V2', 'Modern Creative Learning UX', 'Appeals to forward-thinking parents looking for STEM, Montessori, or arts-integrated charter schools. V2 replaces rigid boxes with fluid glassmorphic cards and interactive tab switchers to showcase holistic student development.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">C2</span>
-              <div>
-                <small>Art Institute</small>
-                <h3>College V2: Art & Design Institute</h3>
+        <!-- SCHOOL V3 -->
+        <article class="vault-card" data-category="school" data-tags="edtech dashboard e-learning student portal dark mode">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">K-12 Education</span>
+              <span class="version-badge">Version 3.0</span>
+            </div>
+            <h3 class="card-title">E-Learning Student Dashboard</h3>
+            <p class="card-desc">A sleek dark-mode cyber portal for active students. Features interactive sidebar view switching (Courses, Assignments, Grades), real-time GPA tracking, and task checklists.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Dark Cyber Dashboard</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>An avant-garde, brutalist layout with asymmetrical grids, a custom interactive follower cursor, and massive display typography.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Brutalism</strong></div>
+            <div class="card-tags">
+              <span class="tag">Interactive Sidebar</span>
+              <span class="tag">Task Checklists</span>
+              <span class="tag">LMS Simulation</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Art School</span><span>Asymmetrical</span><span>Custom Cursor</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/college/college-v2/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/school/school-v3/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('E-Learning Dashboard V3', 'EdTech LMS & Student Workspace', 'Shows your capability to build SaaS portals and LMS interfaces. Instead of a marketing brochure, V3 puts the user right inside a student’s daily command center with interactive course completion tracking and grading metrics.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">C3</span>
-              <div>
-                <small>Online Degrees</small>
-                <h3>College V3: Distance Ed Search</h3>
+        <!-- COLLEGE V1 -->
+        <article class="vault-card" data-category="college" data-tags="university research higher ed multi-page virtual tour">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">Higher Education</span>
+              <span class="version-badge">Version 1.0</span>
+            </div>
+            <h3 class="card-title">Global Research University</h3>
+            <p class="card-desc">A prestigious university portal built for global recruitment. Features a high-impact split hero, multi-page academic catalogs (Programs, Admissions, Research), and virtual inquiry form.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Architecture</span>
+                <strong>Multi-Page Portal</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Split-Screen Prestige</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A clean, SaaS-style directory for online programs. Features dynamic pricing toggles (Term vs Credit) and interactive sidebar category filtering.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>SaaS Directory</strong></div>
+            <div class="card-tags">
+              <span class="tag">Multi-Page Catalog</span>
+              <span class="tag">Research Grants</span>
+              <span class="tag">Admissions Inquiry</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Online Degrees</span><span>SaaS UI</span><span>Filter System</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/college/college-v3/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
-          </div>
-        </article>
-      </div>
-
-      <!-- LUXURY RETAIL -->
-      <div class="subsection-title" style="margin-top: 3rem;">
-        <h3>Luxury Retail (Jewellery)</h3>
-        <span>3 variations</span>
-      </div>
-
-      <div class="product-grid">
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">J1</span>
-              <div>
-                <small>High Fashion</small>
-                <h3>Jewellery V1: High Jewellery</h3>
-              </div>
-            </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>An ultra-luxury, high-contrast dark showcase for fine diamonds. Features hover-reveal specification cards and bespoke consultation booking.</p>
-            <div class="meta-row">
-              <div><span>Pages</span><strong>Multi-page</strong></div>
-              <div><span>Style</span><strong>Dark Elegance</strong></div>
-            </div>
-          </div>
-          <div class="card-tags">
-            <span>Luxury Retail</span><span>Bespoke</span><span>Hover Cards</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/jewellery/jewellery-site/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/college/college-site/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Research University V1', 'Academic Prestige & Global Recruitment', 'Designed for major universities and higher-ed institutions. Prospective undergrads and postgrads need structured information on research output, faculty credentials, and degree pathways, delivered via clean multi-page architecture.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">J2</span>
-              <div>
-                <small>DTC Brand</small>
-                <h3>Jewellery V2: Trendy DTC Brand</h3>
+        <!-- COLLEGE V2 -->
+        <article class="vault-card" data-category="college" data-tags="art design institute brutalism asymmetrical custom cursor">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">Higher Education</span>
+              <span class="version-badge">Version 2.0</span>
+            </div>
+            <h3 class="card-title">Art & Design Institute</h3>
+            <p class="card-desc">An avant-garde brutalist showcase with asymmetrical grids and interactive category filters. Features live portfolio shuffling, exhibition modals, and bold typography.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Asymmetrical Brutalism</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A soft, earthy aesthetic for a modern Instagram-friendly brand. Includes an off-canvas slide-out shopping cart and quick-add interactions.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Earth Tones</strong></div>
+            <div class="card-tags">
+              <span class="tag">Portfolio Shuffle</span>
+              <span class="tag">Exhibition Modal</span>
+              <span class="tag">Avant-Garde</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>DTC Retail</span><span>Slide Cart</span><span>Instagram Friendly</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/jewellery/jewellery-v2/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/college/college-v2/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Art & Design Institute V2', 'Creative Disruption Architecture', 'Built for design academies, architecture schools, and fine arts institutes where conventional layouts look boring. V2 utilizes asymmetrical grids, high-contrast typography, and live filtering to demonstrate creative mastery.')">💡 UX Insights</button>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">J3</span>
-              <div>
-                <small>Configurator</small>
-                <h3>Jewellery V3: Custom Ring Builder</h3>
+        <!-- COLLEGE V3 -->
+        <article class="vault-card" data-category="college" data-tags="online degrees saas directory distance education pricing toggle">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">Higher Education</span>
+              <span class="version-badge">Version 3.0</span>
+            </div>
+            <h3 class="card-title">Distance Ed Program Finder</h3>
+            <p class="card-desc">A clean, SaaS-style searchable directory for online degrees. Features real-time keyword search, interactive sidebar facet filtering, and dynamic tuition pricing toggles.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>SaaS Directory UI</strong>
               </div>
             </div>
-            <span class="status live">Live</span>
-          </div>
-          <div class="card-body">
-            <p>A highly interactive 3-step configurator for bespoke rings. Dark mode interface with dynamic options for setting, metal, and stone selection.</p>
-            <div class="meta-row">
-              <div><span>Tech</span><strong>Tailwind v4</strong></div>
-              <div><span>Style</span><strong>Interactive UI</strong></div>
+            <div class="card-tags">
+              <span class="tag">Real-time Search</span>
+              <span class="tag">Pricing Toggle</span>
+              <span class="tag">Facet Filters</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>Configurator</span><span>Custom Jewelry</span><span>3-Step Builder</span>
-          </div>
-          <div class="card-action">
-            <a class="card-link" href="demos/jewellery/jewellery-v3/index.html" target="_blank" rel="noopener noreferrer">Open Demo &rarr;</a>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/college/college-v3/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Distance Ed Search V3', 'SaaS Directory & Search UX', 'Engineered for online degree aggregators, continuing education portals, and university extension programs. V3 acts as a high-speed SaaS program finder with real-time filtering and dynamic tuition model calculators.')">💡 UX Insights</button>
           </div>
         </article>
-      </div>
 
-      <!-- COMING SOON -->
-      <div class="subsection-title coming-title" style="margin-top: 3rem;">
-        <h3>Coming Soon</h3>
-        <span>In development</span>
-      </div>
-
-      <div class="product-grid muted-grid">
-        <article class="product-card">
-          <div class="card-top">
-            <div class="card-identity">
-              <span class="card-icon">SM</span>
-              <div>
-                <small>Management</small>
-                <h3>School Management Platform</h3>
+        <!-- JEWELLERY V1 -->
+        <article class="vault-card" data-category="jewellery" data-tags="high jewellery luxury retail diamonds multi-page consultation">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">Luxury Retail</span>
+              <span class="version-badge">Version 1.0</span>
+            </div>
+            <h3 class="card-title">High Jewellery Showcase</h3>
+            <p class="card-desc">An ultra-luxury, high-contrast dark salon for fine diamonds. Features multi-page collections (Necklaces, Rings, Bespoke), specification hover cards, and VIP consultation booking.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Architecture</span>
+                <strong>Multi-Page Salon</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Dark Elegance & Gold</strong>
               </div>
             </div>
-            <span class="status coming-soon">Coming Soon</span>
-          </div>
-          <div class="card-body">
-            <p>Offline fee counter and school management platform. Built for schools that need simple, offline-first administration tools.</p>
-            <div class="meta-row">
-              <div><span>Type</span><strong>PWA, Offline</strong></div>
-              <div><span>For</span><strong>Schools</strong></div>
+            <div class="card-tags">
+              <span class="tag">Multi-Page Salon</span>
+              <span class="tag">VIP Booking Modal</span>
+              <span class="tag">Specification Tables</span>
             </div>
           </div>
-          <div class="card-tags">
-            <span>School</span><span>Management</span><span>Fees</span><span>PWA</span>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/jewellery/jewellery-site/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('High Jewellery V1', 'Ultra-Luxury Bespoke Architecture', 'Caters to haute joaillerie boutiques selling high-ticket diamonds and custom heritage pieces. V1 uses dark dramatic lighting, meticulous specification sheets, and private viewing appointments rather than generic shopping carts.')">💡 UX Insights</button>
           </div>
-          <div class="card-action">
-            <a class="card-link disabled" href="#">Coming Soon</a>
+        </article>
+
+        <!-- JEWELLERY V2 -->
+        <article class="vault-card" data-category="jewellery" data-tags="dtc brand trendy earth tones slide cart quick add instagram">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">Luxury Retail</span>
+              <span class="version-badge">Version 2.0</span>
+            </div>
+            <h3 class="card-title">Trendy DTC Jewelry Brand</h3>
+            <p class="card-desc">A soft, earthy aesthetic for modern Instagram-friendly jewelry brands. Features interactive category pill filtering, instant Quick-Add logic, and an off-canvas slide-out shopping cart.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Warm Earth Tones</strong>
+              </div>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Slide-out Cart</span>
+              <span class="tag">Category Pills</span>
+              <span class="tag">Free Shipping Bar</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/jewellery/jewellery-v2/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Trendy DTC Brand V2', 'Social-First E-Commerce UX', 'Designed for modern direct-to-consumer (DTC) brands optimized for Instagram and TikTok traffic. V2 prioritizes warm lifestyle aesthetics, instant category pill toggles, and frictionless off-canvas shopping carts.')">💡 UX Insights</button>
+          </div>
+        </article>
+
+        <!-- JEWELLERY V3 -->
+        <article class="vault-card" data-category="jewellery" data-tags="configurator custom ring builder 3-step interactive ui dark mode">
+          <div>
+            <div class="card-top-header">
+              <span class="industry-badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">Luxury Retail</span>
+              <span class="version-badge">Version 3.0</span>
+            </div>
+            <h3 class="card-title">3-Step Custom Ring Builder</h3>
+            <p class="card-desc">A state-of-the-art interactive configurator for bespoke rings. Users live-select Setting, Metal (Gold/Platinum), and Stone size with real-time price updates and custom quote generation.</p>
+            <div class="card-specs">
+              <div class="spec-item">
+                <span>Tech Stack</span>
+                <strong>Tailwind v4 + JS</strong>
+              </div>
+              <div class="spec-item">
+                <span>Design System</span>
+                <strong>Configurator UI</strong>
+              </div>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Live Ring Builder</span>
+              <span class="tag">Real-time Pricing</span>
+              <span class="tag">Step-by-Step UI</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="btn-launch" href="demos/jewellery/jewellery-v3/index.html" target="_blank" rel="noopener noreferrer">Launch Demo &rarr;</a>
+            <button class="btn-insights" onclick="openInsight('Custom Ring Builder V3', 'Interactive Product Configurator', 'Demonstrates advanced frontend state management and gamified custom retail. Instead of browsing static items, V3 guides engagement ring shoppers through an interactive 3-step builder that dynamically recalculates totals and previews.')">💡 UX Insights</button>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section-pad soft-section">
-      <div class="section-head centered">
-        <p class="eyebrow">What We Offer</p>
-        <h2>Need a website for your business?</h2>
+    <!-- Modal Insight Overlay -->
+    <div class="modal-overlay" id="insightModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeInsight()" aria-label="Close modal">&times;</button>
+        <h3 class="modal-title" id="modalTitle">UX Rationale</h3>
+        <p class="modal-subtitle" id="modalSubtitle">Why this architecture?</p>
+        <div class="modal-body">
+          <p id="modalDescription"></p>
+          <div class="modal-highlight-box">
+            <strong>Client Impact & ROI</strong>
+            <span id="modalImpact">Delivers tailored experiences that boost conversion rates and client engagement by aligning UI patterns with specific user expectations.</span>
+          </div>
+        </div>
       </div>
-      <div class="steps">
-        <article>
-          <span>1</span>
-          <h3>Static HTML</h3>
-          <p>Fast, clean, no frameworks. Works everywhere, loads instantly, easy to host on any static host.</p>
-        </article>
-        <article>
-          <span>2</span>
-          <h3>Multi-page</h3>
-          <p>Complete websites with everything a small business needs — home, about, services, gallery, contact, privacy, terms.</p>
-        </article>
-        <article>
-          <span>3</span>
-          <h3>Mobile-Responsive</h3>
-          <p>Every site works on phones, tablets, and desktops. No separate mobile site required.</p>
-        </article>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div>
-      <strong>Website Studio — Annapurna Agentic Solutions</strong>
-      <p>Static HTML websites for small businesses. Clean, fast, no dependencies.</p>
-      <p style="margin-top: 8px; font-size: 0.82rem; color: var(--muted-light);">
-        &copy; 2026 Annapurna Agentic Solutions. Bengaluru, Karnataka, India.<br />
-        <a href="mailto:annapurnaagenticsolutions@zohomail.in" style="color: var(--muted); text-decoration: none;">annapurnaagenticsolutions@zohomail.in</a>
-      </p>
-    </div>
-    <div class="footer-links">
-      <a href="../">&larr; Back to Portal</a>
-      <a href="../about/">About</a>
-      <a href="../contact/">Contact</a>
-      <a href="https://github.com/annapurnaagenticsolutions" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/annapurna-agentic-solutions/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="#top">Back to top &uarr;</a>
+  <footer class="site-footer" style="background: #060911; border-top: 1px solid var(--vault-border); padding: 4rem 1.5rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+      <div>
+        <strong style="color: #fff; font-size: 1.2rem; font-family: 'Outfit', sans-serif;">Website Studio — Annapurna Agentic Solutions</strong>
+        <p style="color: #94a3b8; margin-top: 0.5rem;">Static HTML & JS websites engineered for small businesses and enterprises.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: #64748b;">
+          &copy; 2026 Annapurna Agentic Solutions. Bengaluru, Karnataka, India.<br />
+          <a href="mailto:annapurnaagenticsolutions@zohomail.in" style="color: #818cf8; text-decoration: none;">annapurnaagenticsolutions@zohomail.in</a>
+        </p>
+      </div>
+      <div class="footer-links" style="display: flex; gap: 1.5rem; align-items: center;">
+        <a href="../" style="color: #cbd5e1; text-decoration: none;">&larr; Portal Root</a>
+        <a href="../about/" style="color: #cbd5e1; text-decoration: none;">About</a>
+        <a href="../contact/" style="color: #cbd5e1; text-decoration: none;">Contact</a>
+        <a href="https://github.com/annapurnaagenticsolutions" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1; text-decoration: none;">GitHub</a>
+        <a href="#top" style="color: var(--vault-accent); text-decoration: none; font-weight: 600;">Back to top &uarr;</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Tab & Search Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.vault-card');
+
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    function filterCards() {
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const tags = (card.getAttribute('data-tags') || '') + ' ' + card.innerText.toLowerCase();
+        
+        const matchesCategory = currentCategory === 'all' || category === currentCategory;
+        const matchesSearch = !currentSearch || tags.includes(currentSearch);
+
+        if (matchesCategory && matchesSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.getAttribute('data-filter');
+        filterCards();
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.toLowerCase().trim();
+      filterCards();
+    });
+
+    // Insight Modal Logic
+    const modal = document.getElementById('insightModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalDescription = document.getElementById('modalDescription');
+
+    function openInsight(title, subtitle, description) {
+      modalTitle.innerText = title;
+      modalSubtitle.innerText = subtitle;
+      modalDescription.innerText = description;
+      modal.classList.add('active');
+    }
+
+    function closeInsight() {
+      modal.classList.remove('active');
+    }
+
+    // Close modal on overlay click or Esc
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeInsight();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeInsight();
+    });
+
+    // Philosophy Matrix Switcher
+    const matrixData = {
+      v1: {
+        title: "Classic Heritage & Institutional Authority",
+        ideal: "Ideal for: Established Brands, Luxury, Traditional K-12",
+        desc: "Our Version 1 architecture leverages timeless typographic hierarchies, multi-page deep navigation, warm editorial layouts, and high-trust booking/inquiry workflows. Designed to convey prestige, stability, and premium craftsmanship without overwhelming first-time visitors.",
+        features: ["✨ Full-Screen Storytelling", "✨ Formal Multi-Page Structure", "✨ Interactive Modal Reservations", "✨ Curated Editorial Grids"]
+      },
+      v2: {
+        title: "Bold, Brutalist & Street-Style Energy",
+        ideal: "Ideal for: Gen-Z Apparels, Smash Burger Joints, Creative Academies",
+        desc: "Version 2 breaks conventional grids with high-contrast neo-brutalist borders, vibrant offset drop shadows, dynamic marquee banners, and interactive shopping bags. Perfect for challenger brands and creative disruptors aiming to stand out instantly.",
+        features: ["⚡ Neo-Brutalist 4px Borders", "⚡ Dynamic Cart Subtotal Logic", "⚡ Interactive Custom Cursor", "⚡ Marquee Ticker Banners"]
+      },
+      v3: {
+        title: "High-Tech, Interactive & Gamified Applications",
+        ideal: "Ideal for: Bespoke Ring Configurators, AI EdTech, SaaS Dashboards",
+        desc: "Version 3 converts standard websites into full-blown interactive web applications. Features 3-step live product configurators with real-time price updates, dark-mode glassmorphic LMS dashboards, live Zoom classroom joins, and real-time category filtering.",
+        features: ["🚀 Live Ring 3D/Tab Configurator", "🚀 Real-Time Price Calculation", "🚀 Glassmorphic Dark Dashboards", "🚀 Interactive Order Carts"]
+      }
+    };
+
+    function switchMatrix(ver, btn) {
+      document.querySelectorAll('.matrix-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const data = matrixData[ver];
+      const box = document.getElementById('matrixContent');
+      box.style.opacity = '0';
+      setTimeout(() => {
+        box.innerHTML = `
+          <div class="matrix-title">
+            <span>${data.title}</span>
+            <span class="matrix-badge" style="color: #38bdf8;">${data.ideal}</span>
+          </div>
+          <p class="matrix-desc">${data.desc}</p>
+          <div class="matrix-features">
+            ${data.features.map(f => `<span class="matrix-badge">${f}</span>`).join('')}
+          </div>
+        `;
+        box.style.opacity = '1';
+      }, 150);
+    }
+
+    function quizFilter(keyword) {
+      if (keyword === 'all') {
+        currentCategory = 'all';
+        currentSearch = '';
+        searchInput.value = '';
+        filterBtns.forEach(b => {
+          b.classList.toggle('active', b.getAttribute('data-filter') === 'all');
+        });
+        filterCards();
+        document.getElementById('demos').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      
+      searchInput.value = keyword;
+      currentSearch = keyword;
+      filterCards();
+      document.getElementById('demos').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>

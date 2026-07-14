@@ -30,9 +30,9 @@
 
         <!-- Desktop Links -->
         <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium">
-          <a href="#" class="hover:text-brand-primary transition">Shop</a>
-          <a href="#" class="hover:text-brand-primary transition">Collections</a>
-          <a href="#" class="hover:text-brand-primary transition">About</a>
+          <a href="shop.html" class="hover:text-brand-primary transition">Shop</a>
+          <a href="collections.html" class="hover:text-brand-primary transition">Collections</a>
+          <a href="about.html" class="hover:text-brand-primary transition">About</a>
         </div>
 
         <!-- Logo -->
@@ -71,7 +71,7 @@
           <span id="cart-total">$0.00</span>
         </div>
         <p class="text-xs text-gray-500 mb-4 text-center font-medium">Shipping & taxes calculated at checkout</p>
-        <button class="w-full bg-brand-dark text-brand-light py-4 text-sm uppercase tracking-widest font-medium hover:bg-brand-primary transition shadow-md">Checkout</button>
+        <button onclick="checkout()" class="w-full bg-brand-dark text-brand-light py-4 text-sm uppercase tracking-widest font-medium hover:bg-brand-primary transition shadow-md">Checkout</button>
       </div>
     </div>
     <!-- Cart Overlay -->
@@ -242,13 +242,29 @@
             <div class="flex flex-col justify-center">
               <h4 class="text-sm font-medium mb-1">${latest.title}</h4>
               <p class="text-brand-primary font-serif italic mb-2">$${latest.price}</p>
-              <div class="flex items-center gap-4 text-xs font-medium text-gray-500">
-                <span class="underline cursor-pointer hover:text-brand-dark">Remove</span>
-              </div>
             </div>
           </div>
         `;
         cartContainer.insertAdjacentHTML('beforeend', itemHTML);
+      }
+
+      function checkout() {
+        if(cartItems.length === 0) {
+          alert("Your bag is currently empty! Click 'Quick Add' on any piece to add it to your bag.");
+          return;
+        }
+        alert(`Thank you for your order! Total charged: $${total.toFixed(2)}. Your secure insured shipment will be dispatched via FedEx Priority.`);
+        cartItems = [];
+        total = 0;
+        document.getElementById('cart-items').innerHTML = `
+          <div id="empty-cart" class="flex flex-col items-center justify-center h-full text-center opacity-50">
+            <i class="fas fa-shopping-bag text-4xl mb-4 text-brand-primary/50"></i>
+            <p class="font-serif text-lg">Your bag is empty.</p>
+          </div>
+        `;
+        document.getElementById('cart-total').innerText = '$0.00';
+        document.getElementById('cart-count').innerText = '0';
+        toggleCart();
       }
     </script>
   </body>

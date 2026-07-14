@@ -80,14 +80,14 @@
         <a href="#" class="text-4xl font-display font-bold tracking-tighter text-brand-dark">BURGER<span class="text-brand-primary">SMASH</span></a>
         
         <nav class="hidden md:flex space-x-8 font-display font-bold text-xl uppercase tracking-wide">
-          <a href="#" class="hover:text-brand-primary transition">Menu</a>
-          <a href="#" class="hover:text-brand-primary transition">Locations</a>
-          <a href="#" class="hover:text-brand-primary transition">Merch</a>
+          <a href="menu.html" class="hover:text-brand-primary transition">Menu</a>
+          <a href="locations.html" class="hover:text-brand-primary transition">Locations</a>
+          <a href="merch.html" class="hover:text-brand-primary transition">Merch</a>
         </nav>
 
         <button onclick="toggleCart()" class="text-2xl text-brand-dark hover:text-brand-primary relative">
           <i class="fas fa-shopping-bag"></i>
-          <span class="absolute -top-2 -right-2 bg-brand-secondary text-brand-dark text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-dark">0</span>
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-secondary text-brand-dark text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-dark">0</span>
         </button>
       </div>
     </header>
@@ -98,7 +98,7 @@
         <h2 class="text-2xl font-display font-bold">YOUR ORDER</h2>
         <button onclick="toggleCart()" class="text-2xl text-brand-dark hover:text-brand-primary"><i class="fas fa-times"></i></button>
       </div>
-      <div class="flex-grow p-6 flex flex-col justify-center items-center text-center opacity-50">
+      <div id="cart-body" class="flex-grow p-6 flex flex-col justify-center items-center text-center opacity-50 overflow-y-auto">
         <i class="fas fa-hamburger text-6xl mb-4 text-brand-primary"></i>
         <p class="font-display text-xl uppercase font-bold">Your bag is empty.</p>
         <p class="text-sm font-body font-bold mt-2">Smash something in there!</p>
@@ -106,9 +106,9 @@
       <div class="p-6 border-t-4 border-brand-dark bg-white">
         <div class="flex justify-between font-display font-bold text-xl mb-4">
           <span>TOTAL</span>
-          <span>$0.00</span>
+          <span id="cart-total">$0.00</span>
         </div>
-        <button class="w-full brutalist-button py-4 text-xl">CHECKOUT</button>
+        <button onclick="checkout()" class="w-full brutalist-button py-4 text-xl">CHECKOUT</button>
       </div>
     </div>
     <!-- Cart Overlay -->
@@ -173,7 +173,7 @@
             <p class="font-body font-bold text-sm opacity-80 mb-6 flex-grow">Single patty, American cheese, pickles, smash sauce, potato bun.</p>
             <div class="flex justify-between items-center mt-auto">
               <span class="text-2xl font-display font-bold bg-white px-3 py-1 border-2 border-brand-dark">$8.99</span>
-              <button onclick="toggleCart()" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-brand-primary transition border-2 border-transparent">Add +</button>
+              <button onclick="addToCart('Classic Smash', 8.99)" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-brand-primary transition border-2 border-transparent">Add +</button>
             </div>
           </div>
         </div>
@@ -187,7 +187,7 @@
             <p class="font-body font-bold text-sm opacity-80 mb-6 flex-grow">Double patty, pepper jack, jalapeños, spicy mayo.</p>
             <div class="flex justify-between items-center mt-auto">
               <span class="text-2xl font-display font-bold bg-brand-light px-3 py-1 border-2 border-brand-dark">$11.99</span>
-              <button onclick="toggleCart()" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-green-500 transition border-2 border-transparent">Add +</button>
+              <button onclick="addToCart('Spicy Smash', 11.99)" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-green-500 transition border-2 border-transparent">Add +</button>
             </div>
           </div>
         </div>
@@ -201,7 +201,7 @@
             <p class="font-body font-bold text-sm opacity-80 mb-6 flex-grow">Crinkle cut fries, parmesan, truffle oil, parsley.</p>
             <div class="flex justify-between items-center mt-auto">
               <span class="text-2xl font-display font-bold bg-white px-3 py-1 border-2 border-brand-dark">$6.99</span>
-              <button onclick="toggleCart()" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-purple-500 transition border-2 border-transparent">Add +</button>
+              <button onclick="addToCart('Truffle Fries', 6.99)" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-purple-500 transition border-2 border-transparent">Add +</button>
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@
             <p class="font-body font-bold text-sm opacity-80 mb-6 flex-grow">Vanilla, Chocolate, or Strawberry hand-spun milkshake.</p>
             <div class="flex justify-between items-center mt-auto">
               <span class="text-2xl font-display font-bold bg-brand-light px-3 py-1 border-2 border-brand-dark">$5.49</span>
-              <button onclick="toggleCart()" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-blue-500 transition border-2 border-transparent">Add +</button>
+              <button onclick="addToCart('Classic Shake', 5.49)" class="bg-brand-dark text-white px-4 py-2 font-display font-bold uppercase hover:bg-blue-500 transition border-2 border-transparent">Add +</button>
             </div>
           </div>
         </div>
@@ -244,12 +244,58 @@
     <script>
       AOS.init({ once: true, offset: 50 });
 
+      let cart = [];
+      let total = 0;
+
       function toggleCart() {
         const sidebar = document.getElementById('cart-sidebar');
         const overlay = document.getElementById('cart-overlay');
         sidebar.classList.toggle('open');
         overlay.classList.toggle('hidden');
         document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : 'auto';
+      }
+
+      function addToCart(name, price) {
+        cart.push({ name, price });
+        total += price;
+        updateCart();
+        if (!document.getElementById('cart-sidebar').classList.contains('open')) {
+          toggleCart();
+        }
+      }
+
+      function updateCart() {
+        document.getElementById('cart-count').innerText = cart.length;
+        document.getElementById('cart-total').innerText = '$' + total.toFixed(2);
+        const body = document.getElementById('cart-body');
+        if (cart.length === 0) {
+          body.className = 'flex-grow p-6 flex flex-col justify-center items-center text-center opacity-50 overflow-y-auto';
+          body.innerHTML = `
+            <i class="fas fa-hamburger text-6xl mb-4 text-brand-primary"></i>
+            <p class="font-display text-xl uppercase font-bold">Your bag is empty.</p>
+            <p class="text-sm font-body font-bold mt-2">Smash something in there!</p>
+          `;
+        } else {
+          body.className = 'flex-grow p-6 flex flex-col gap-4 overflow-y-auto text-left opacity-100';
+          body.innerHTML = cart.map((item, i) => `
+            <div class="border-2 border-brand-dark p-3 bg-brand-secondary flex justify-between items-center font-display font-bold">
+              <span>${item.name}</span>
+              <span>$${item.price.toFixed(2)}</span>
+            </div>
+          `).join('');
+        }
+      }
+
+      function checkout() {
+        if (cart.length === 0) {
+          alert('Smash some items into your bag first!');
+          return;
+        }
+        alert('BOOM! Order placed! Total: $' + total.toFixed(2) + '. Your smash burgers are sizzling on the griddle.');
+        cart = [];
+        total = 0;
+        updateCart();
+        toggleCart();
       }
     </script>
   </body>

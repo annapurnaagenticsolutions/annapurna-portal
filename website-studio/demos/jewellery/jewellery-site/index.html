@@ -61,20 +61,20 @@
         <div class="flex justify-between items-center h-24">
           <!-- Left Nav -->
           <nav class="hidden md:flex space-x-10 text-sm tracking-widest uppercase">
-            <a href="#" class="hover:text-brand-accent transition">Collections</a>
-            <a href="#" class="hover:text-brand-accent transition">High Jewellery</a>
+            <a href="collections.html" class="hover:text-brand-accent transition">Collections</a>
+            <a href="high-jewellery.html" class="hover:text-brand-accent transition">High Jewellery</a>
           </nav>
           
           <!-- Logo -->
-          <a href="#" class="font-serif text-3xl tracking-[0.2em] uppercase text-center flex-grow md:flex-grow-0">
+          <a href="index.html" class="font-serif text-3xl tracking-[0.2em] uppercase text-center flex-grow md:flex-grow-0">
             A U R A
           </a>
           
           <!-- Right Nav -->
           <nav class="hidden md:flex space-x-8 items-center text-sm tracking-widest uppercase">
-            <a href="#" class="hover:text-brand-accent transition">Maison</a>
+            <a href="maison.html" class="hover:text-brand-accent transition">Maison</a>
             <button onclick="document.getElementById('appointmentModal').classList.add('active')" class="border border-brand-primary px-6 py-2 hover:bg-brand-primary hover:text-white transition">Bespoke</button>
-            <a href="#" class="text-lg hover:text-brand-accent transition"><i class="fas fa-shopping-bag"></i></a>
+            <button onclick="alert('Shopping bag is currently empty. Click Discover or Bespoke to inquire about masterpieces.')" class="text-lg hover:text-brand-accent transition"><i class="fas fa-shopping-bag"></i></button>
           </nav>
         </div>
       </div>
@@ -176,8 +176,8 @@
           <div>
             <h5 class="font-serif text-lg mb-6 tracking-widest">Newsletter</h5>
             <p class="text-gray-400 mb-4 leading-relaxed">Subscribe to receive updates on new collections and exclusive invitations.</p>
-            <form class="flex border-b border-gray-500 pb-2">
-              <input type="email" placeholder="Email Address" class="bg-transparent outline-none flex-grow text-white placeholder-gray-500" />
+            <form onSubmit="event.preventDefault(); alert('Welcome to the Aura Inner Circle. Look for our private salon invitation in your inbox soon.');" class="flex border-b border-gray-500 pb-2">
+              <input type="email" required placeholder="Email Address" class="bg-transparent outline-none flex-grow text-white placeholder-gray-500" />
               <button type="submit" class="text-gray-300 hover:text-brand-accent"><i class="fas fa-arrow-right"></i></button>
             </form>
           </div>
@@ -191,11 +191,11 @@
         <button onclick="document.getElementById('appointmentModal').classList.remove('active')" class="absolute top-4 right-4 text-gray-500 hover:text-brand-primary text-xl"><i class="fas fa-times"></i></button>
         <h3 class="font-serif text-3xl mb-2 text-center">Bespoke Consultation</h3>
         <p class="text-center text-gray-500 text-sm mb-8 font-light">Schedule a private viewing with our experts.</p>
-        <form>
+        <form onSubmit="event.preventDefault(); alert('Your Bespoke Consultation request has been confirmed! Our Master Concierge will call you today to confirm your private salon booking.'); document.getElementById('appointmentModal').classList.remove('active');">
           <div class="space-y-4">
-            <input type="text" placeholder="Full Name" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
-            <input type="email" placeholder="Email Address" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
-            <input type="tel" placeholder="Phone Number" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
+            <input type="text" required placeholder="Full Name" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
+            <input type="email" required placeholder="Email Address" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
+            <input type="tel" required placeholder="Phone Number" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
             <select class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm text-gray-600">
               <option>Engagement & Wedding</option>
               <option>High Jewellery</option>

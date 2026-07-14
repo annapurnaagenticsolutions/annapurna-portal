@@ -66,12 +66,12 @@
             Kingston <span class="font-light ml-1 text-gray-500">Academy</span>
           </a>
           <nav class="hidden md:flex space-x-8 items-center font-medium">
-            <a href="#" class="text-brand-accent">Home</a>
-            <a href="#" class="hover:text-brand-accent transition">Academics</a>
-            <a href="#" class="hover:text-brand-accent transition">Admissions</a>
-            <a href="#" class="hover:text-brand-accent transition">Campus Life</a>
-            <a href="#" class="hover:text-brand-accent transition">Contact</a>
-            <a href="#" class="bg-brand-primary hover:bg-brand-secondary text-white px-6 py-2 rounded-sm transition">Apply Now</a>
+            <a href="index.html" class="text-brand-accent">Home</a>
+            <a href="academics.html" class="hover:text-brand-accent transition">Academics</a>
+            <a href="admissions.html" class="hover:text-brand-accent transition">Admissions</a>
+            <a href="campus-life.html" class="hover:text-brand-accent transition">Campus Life</a>
+            <a href="contact.html" class="hover:text-brand-accent transition">Contact</a>
+            <button onclick="openApplyModal()" class="bg-brand-primary hover:bg-brand-secondary text-white px-6 py-2 rounded-sm transition">Apply Now</button>
           </nav>
         </div>
       </div>
@@ -89,8 +89,8 @@
           <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">Empowering Minds,<br/>Shaping the Future.</h1>
           <p class="text-lg text-gray-200 mb-8 max-w-xl">Join a community of forward-thinkers. Kingston Academy provides world-class education with a focus on holistic development and academic excellence.</p>
           <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="#" class="bg-brand-accent hover:bg-brand-accent-hover text-white text-center font-medium px-8 py-3 rounded-sm transition">Book a Tour</a>
-            <a href="#" class="bg-white text-brand-primary hover:bg-gray-100 text-center font-medium px-8 py-3 rounded-sm transition">Learn More</a>
+            <button onclick="openTourModal()" class="bg-brand-accent hover:bg-brand-accent-hover text-white text-center font-medium px-8 py-3 rounded-sm transition">Book a Tour</button>
+            <a href="academics.html" class="bg-white text-brand-primary hover:bg-gray-100 text-center font-medium px-8 py-3 rounded-sm transition">Learn More</a>
           </div>
         </div>
       </div>
@@ -294,7 +294,7 @@
       <div class="max-w-4xl mx-auto px-4" data-aos="zoom-in">
         <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to join Kingston Academy?</h2>
         <p class="text-xl text-gray-300 mb-10">Applications for the upcoming academic year are now open. Secure your child's future today.</p>
-        <a href="#" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-10 py-4 rounded-sm font-bold text-lg shadow-lg inline-block transition">Apply Now for Fall 2026</a>
+        <button onclick="openApplyModal()" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-10 py-4 rounded-sm font-bold text-lg shadow-lg inline-block transition">Apply Now for Fall 2026</button>
       </div>
     </section>
 
@@ -317,19 +317,19 @@
           <div>
             <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
             <ul class="space-y-3 text-sm">
-              <li><a href="#" class="hover:text-brand-accent transition">About Us</a></li>
-              <li><a href="#" class="hover:text-brand-accent transition">Admissions</a></li>
-              <li><a href="#" class="hover:text-brand-accent transition">Academics</a></li>
-              <li><a href="#" class="hover:text-brand-accent transition">Campus Life</a></li>
+              <li><a href="index.html" class="hover:text-brand-accent transition">About Us</a></li>
+              <li><a href="admissions.html" class="hover:text-brand-accent transition">Admissions</a></li>
+              <li><a href="academics.html" class="hover:text-brand-accent transition">Academics</a></li>
+              <li><a href="campus-life.html" class="hover:text-brand-accent transition">Campus Life</a></li>
             </ul>
           </div>
           <div>
             <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Resources</h4>
             <ul class="space-y-3 text-sm">
-              <li><a href="#" class="hover:text-brand-accent transition">Student Portal</a></li>
-              <li><a href="#" class="hover:text-brand-accent transition">Parent Portal</a></li>
-              <li><a href="#" class="hover:text-brand-accent transition">Library</a></li>
-              <li><a href="#" class="hover:text-brand-accent transition">Careers</a></li>
+              <li><a href="contact.html" class="hover:text-brand-accent transition">Student Portal</a></li>
+              <li><a href="contact.html" class="hover:text-brand-accent transition">Parent Portal</a></li>
+              <li><a href="academics.html" class="hover:text-brand-accent transition">Library</a></li>
+              <li><a href="contact.html" class="hover:text-brand-accent transition">Careers</a></li>
             </ul>
           </div>
           <div>
@@ -399,6 +399,85 @@
           }
         });
       }
+
+      // Interactive Modals Logic
+      function openApplyModal() {
+        document.getElementById('applyModal').classList.remove('hidden');
+        document.getElementById('applyModal').classList.add('flex');
+      }
+      function closeApplyModal() {
+        document.getElementById('applyModal').classList.add('hidden');
+        document.getElementById('applyModal').classList.remove('flex');
+      }
+      function openTourModal() {
+        document.getElementById('tourModal').classList.remove('hidden');
+        document.getElementById('tourModal').classList.add('flex');
+      }
+      function closeTourModal() {
+        document.getElementById('tourModal').classList.add('hidden');
+        document.getElementById('tourModal').classList.remove('flex');
+      }
+      function handleModalSubmit(event, modalType) {
+        event.preventDefault();
+        alert(`Thank you! Your ${modalType} has been successfully submitted. Our admissions office will contact you within 24 hours.`);
+        closeApplyModal();
+        closeTourModal();
+      }
     </script>
+
+    <!-- Apply Modal -->
+    <div id="applyModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4">
+      <div class="bg-white rounded-lg max-w-md w-full p-6 relative shadow-2xl">
+        <button onclick="closeApplyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+        <h3 class="text-2xl font-serif font-bold text-brand-primary mb-2">Apply for Admission</h3>
+        <p class="text-sm text-gray-600 mb-4">Complete this quick inquiry to initiate the Fall 2026 admission process.</p>
+        <form onSubmit="handleModalSubmit(event, 'Admission Application')" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Student Full Name</label>
+            <input type="text" required placeholder="e.g. Alexander Hamilton" class="w-full border border-gray-300 p-2 rounded text-sm focus:border-brand-primary outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Grade Level Applying For</label>
+            <select class="w-full border border-gray-300 p-2 rounded text-sm focus:border-brand-primary outline-none">
+              <option>Kindergarten - Grade 5 (Elementary)</option>
+              <option>Grade 6 - Grade 8 (Middle School)</option>
+              <option>Grade 9 - Grade 12 (High School)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Parent Email</label>
+            <input type="email" required placeholder="parent@example.com" class="w-full border border-gray-300 p-2 rounded text-sm focus:border-brand-primary outline-none" />
+          </div>
+          <button type="submit" class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-bold py-3 rounded transition">Submit Application Inquiry &rarr;</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tour Modal -->
+    <div id="tourModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4">
+      <div class="bg-white rounded-lg max-w-md w-full p-6 relative shadow-2xl">
+        <button onclick="closeTourModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+        <h3 class="text-2xl font-serif font-bold text-brand-primary mb-2">Book a Campus Tour</h3>
+        <p class="text-sm text-gray-600 mb-4">Experience Kingston Academy firsthand with a private student-led tour.</p>
+        <form onSubmit="handleModalSubmit(event, 'Campus Tour Booking')" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Parent Name</label>
+            <input type="text" required placeholder="Full Name" class="w-full border border-gray-300 p-2 rounded text-sm focus:border-brand-primary outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Preferred Date</label>
+            <input type="date" required class="w-full border border-gray-300 p-2 rounded text-sm focus:border-brand-primary outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Time Slot</label>
+            <select class="w-full border border-gray-300 p-2 rounded text-sm focus:border-brand-primary outline-none">
+              <option>Morning (9:00 AM - 11:00 AM)</option>
+              <option>Afternoon (1:30 PM - 3:30 PM)</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accent-hover text-white font-bold py-3 rounded transition">Confirm Tour Booking &rarr;</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

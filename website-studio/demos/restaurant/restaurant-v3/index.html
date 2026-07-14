@@ -154,7 +154,7 @@
           <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold" id="cart-count">1</div>
           <div class="font-bold text-lg" id="cart-total">$18.99</div>
         </div>
-        <button class="font-bold flex items-center gap-2 text-sm bg-brand-primary px-4 py-2 rounded-xl">View Cart <i class="fas fa-shopping-bag"></i></button>
+        <button onclick="checkout()" class="font-bold flex items-center gap-2 text-sm bg-brand-primary px-4 py-2 rounded-xl">View Cart <i class="fas fa-shopping-bag"></i></button>
       </div>
     </div>
 
@@ -165,7 +165,7 @@
           <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold" id="d-cart-count">1</div>
           <div class="font-bold text-lg" id="d-cart-total">$18.99</div>
         </div>
-        <div class="font-bold flex items-center gap-2 text-sm bg-brand-primary px-4 py-2 rounded-xl">Checkout <i class="fas fa-shopping-bag"></i></div>
+        <div onclick="checkout()" class="font-bold flex items-center gap-2 text-sm bg-brand-primary px-4 py-2 rounded-xl">Checkout <i class="fas fa-shopping-bag"></i></div>
       </div>
     </div>
 
@@ -195,6 +195,15 @@
         // Animation bump
         mobileFloat.classList.add('scale-95');
         setTimeout(() => mobileFloat.classList.remove('scale-95'), 150);
+      }
+
+      function checkout() {
+        if (cartCount === 0) return;
+        alert(`Order confirmed! Total: $${cartTotal.toFixed(2)}. Your FreshBite rider has been assigned and is heading to the kitchen!`);
+        cartCount = 0;
+        cartTotal = 0;
+        document.getElementById('cart-float').classList.add('translate-y-24', 'opacity-0');
+        document.getElementById('desktop-cart-float').classList.add('translate-y-24', 'opacity-0');
       }
     </script>
   </body>

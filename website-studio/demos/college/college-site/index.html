@@ -37,11 +37,11 @@
             GTU
           </a>
           <nav class="hidden md:flex space-x-8 items-center font-medium text-white/90">
-            <a href="#" class="hover:text-brand-accent transition">Study</a>
-            <a href="#" class="hover:text-brand-accent transition">Research</a>
-            <a href="#" class="hover:text-brand-accent transition">Campus</a>
-            <a href="#" class="hover:text-brand-accent transition">About</a>
-            <a href="#" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-6 py-2 rounded-sm transition text-sm uppercase tracking-wider font-bold">Apply</a>
+            <a href="study.html" class="hover:text-brand-accent transition">Study</a>
+            <a href="research.html" class="hover:text-brand-accent transition">Research</a>
+            <a href="campus.html" class="hover:text-brand-accent transition">Campus</a>
+            <a href="about.html" class="hover:text-brand-accent transition">About</a>
+            <button onclick="openApplyModal()" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-6 py-2 rounded-sm transition text-sm uppercase tracking-wider font-bold">Apply</button>
           </nav>
         </div>
       </div>
@@ -54,10 +54,10 @@
           <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">Define Your <br/><span class="text-brand-accent">Future.</span></h1>
           <p class="text-lg text-white/80 mb-10 leading-relaxed">Join a top-tier research university dedicated to pushing the boundaries of knowledge and technology.</p>
           <div class="flex space-x-4">
-            <a href="#" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-8 py-4 rounded-sm font-bold transition">Explore Programs</a>
-            <a href="#tour" class="border border-white/30 hover:border-white text-white px-8 py-4 rounded-sm font-medium transition flex items-center">
+            <a href="study.html" class="bg-brand-accent hover:bg-brand-accent-hover text-white px-8 py-4 rounded-sm font-bold transition">Explore Programs</a>
+            <button onclick="openTourModal()" class="border border-white/30 hover:border-white text-white px-8 py-4 rounded-sm font-medium transition flex items-center">
               <i class="fas fa-play mr-2"></i> Virtual Tour
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -280,9 +280,9 @@
     </footer>
 
     <!-- Floating Apply Button for Mobile -->
-    <a href="#" class="md:hidden fixed bottom-6 right-6 bg-brand-accent text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-50">
+    <button onclick="openApplyModal()" class="md:hidden fixed bottom-6 right-6 bg-brand-accent text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-50">
       <i class="fas fa-paper-plane text-xl"></i>
-    </a>
+    </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -297,6 +297,53 @@
         document.getElementById('tour-modal').classList.add('hidden');
         document.body.style.overflow = 'auto';
       }
+
+      function openApplyModal() {
+        document.getElementById('apply-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeApplyModal() {
+        document.getElementById('apply-modal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
     </script>
+
+    <!-- University Apply Modal -->
+    <div id="apply-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="bg-[#0c182b] max-w-xl w-full rounded border border-brand-accent/40 overflow-hidden shadow-2xl relative p-6 text-white animate-fadeIn">
+        <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
+          <h3 class="text-2xl font-bold text-white"><i class="fas fa-user-graduate text-brand-accent mr-2"></i> GTU Application Portal</h3>
+          <button onclick="closeApplyModal()" class="text-white/60 hover:text-white text-2xl">&times;</button>
+        </div>
+        <form onSubmit="event.preventDefault(); alert('Application account created! We have sent verification link to your email.'); closeApplyModal();" class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Full Legal Name</label>
+            <input type="text" required placeholder="Dr. / Mr. / Ms." class="w-full bg-black/40 border border-white/20 p-2.5 rounded text-sm focus:border-brand-accent outline-none text-white" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Email Address</label>
+            <input type="email" required placeholder="applicant@university.edu" class="w-full bg-black/40 border border-white/20 p-2.5 rounded text-sm focus:border-brand-accent outline-none text-white" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Degree Program Interest</label>
+            <select class="w-full bg-black/40 border border-white/20 p-2.5 rounded text-sm focus:border-brand-accent outline-none text-white">
+              <option>B.S. in Artificial Intelligence & Robotics</option>
+              <option>B.S. in Bio-Engineering & Genetics</option>
+              <option>M.S. in Quantum Computing</option>
+              <option>Ph.D. in Theoretical Astrophysics</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Term</label>
+            <select class="w-full bg-black/40 border border-white/20 p-2.5 rounded text-sm focus:border-brand-accent outline-none text-white">
+              <option>Fall Semester 2026</option>
+              <option>Spring Semester 2027</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accent-hover text-white font-bold py-3.5 rounded transition shadow-lg mt-2">Start Online Application &rarr;</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

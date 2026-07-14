@@ -25,12 +25,12 @@
           <span class="font-bold text-xl tracking-tight">Global Campus</span>
         </a>
         <div class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-600">
-          <a href="#" class="hover:text-brand-primary transition">Programs</a>
-          <a href="#" class="hover:text-brand-primary transition">Tuition & Financial Aid</a>
-          <a href="#" class="hover:text-brand-primary transition">Admissions</a>
+          <a href="programs.html" class="hover:text-brand-primary transition">Programs</a>
+          <a href="tuition.html" class="hover:text-brand-primary transition">Tuition & Financial Aid</a>
+          <a href="admissions.html" class="hover:text-brand-primary transition">Admissions</a>
           <div class="h-6 w-px bg-gray-300"></div>
-          <a href="#" class="hover:text-brand-primary transition">Sign In</a>
-          <button class="bg-brand-primary text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition shadow-sm">Apply Now</button>
+          <a href="signin.html" class="hover:text-brand-primary transition">Sign In</a>
+          <button onclick="openApplyModal()" class="bg-brand-primary text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition shadow-sm">Apply Now</button>
         </div>
       </div>
     </nav>
@@ -205,6 +205,13 @@
             price.style.opacity = '1';
           }, 200);
         });
+      }
+
+      function openApplyModal() {
+        const email = prompt("Enter your Email Address to begin your Online Application:");
+        if (email) {
+          alert(`Welcome to Global Campus, ${email}! We have created your secure applicant profile and sent verification credentials to your inbox.`);
+        }
       }
     </script>
   </body>
