@@ -74,7 +74,7 @@
           <nav class="hidden md:flex space-x-8 items-center text-sm tracking-widest uppercase">
             <a href="maison.html" class="hover:text-brand-accent transition">Maison</a>
             <button onclick="document.getElementById('appointmentModal').classList.add('active')" class="border border-brand-primary px-6 py-2 hover:bg-brand-primary hover:text-white transition">Bespoke</button>
-            <button onclick="alert('Shopping bag is currently empty. Click Discover or Bespoke to inquire about masterpieces.')" class="text-lg hover:text-brand-accent transition"><i class="fas fa-shopping-bag"></i></button>
+            <button onclick="showLuxuryModal('VIP Archive Bag Empty', 'Your private archive collection bag is currently empty. Click Discover or Bespoke to inquire about our GIA-certified diamond masterpieces.')" class="text-lg hover:text-brand-accent transition"><i class="fas fa-shopping-bag"></i></button>
           </nav>
         </div>
       </div>
@@ -82,7 +82,7 @@
 
     <!-- Hero Video/Image -->
     <section class="h-[80vh] relative overflow-hidden">
-      <img src="assets/images/hero.jpg" alt="Aura Collection" class="w-full h-full object-cover scale-105 animate-pulse duration-[10000ms]" />
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1920&q=80" alt="Aura Collection" class="w-full h-full object-cover scale-105 animate-pulse duration-[10000ms]" />
       <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-4">
         <span class="text-xs uppercase tracking-[0.4em] text-[#fcf6ba] mb-3 font-semibold border border-[#d4af37]/40 px-4 py-1.5 backdrop-blur-sm bg-black/30">Haute Joaillerie Maison</span>
         <h2 class="font-serif text-5xl md:text-7xl mb-6 tracking-wide drop-shadow-2xl bg-gradient-to-r from-[#d4af37] via-[#fcf6ba] to-[#aa771c] bg-clip-text text-transparent font-medium" data-aos="fade-up">The Lumière Collection</h2>
@@ -112,32 +112,32 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Item 1 -->
         <div class="hover-reveal-container border border-gray-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
-          <img src="assets/images/ring1.jpg" alt="Solitaire Ring" class="w-full aspect-[4/5] object-cover" />
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Solitaire Ring" class="w-full aspect-[4/5] object-cover" />
           <div class="hover-reveal-overlay p-6 text-center">
             <h4 class="font-serif text-2xl mb-2 text-brand-primary">Eternity Solitaire</h4>
             <p class="text-xs text-brand-accent mb-6 font-semibold uppercase tracking-widest">18k Rose Gold & 2.5ct Diamond</p>
             <p class="font-serif text-xl mb-6 text-brand-primary font-bold">$4,500</p>
-            <button onclick="openSpecModal('Eternity Solitaire Ring', '$4,500', '18k Rose Gold', 'VVS1 Clarity / D Color', '2.5 Carat Round Brilliant Cut', 'ring1.jpg')" class="border border-brand-primary text-xs uppercase tracking-widest px-8 py-3 bg-brand-primary text-white hover:bg-brand-accent transition shadow-md font-semibold">View Specifications</button>
+            <button onclick="openSpecModal('Eternity Solitaire Ring', '$4,500', '18k Rose Gold', 'VVS1 Clarity / D Color', '2.5 Carat Round Brilliant Cut', 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80')" class="border border-brand-primary text-xs uppercase tracking-widest px-8 py-3 bg-brand-primary text-white hover:bg-brand-accent transition shadow-md font-semibold">View Specifications</button>
           </div>
         </div>
         <!-- Item 2 -->
         <div class="hover-reveal-container border border-gray-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
-          <img src="assets/images/necklace1.jpg" alt="Diamond Necklace" class="w-full aspect-[4/5] object-cover" />
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Diamond Necklace" class="w-full aspect-[4/5] object-cover" />
           <div class="hover-reveal-overlay p-6 text-center">
             <h4 class="font-serif text-2xl mb-2 text-brand-primary">Lumière Pendant</h4>
             <p class="text-xs text-brand-accent mb-6 font-semibold uppercase tracking-widest">Platinum & 4.0ct Pavé Diamonds</p>
             <p class="font-serif text-xl mb-6 text-brand-primary font-bold">$8,200</p>
-            <button onclick="openSpecModal('Lumière Diamond Pendant', '$8,200', '950 Platinum', 'FL Flawless / E Color', '4.0 Total Carat Weight Pavé', 'necklace1.jpg')" class="border border-brand-primary text-xs uppercase tracking-widest px-8 py-3 bg-brand-primary text-white hover:bg-brand-accent transition shadow-md font-semibold">View Specifications</button>
+            <button onclick="openSpecModal('Lumière Diamond Pendant', '$8,200', '950 Platinum', 'FL Flawless / E Color', '4.0 Total Carat Weight Pavé', 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80')" class="border border-brand-primary text-xs uppercase tracking-widest px-8 py-3 bg-brand-primary text-white hover:bg-brand-accent transition shadow-md font-semibold">View Specifications</button>
           </div>
         </div>
         <!-- Item 3 -->
         <div class="hover-reveal-container border border-gray-200 shadow-sm" data-aos="fade-up" data-aos-delay="300">
-          <img src="assets/images/bracelet1.jpg" alt="Tennis Bracelet" class="w-full aspect-[4/5] object-cover" />
+          <img src="https://images.unsplash.com/photo-1611591471465-4f35e6831d10?auto=format&fit=crop&w=800&q=80" alt="Tennis Bracelet" class="w-full aspect-[4/5] object-cover" />
           <div class="hover-reveal-overlay p-6 text-center">
             <h4 class="font-serif text-2xl mb-2 text-brand-primary">Classic Tennis</h4>
             <p class="text-xs text-brand-accent mb-6 font-semibold uppercase tracking-widest">18k White Gold & 6.2ct Diamonds</p>
             <p class="font-serif text-xl mb-6 text-brand-primary font-bold">$12,000</p>
-            <button onclick="openSpecModal('Classic Diamond Tennis Bracelet', '$12,000', '18k White Gold', 'VVS2 Clarity / F Color', '6.2 Total Carat Weight', 'bracelet1.jpg')" class="border border-brand-primary text-xs uppercase tracking-widest px-8 py-3 bg-brand-primary text-white hover:bg-brand-accent transition shadow-md font-semibold">View Specifications</button>
+            <button onclick="openSpecModal('Classic Diamond Tennis Bracelet', '$12,000', '18k White Gold', 'VVS2 Clarity / F Color', '6.2 Total Carat Weight', 'https://images.unsplash.com/photo-1611591471465-4f35e6831d10?auto=format&fit=crop&w=800&q=80')" class="border border-brand-primary text-xs uppercase tracking-widest px-8 py-3 bg-brand-primary text-white hover:bg-brand-accent transition shadow-md font-semibold">View Specifications</button>
           </div>
         </div>
       </div>
@@ -176,7 +176,7 @@
           <div>
             <h5 class="font-serif text-lg mb-6 tracking-widest">Newsletter</h5>
             <p class="text-gray-400 mb-4 leading-relaxed">Subscribe to receive updates on new collections and exclusive invitations.</p>
-            <form onSubmit="event.preventDefault(); alert('Welcome to the Aura Inner Circle. Look for our private salon invitation in your inbox soon.');" class="flex border-b border-gray-500 pb-2">
+            <form onSubmit="event.preventDefault(); showLuxuryModal('Aura Inner Circle Invitation', 'Welcome to the Aura Inner Circle. Your private salon invitation and digital lookbook will be sent to your inbox shortly.');" class="flex border-b border-gray-500 pb-2">
               <input type="email" required placeholder="Email Address" class="bg-transparent outline-none flex-grow text-white placeholder-gray-500" />
               <button type="submit" class="text-gray-300 hover:text-brand-accent"><i class="fas fa-arrow-right"></i></button>
             </form>
@@ -191,7 +191,7 @@
         <button onclick="document.getElementById('appointmentModal').classList.remove('active')" class="absolute top-4 right-4 text-gray-500 hover:text-brand-primary text-xl"><i class="fas fa-times"></i></button>
         <h3 class="font-serif text-3xl mb-2 text-center">Bespoke Consultation</h3>
         <p class="text-center text-gray-500 text-sm mb-8 font-light">Schedule a private viewing with our experts.</p>
-        <form onSubmit="event.preventDefault(); alert('Your Bespoke Consultation request has been confirmed! Our Master Concierge will call you today to confirm your private salon booking.'); document.getElementById('appointmentModal').classList.remove('active');">
+        <form onSubmit="event.preventDefault(); document.getElementById('appointmentModal').classList.remove('active'); showLuxuryModal('Private Consultation Confirmed', 'Your Bespoke Consultation request has been received. Our Master Concierge will contact you within two hours to finalize your private salon appointment.');">
           <div class="space-y-4">
             <input type="text" required placeholder="Full Name" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
             <input type="email" required placeholder="Email Address" class="w-full border border-gray-300 p-3 bg-transparent outline-none focus:border-brand-primary text-sm" />
@@ -248,14 +248,33 @@
     <script>
       AOS.init({ once: true, offset: 50 });
 
-      function openSpecModal(title, price, metal, purity, gem, imgName) {
+      function openSpecModal(title, price, metal, purity, gem, imgUrl) {
         document.getElementById('spec-title').innerText = title;
         document.getElementById('spec-price').innerText = price;
         document.getElementById('spec-metal').innerText = metal;
         document.getElementById('spec-purity').innerText = purity;
         document.getElementById('spec-gem').innerText = gem;
-        document.getElementById('spec-img').src = `assets/images/${imgName}`;
+        document.getElementById('spec-img').src = imgUrl;
         document.getElementById('specModal').classList.add('active');
+      }
+
+      function showLuxuryModal(title, message) {
+        let modal = document.getElementById('luxuryInfoModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'luxuryInfoModal';
+          modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-md z-[120] flex items-center justify-center p-4';
+          document.body.appendChild(modal);
+        }
+        modal.innerHTML = `
+          <div class="bg-[#fcfbf7] border-2 border-[#bf953f] p-8 max-w-md w-full text-center shadow-2xl relative animate-fade-in">
+            <button onclick="document.getElementById('luxuryInfoModal').remove()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-primary text-xl">&times;</button>
+            <div class="text-[#b38728] text-3xl mb-3"><i class="fas fa-gem"></i></div>
+            <h4 class="font-serif text-2xl tracking-wide text-brand-primary mb-3">${title}</h4>
+            <p class="text-xs text-gray-600 font-light leading-relaxed mb-6">${message}</p>
+            <button onclick="document.getElementById('luxuryInfoModal').remove()" class="w-full bg-gradient-to-r from-[#bf953f] to-[#b38728] text-white py-3 text-xs uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition">Confirm Dossier</button>
+          </div>
+        `;
       }
     </script>
   </body>

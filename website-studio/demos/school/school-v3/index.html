@@ -46,7 +46,7 @@
       
       <div class="p-4 border-t border-white/5">
         <div class="flex items-center justify-center lg:justify-start gap-3">
-          <img src="assets/images/student1.jpg" alt="User" class="w-10 h-10 rounded-full border-2 border-brand-primary" />
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="User" class="w-10 h-10 rounded-full border-2 border-brand-primary" />
           <div class="hidden lg:block">
             <p class="text-sm font-bold text-white">Alex Chen</p>
             <p class="text-xs text-gray-400">Pro Member</p>
@@ -109,9 +109,9 @@
             </div>
 
             <!-- Course Card 1 -->
-            <div onclick="alert('Launching Module 4: Neural Networks & Deep Learning (Interactive Python Sandbox initialized)...')" class="panel rounded-2xl p-4 flex flex-col sm:flex-row gap-6 items-center hover:bg-white/5 transition cursor-pointer group">
+            <div onclick="showNexEduModal('Interactive Python Sandbox', 'Initializing Module 4: Neural Networks & Deep Learning... TensorFlow GPU clusters connected. Your interactive coding workspace is ready!')" class="panel rounded-2xl p-4 flex flex-col sm:flex-row gap-6 items-center hover:bg-white/5 transition cursor-pointer group">
               <div class="w-full sm:w-48 h-32 rounded-xl overflow-hidden relative flex-shrink-0">
-                <img src="assets/images/campus1.jpg" alt="Course" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition" />
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Course" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition" />
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 group-hover:scale-110 transition"><i class="fas fa-play ml-1"></i></div>
                 </div>
@@ -137,9 +137,9 @@
             </div>
 
             <!-- Course Card 2 -->
-            <div onclick="alert('Launching Module 2: Advanced Animations (Interactive Figma Prototype workspace)...')" class="panel rounded-2xl p-4 flex flex-col sm:flex-row gap-6 items-center hover:bg-white/5 transition cursor-pointer group">
+            <div onclick="showNexEduModal('Figma Prototyping Studio', 'Launching Module 2: Advanced Micro-Animations... Figma Cloud Canvas connected. Interactive component libraries loaded.')" class="panel rounded-2xl p-4 flex flex-col sm:flex-row gap-6 items-center hover:bg-white/5 transition cursor-pointer group">
               <div class="w-full sm:w-48 h-32 rounded-xl overflow-hidden relative flex-shrink-0">
-                <img src="assets/images/campus2.jpg" alt="Course" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition" />
+                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80" alt="Course" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition" />
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 group-hover:scale-110 transition"><i class="fas fa-play ml-1"></i></div>
                 </div>
@@ -177,7 +177,7 @@
                   </div>
                   <div>
                     <h4 class="font-bold text-white text-sm">Data Structures 101</h4>
-                    <button onclick="alert('Joining Live Zoom Class: Data Structures 101 with Dr. Harrison...')" class="text-xs text-brand-primary mt-1 flex items-center gap-1 hover:underline"><i class="fas fa-video text-brand-primary"></i> Join Zoom Live</button>
+                    <button onclick="showNexEduModal('Live Zoom Lecture Room', 'Joining Zoom Room #948-210 with Dr. Harrison... Audio and HD camera verified. Entering virtual amphitheater.')" class="text-xs text-brand-primary mt-1 flex items-center gap-1 hover:underline"><i class="fas fa-video text-brand-primary"></i> Join Zoom Live</button>
                   </div>
                 </div>
                 
@@ -213,7 +213,7 @@
                 <div class="flex items-center justify-between p-2 rounded-lg glow-border bg-brand-primary/5">
                   <div class="flex items-center gap-3">
                     <span class="text-xs font-bold text-brand-primary w-4">2</span>
-                    <img src="assets/images/student1.jpg" class="w-8 h-8 rounded-full border border-brand-primary" />
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" class="w-8 h-8 rounded-full border border-brand-primary" />
                     <span class="text-sm font-bold text-white">Alex Chen (You)</span>
                   </div>
                   <span class="text-xs text-brand-primary font-bold">4,250 XP</span>
@@ -234,5 +234,25 @@
       </div>
     </main>
 
+    <script>
+      function showNexEduModal(title, message) {
+        let modal = document.getElementById('nexEduModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'nexEduModal';
+          modal.className = 'fixed inset-0 bg-black/85 backdrop-blur-md z-[120] flex items-center justify-center p-4';
+          document.body.appendChild(modal);
+        }
+        modal.innerHTML = `
+          <div class="bg-[#1e293b] border-2 border-brand-primary/50 p-8 max-w-md w-full text-center shadow-2xl relative animate-fade-in rounded-3xl">
+            <button onclick="document.getElementById('nexEduModal').remove()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">&times;</button>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-primary to-brand-secondary text-brand-dark text-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-brand-primary/30"><i class="fas fa-terminal"></i></div>
+            <h4 class="font-inter text-2xl text-white font-bold mb-3">${title}</h4>
+            <p class="text-xs text-gray-300 font-normal leading-relaxed mb-6">${message}</p>
+            <button onclick="document.getElementById('nexEduModal').remove()" class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary text-brand-dark py-3.5 text-xs uppercase tracking-widest font-bold hover:opacity-95 transition rounded-xl shadow-md">Enter Interactive Workspace</button>
+          </div>
+        `;
+      }
+    </script>
   </body>
 </html>

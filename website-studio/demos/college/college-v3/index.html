@@ -115,18 +115,20 @@
 
         <div class="space-y-6">
           <!-- Card 1 -->
-          <div class="saas-card p-6 flex flex-col md:flex-row gap-6 relative" data-aos="fade-up" data-aos-delay="100">
-            <div class="absolute top-6 right-6 text-gray-400 hover:text-red-500 cursor-pointer"><i class="far fa-heart"></i></div>
-            <div class="w-24 h-24 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
-              <i class="fas fa-chart-pie text-3xl text-brand-primary"></i>
+          <div class="saas-card p-6 flex flex-col md:flex-row gap-6 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+            <div class="absolute top-6 right-6 text-gray-400 hover:text-red-500 cursor-pointer z-10"><i class="far fa-heart"></i></div>
+            <div class="w-full md:w-48 h-36 rounded-xl overflow-hidden flex-shrink-0 relative">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="MBA Program" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 to-transparent"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-bold uppercase tracking-wider text-white bg-brand-primary px-2 py-0.5 rounded shadow">AACSB Accredited</span>
             </div>
             <div class="flex-grow">
               <div class="flex gap-2 mb-2">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">Master's</span>
                 <span class="text-[10px] font-bold uppercase tracking-wider text-green-700 bg-green-100 px-2 py-1 rounded">Self-Paced</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">Master of Business Administration (MBA)</h3>
-              <p class="text-gray-600 text-sm mb-4">Accelerate your career with a flexible, fully accredited MBA designed for modern business leaders.</p>
+              <h3 class="text-xl font-bold mb-2 group-hover:text-brand-primary transition">Master of Business Administration (MBA)</h3>
+              <p class="text-gray-600 text-sm mb-4">Accelerate your career with a flexible, fully accredited MBA designed for modern business leaders and executives.</p>
               <div class="flex flex-col sm:flex-row gap-4 sm:items-center text-sm font-medium text-gray-700">
                 <span class="flex items-center gap-1"><i class="far fa-clock text-gray-400"></i> 18-24 Months</span>
                 <span class="flex items-center gap-1"><i class="fas fa-laptop text-gray-400"></i> 100% Online</span>
@@ -139,18 +141,20 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="saas-card p-6 flex flex-col md:flex-row gap-6 relative" data-aos="fade-up" data-aos-delay="150">
-            <div class="absolute top-6 right-6 text-gray-400 hover:text-red-500 cursor-pointer"><i class="far fa-heart"></i></div>
-            <div class="w-24 h-24 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0 border border-indigo-100">
-              <i class="fas fa-laptop-code text-3xl text-indigo-600"></i>
+          <div class="saas-card p-6 flex flex-col md:flex-row gap-6 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="150">
+            <div class="absolute top-6 right-6 text-gray-400 hover:text-red-500 cursor-pointer z-10"><i class="far fa-heart"></i></div>
+            <div class="w-full md:w-48 h-36 rounded-xl overflow-hidden flex-shrink-0 relative">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Computer Science" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 to-transparent"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-bold uppercase tracking-wider text-white bg-indigo-600 px-2 py-0.5 rounded shadow">ABET Accredited</span>
             </div>
             <div class="flex-grow">
               <div class="flex gap-2 mb-2">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-2 py-1 rounded">Bachelor's</span>
                 <span class="text-[10px] font-bold uppercase tracking-wider text-brand-secondary bg-brand-secondary/10 px-2 py-1 rounded">Cohort-Based</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">B.S. in Computer Science</h3>
-              <p class="text-gray-600 text-sm mb-4">Learn software engineering, AI, and data structures with a rigorous, industry-aligned curriculum.</p>
+              <h3 class="text-xl font-bold mb-2 group-hover:text-indigo-600 transition">B.S. in Computer Science</h3>
+              <p class="text-gray-600 text-sm mb-4">Learn full-stack engineering, AI architectures, and distributed systems with a rigorous, industry-aligned curriculum.</p>
               <div class="flex flex-col sm:flex-row gap-4 sm:items-center text-sm font-medium text-gray-700">
                 <span class="flex items-center gap-1"><i class="far fa-clock text-gray-400"></i> 36-48 Months</span>
                 <span class="flex items-center gap-1"><i class="fas fa-laptop text-gray-400"></i> 100% Online</span>
@@ -208,10 +212,26 @@
       }
 
       function openApplyModal() {
-        const email = prompt("Enter your Email Address to begin your Online Application:");
-        if (email) {
-          alert(`Welcome to Global Campus, ${email}! We have created your secure applicant profile and sent verification credentials to your inbox.`);
+        showGlobalCampusModal('EXECUTIVE DOSSIER INITIALIZED', 'Welcome to Global Campus Online University! We have created your secure student dashboard ID and dispatched verification tokens and scholarship eligibility guides to your email.');
+      }
+
+      function showGlobalCampusModal(title, message) {
+        let modal = document.getElementById('gcModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'gcModal';
+          modal.className = 'fixed inset-0 bg-brand-dark/85 backdrop-blur-md z-[120] flex items-center justify-center p-4';
+          document.body.appendChild(modal);
         }
+        modal.innerHTML = `
+          <div class="bg-white border-2 border-brand-primary/40 p-8 max-w-md w-full text-center shadow-2xl relative animate-fadeIn rounded-2xl">
+            <button onclick="document.getElementById('gcModal').remove()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-dark text-xl">&times;</button>
+            <div class="w-14 h-14 rounded-2xl bg-brand-primary text-white text-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-brand-primary/30"><i class="fas fa-laptop-house"></i></div>
+            <h4 class="font-inter text-2xl text-brand-dark font-extrabold mb-3">${title}</h4>
+            <p class="text-xs text-gray-600 font-normal leading-relaxed mb-6">${message}</p>
+            <button onclick="document.getElementById('gcModal').remove()" class="w-full bg-brand-primary text-white py-3.5 text-xs uppercase tracking-widest font-bold hover:bg-blue-700 transition rounded-xl shadow-md">Continue to Student Portal</button>
+          </div>
+        `;
       }
     </script>
   </body>

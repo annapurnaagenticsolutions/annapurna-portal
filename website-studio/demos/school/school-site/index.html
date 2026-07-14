@@ -28,7 +28,7 @@
         right: 20px;
       }
       .stat-counter {
-        background: url('assets/images/about.jpg') center/cover fixed;
+        background: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
         position: relative;
       }
       .stat-counter::before {
@@ -80,7 +80,7 @@
     <!-- Hero Section -->
     <section class="relative h-[85vh] flex items-center">
       <div class="absolute inset-0 z-0">
-        <img src="assets/images/hero.jpg" alt="Campus View" class="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80" alt="Campus View" class="w-full h-full object-cover" />
         <div class="absolute inset-0 hero-overlay"></div>
       </div>
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full" data-aos="fade-up">
@@ -239,7 +239,7 @@
             </div>
             <div class="space-y-6">
               <div class="flex bg-brand-light rounded-sm overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
-                <img src="assets/images/teacher1.jpg" alt="Teacher" class="w-32 object-cover" />
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Teacher" class="w-32 object-cover" />
                 <div class="p-6">
                   <h3 class="text-xl mb-1 text-brand-primary">Dr. Sarah Jenkins</h3>
                   <p class="text-brand-accent text-sm font-medium mb-3">Head of Science Dept.</p>
@@ -247,7 +247,7 @@
                 </div>
               </div>
               <div class="flex bg-brand-light rounded-sm overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
-                <img src="assets/images/teacher3.jpg" alt="Teacher" class="w-32 object-cover" />
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Teacher" class="w-32 object-cover" />
                 <div class="p-6">
                   <h3 class="text-xl mb-1 text-brand-primary">Mr. David Chen</h3>
                   <p class="text-brand-accent text-sm font-medium mb-3">Director of Arts</p>
@@ -285,6 +285,54 @@
             </div>
           </div>
           
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Tuition & Scholarship Estimator -->
+    <section class="py-20 bg-[#f8fafc] border-y border-gray-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10" data-aos="fade-up">
+          <span class="text-brand-accent font-bold tracking-widest uppercase text-xs px-3 py-1 bg-brand-accent/10 rounded-full">Financial Planning</span>
+          <h2 class="text-3xl md:text-4xl font-serif text-brand-primary font-bold mt-2">Interactive Tuition & Scholarship Estimator</h2>
+          <p class="text-gray-600 text-sm mt-2">Instantly calculate estimated net tuition after applying our merit and academic distinction scholarships.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="space-y-5">
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-700 mb-2">Select Division</label>
+              <select id="calc-grade" onchange="calculateTuition()" class="w-full border border-gray-300 p-3 rounded text-sm bg-gray-50 focus:border-brand-primary outline-none font-medium">
+                <option value="18500">Elementary School ($18,500 / yr)</option>
+                <option value="21000">Middle School ($21,000 / yr)</option>
+                <option value="24500">High School / AP Prep ($24,500 / yr)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-700 mb-2">Estimated Merit / Academic Distinction</label>
+              <select id="calc-merit" onchange="calculateTuition()" class="w-full border border-gray-300 p-3 rounded text-sm bg-gray-50 focus:border-brand-primary outline-none font-medium">
+                <option value="0">Standard Tuition (No Scholarship Selected)</option>
+                <option value="3000">President's Honor Roll (-$3,000 / yr)</option>
+                <option value="6000">STEM / Arts Excellence Award (-$6,000 / yr)</option>
+                <option value="10000">Kingston Merit Scholar (-$10,000 / yr)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-gray-700 mb-2">Sibling Enrollment Discount</label>
+              <select id="calc-sibling" onchange="calculateTuition()" class="w-full border border-gray-300 p-3 rounded text-sm bg-gray-50 focus:border-brand-primary outline-none font-medium">
+                <option value="0">1 Student Enrolled (Standard)</option>
+                <option value="1500">2 Siblings Enrolled (-$1,500 per sibling)</option>
+                <option value="3000">3+ Siblings Enrolled (-$3,000 per sibling)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="bg-brand-primary text-white p-6 rounded-lg text-center flex flex-col justify-center h-full border border-brand-primary/20 shadow-inner">
+            <span class="text-xs uppercase tracking-widest text-brand-accent font-bold mb-1">Estimated Net Annual Tuition</span>
+            <div id="calc-total" class="text-4xl md:text-5xl font-serif font-bold text-white my-4">$18,500</div>
+            <p class="text-xs text-gray-300 leading-relaxed mb-6 font-light">Includes all core textbooks, technology lab fees, and access to campus athletic centers.</p>
+            <button onclick="openApplyModal()" class="w-full bg-brand-accent hover:bg-brand-accent-hover text-white py-3 rounded text-xs uppercase tracking-widest font-bold shadow-md transition">Lock In Rate & Apply</button>
+          </div>
         </div>
       </div>
     </section>
@@ -417,12 +465,39 @@
         document.getElementById('tourModal').classList.add('hidden');
         document.getElementById('tourModal').classList.remove('flex');
       }
-      function handleModalSubmit(event, modalType) {
-        event.preventDefault();
-        alert(`Thank you! Your ${modalType} has been successfully submitted. Our admissions office will contact you within 24 hours.`);
-        closeApplyModal();
-        closeTourModal();
-      }
+        function handleModalSubmit(event, modalType) {
+          event.preventDefault();
+          closeApplyModal();
+          closeTourModal();
+          showSchoolNotification(modalType + ' Confirmed', `Thank you for your ${modalType} request! Our admissions director has received your profile and will schedule a personal phone consultation within 24 business hours.`);
+        }
+
+        function calculateTuition() {
+          const gradePrice = parseFloat(document.getElementById('calc-grade').value);
+          const meritDiscount = parseFloat(document.getElementById('calc-merit').value);
+          const siblingDiscount = parseFloat(document.getElementById('calc-sibling').value);
+          const netPrice = Math.max(0, gradePrice - meritDiscount - siblingDiscount);
+          document.getElementById('calc-total').innerText = '$' + netPrice.toLocaleString();
+        }
+
+        function showSchoolNotification(title, message) {
+          let modal = document.getElementById('schoolNotifyModal');
+          if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'schoolNotifyModal';
+            modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-md z-[120] flex items-center justify-center p-4';
+            document.body.appendChild(modal);
+          }
+          modal.innerHTML = `
+            <div class="bg-white border-t-4 border-brand-primary p-8 max-w-md w-full text-center shadow-2xl relative animate-fade-in rounded-lg">
+              <button onclick="document.getElementById('schoolNotifyModal').remove()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-primary text-xl">&times;</button>
+              <div class="text-brand-primary text-4xl mb-3"><i class="fas fa-check-circle"></i></div>
+              <h4 class="font-serif text-2xl text-brand-primary font-bold mb-3">${title}</h4>
+              <p class="text-xs text-gray-600 font-medium leading-relaxed mb-6">${message}</p>
+              <button onclick="document.getElementById('schoolNotifyModal').remove()" class="w-full bg-brand-primary text-white py-3 text-xs uppercase tracking-widest font-bold hover:bg-brand-secondary transition rounded">Done</button>
+            </div>
+          `;
+        }
     </script>
 
     <!-- Apply Modal -->

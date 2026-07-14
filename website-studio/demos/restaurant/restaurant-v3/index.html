@@ -54,26 +54,26 @@
       </div>
 
       <!-- Categories Horizontal Scroll -->
-      <div class="flex overflow-x-auto gap-3 pb-4 mb-4 hide-scrollbar">
-        <button class="flex flex-col items-center gap-2 min-w-[72px]" data-aos="fade-up" data-aos-delay="50">
-          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl border-2 border-brand-primary text-brand-primary">🍔</div>
-          <span class="text-xs font-semibold text-brand-primary">Burgers</span>
+      <div class="flex overflow-x-auto gap-3 pb-4 mb-4 hide-scrollbar" id="categoryFilterBar">
+        <button class="cat-btn active flex flex-col items-center gap-2 min-w-[72px]" data-cat="all" data-aos="fade-up" data-aos-delay="50">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl border-2 border-brand-primary text-brand-primary transition">🔥</div>
+          <span class="text-xs font-semibold text-brand-primary">All</span>
         </button>
-        <button class="flex flex-col items-center gap-2 min-w-[72px]" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600">🍕</div>
-          <span class="text-xs font-medium text-gray-500">Pizza</span>
+        <button class="cat-btn flex flex-col items-center gap-2 min-w-[72px]" data-cat="burgers" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600 border-2 border-transparent transition">🍔</div>
+          <span class="text-xs font-medium text-gray-500">Burgers</span>
         </button>
-        <button class="flex flex-col items-center gap-2 min-w-[72px]" data-aos="fade-up" data-aos-delay="150">
-          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600">🍣</div>
-          <span class="text-xs font-medium text-gray-500">Sushi</span>
-        </button>
-        <button class="flex flex-col items-center gap-2 min-w-[72px]" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600">🥗</div>
+        <button class="cat-btn flex flex-col items-center gap-2 min-w-[72px]" data-cat="healthy" data-aos="fade-up" data-aos-delay="150">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600 border-2 border-transparent transition">🥗</div>
           <span class="text-xs font-medium text-gray-500">Healthy</span>
         </button>
-        <button class="flex flex-col items-center gap-2 min-w-[72px]" data-aos="fade-up" data-aos-delay="250">
-          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600">🍩</div>
-          <span class="text-xs font-medium text-gray-500">Desserts</span>
+        <button class="cat-btn flex flex-col items-center gap-2 min-w-[72px]" data-cat="pasta" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600 border-2 border-transparent transition">🍝</div>
+          <span class="text-xs font-medium text-gray-500">Pasta</span>
+        </button>
+        <button class="cat-btn flex flex-col items-center gap-2 min-w-[72px]" data-cat="sushi" data-aos="fade-up" data-aos-delay="250">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl text-gray-600 border-2 border-transparent transition">🍣</div>
+          <span class="text-xs font-medium text-gray-500">Sushi</span>
         </button>
       </div>
 
@@ -84,11 +84,11 @@
       </div>
 
       <!-- Menu Items List -->
-      <div class="space-y-4">
+      <div class="space-y-4" id="deliveryCardsList">
         <!-- Item 1 -->
-        <div class="bg-white rounded-2xl p-3 flex gap-4 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+        <div class="delivery-item bg-white rounded-2xl p-3 flex gap-4 shadow-sm relative overflow-hidden group" data-cat="burgers" data-aos="fade-up" data-aos-delay="100">
           <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
-            <img src="assets/images/menu1.jpg" alt="Burger" class="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Burger" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
           </div>
           <div class="flex flex-col justify-center flex-grow">
             <div class="flex justify-between items-start">
@@ -106,9 +106,9 @@
         </div>
 
         <!-- Item 2 -->
-        <div class="bg-white rounded-2xl p-3 flex gap-4 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="150">
+        <div class="delivery-item bg-white rounded-2xl p-3 flex gap-4 shadow-sm relative overflow-hidden group" data-cat="healthy" data-aos="fade-up" data-aos-delay="150">
           <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
-            <img src="assets/images/menu2.jpg" alt="Salmon" class="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Salmon" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
           </div>
           <div class="flex flex-col justify-center flex-grow">
             <div class="flex justify-between items-start">
@@ -126,9 +126,9 @@
         </div>
 
         <!-- Item 3 -->
-        <div class="bg-white rounded-2xl p-3 flex gap-4 shadow-sm relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+        <div class="delivery-item bg-white rounded-2xl p-3 flex gap-4 shadow-sm relative overflow-hidden group" data-cat="pasta" data-aos="fade-up" data-aos-delay="200">
           <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
-            <img src="assets/images/menu3.jpg" alt="Pasta" class="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80" alt="Pasta" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
           </div>
           <div class="flex flex-col justify-center flex-grow">
             <div class="flex justify-between items-start">
@@ -199,11 +199,73 @@
 
       function checkout() {
         if (cartCount === 0) return;
-        alert(`Order confirmed! Total: $${cartTotal.toFixed(2)}. Your FreshBite rider has been assigned and is heading to the kitchen!`);
+        showDeliveryTrackerModal(cartTotal.toFixed(2));
         cartCount = 0;
         cartTotal = 0;
         document.getElementById('cart-float').classList.add('translate-y-24', 'opacity-0');
         document.getElementById('desktop-cart-float').classList.add('translate-y-24', 'opacity-0');
+      }
+
+      // Category Filter Logic
+      const catBtns = document.querySelectorAll('.cat-btn');
+      const deliveryItems = document.querySelectorAll('.delivery-item');
+      catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          catBtns.forEach(b => {
+            b.classList.remove('active');
+            b.querySelector('div').classList.remove('border-brand-primary');
+            b.querySelector('div').classList.add('border-transparent');
+            b.querySelector('span').classList.remove('font-semibold', 'text-brand-primary');
+            b.querySelector('span').classList.add('font-medium', 'text-gray-500');
+          });
+          btn.classList.add('active');
+          btn.querySelector('div').classList.add('border-brand-primary');
+          btn.querySelector('div').classList.remove('border-transparent');
+          btn.querySelector('span').classList.add('font-semibold', 'text-brand-primary');
+          btn.querySelector('span').classList.remove('font-medium', 'text-gray-500');
+
+          const cat = btn.getAttribute('data-cat');
+          deliveryItems.forEach(item => {
+            if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+              item.style.display = 'flex';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      function showDeliveryTrackerModal(amount) {
+        let modal = document.getElementById('trackerModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'trackerModal';
+          modal.className = 'fixed inset-0 bg-brand-dark/70 backdrop-blur-md z-[100] flex items-center justify-center p-4';
+          document.body.appendChild(modal);
+        }
+        modal.innerHTML = `
+          <div class="bg-white rounded-3xl max-w-md w-full p-6 text-brand-dark shadow-2xl relative overflow-hidden animate-fade-in">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+              <span class="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> Live Order Tracking</span>
+              <button onclick="document.getElementById('trackerModal').remove()" class="text-gray-400 hover:text-gray-600 font-bold text-xl">&times;</button>
+            </div>
+            <div class="text-center py-4">
+              <div class="w-20 h-20 bg-brand-light text-brand-primary rounded-full flex items-center justify-center text-4xl mx-auto mb-3 shadow-sm">
+                🛵
+              </div>
+              <h3 class="text-xl font-bold text-brand-dark mb-1">Rider Assigned: Marcus T.</h3>
+              <p class="text-sm text-gray-500 mb-4">Your order ($${amount}) is being prepared by the FreshBite kitchen. Estimated delivery in <strong class="text-brand-primary">18 mins</strong> to 123 Tech Avenue.</p>
+              
+              <div class="bg-gray-50 rounded-2xl p-4 text-left text-xs text-gray-600 mb-6 space-y-2 border">
+                <div class="flex items-center gap-2 font-semibold text-brand-dark"><i class="fas fa-check-circle text-green-500"></i> Order Placed & Confirmed</div>
+                <div class="flex items-center gap-2 font-semibold text-brand-primary animate-pulse"><i class="fas fa-utensils"></i> Kitchen Preparing Sizzling Dishes</div>
+                <div class="flex items-center gap-2 text-gray-400"><i class="fas fa-motorcycle"></i> Out for Delivery</div>
+              </div>
+
+              <button onclick="document.getElementById('trackerModal').remove()" class="w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-bold py-3.5 rounded-2xl shadow-lg transition">Track on Live Map &rarr;</button>
+            </div>
+          </div>
+        `;
       }
     </script>
   </body>

@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="hidden md:block w-1/2 relative">
-        <img src="assets/images/hero.jpg" alt="University" class="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80" alt="University" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-brand-primary/20"></div>
       </div>
     </section>
@@ -106,7 +106,7 @@
           <!-- Card 1 -->
           <div class="bg-white rounded-sm shadow-sm overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
             <div class="h-48 overflow-hidden relative">
-              <img src="assets/images/students.jpg" alt="Computer Science" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Computer Science" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
               <div class="absolute inset-0 bg-brand-primary/20"></div>
             </div>
             <div class="p-8">
@@ -119,7 +119,7 @@
           <!-- Card 2 -->
           <div class="bg-white rounded-sm shadow-sm overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
             <div class="h-48 overflow-hidden relative">
-              <img src="assets/images/campus.jpg" alt="Business" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80" alt="Business" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
               <div class="absolute inset-0 bg-brand-primary/20"></div>
             </div>
             <div class="p-8">
@@ -132,7 +132,7 @@
           <!-- Card 3 -->
           <div class="bg-white rounded-sm shadow-sm overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
             <div class="h-48 overflow-hidden relative">
-              <img src="assets/images/students.jpg" alt="Bio" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Bio" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
               <div class="absolute inset-0 bg-brand-primary/20"></div>
             </div>
             <div class="p-8">
@@ -193,7 +193,7 @@
         <h2 class="text-4xl font-bold mb-4">Experience Our Campus</h2>
         <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Take an interactive 360° virtual tour of our high-tech laboratories, architectural landmarks, and student commons.</p>
         <div onclick="openTourModal()" class="relative w-full max-w-4xl mx-auto rounded-sm overflow-hidden shadow-2xl aspect-video bg-brand-primary flex items-center justify-center cursor-pointer group">
-          <img src="assets/images/campus.jpg" alt="Tour" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700" />
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80" alt="Tour" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700" />
           <div class="absolute inset-0 bg-brand-primary/40 group-hover:bg-brand-primary/20 transition"></div>
           <div class="relative z-10 w-24 h-24 bg-brand-accent rounded-full flex items-center justify-center text-white text-3xl shadow-2xl transform group-hover:scale-110 transition duration-300">
             <i class="fas fa-play ml-1"></i>
@@ -211,7 +211,7 @@
           <button onclick="closeTourModal()" class="text-white/60 hover:text-white text-2xl focus:outline-none">&times;</button>
         </div>
         <div class="aspect-video bg-black relative flex items-center justify-center overflow-hidden">
-          <img src="assets/images/campus.jpg" alt="Virtual Campus" class="w-full h-full object-cover opacity-80" />
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80" alt="Virtual Campus" class="w-full h-full object-cover opacity-80" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-primary via-transparent to-transparent"></div>
           <div class="absolute text-center p-8">
             <span class="inline-block px-3 py-1 bg-brand-accent text-white text-xs font-bold uppercase rounded-full mb-3">Live Interactive Simulation</span>
@@ -307,6 +307,25 @@
         document.getElementById('apply-modal').classList.add('hidden');
         document.body.style.overflow = 'auto';
       }
+
+      function showGTUModal(title, message) {
+        let modal = document.getElementById('gtuModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'gtuModal';
+          modal.className = 'fixed inset-0 bg-black/85 backdrop-blur-md z-[120] flex items-center justify-center p-4';
+          document.body.appendChild(modal);
+        }
+        modal.innerHTML = `
+          <div class="bg-[#0c182b] border-2 border-brand-accent p-8 max-w-md w-full text-center shadow-2xl relative animate-fadeIn rounded-lg">
+            <button onclick="document.getElementById('gtuModal').remove()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">&times;</button>
+            <div class="w-14 h-14 rounded-full bg-brand-accent/20 border border-brand-accent text-brand-accent text-2xl flex items-center justify-center mx-auto mb-4 shadow-lg"><i class="fas fa-graduation-cap"></i></div>
+            <h4 class="font-serif text-2xl text-white font-bold mb-3">${title}</h4>
+            <p class="text-xs text-gray-300 font-normal leading-relaxed mb-6">${message}</p>
+            <button onclick="document.getElementById('gtuModal').remove()" class="w-full bg-brand-accent text-white py-3.5 text-xs uppercase tracking-widest font-bold hover:bg-brand-accent-hover transition rounded shadow-md">Enter Applicant Portal</button>
+          </div>
+        `;
+      }
     </script>
 
     <!-- University Apply Modal -->
@@ -316,7 +335,7 @@
           <h3 class="text-2xl font-bold text-white"><i class="fas fa-user-graduate text-brand-accent mr-2"></i> GTU Application Portal</h3>
           <button onclick="closeApplyModal()" class="text-white/60 hover:text-white text-2xl">&times;</button>
         </div>
-        <form onSubmit="event.preventDefault(); alert('Application account created! We have sent verification link to your email.'); closeApplyModal();" class="space-y-4">
+        <form onSubmit="event.preventDefault(); closeApplyModal(); showGTUModal('Application Dossier Created', 'Welcome to Global Tech University! We have generated your applicant ID and dispatched secure portal verification links to your email.');" class="space-y-4">
           <div>
             <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Full Legal Name</label>
             <input type="text" required placeholder="Dr. / Mr. / Ms." class="w-full bg-black/40 border border-white/20 p-2.5 rounded text-sm focus:border-brand-accent outline-none text-white" />

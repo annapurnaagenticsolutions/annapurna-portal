@@ -120,7 +120,7 @@
     <!-- Hero Section -->
     <section class="relative min-h-screen flex flex-col justify-center items-center text-center pb-24 pt-32">
       <div class="absolute inset-0 z-0">
-        <img src="assets/images/hero.jpg" alt="Restaurant Interior" class="w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80" alt="Restaurant Interior" class="w-full h-full object-cover" />
         <div class="absolute inset-0 hero-overlay"></div>
       </div>
       <div class="relative z-10 max-w-4xl px-4 my-auto" data-aos="fade-up" data-aos-duration="1000">
@@ -138,14 +138,14 @@
       <!-- Glassmorphic Quick-Book Bar -->
       <div class="relative z-20 w-full max-w-5xl mx-auto px-4 -mb-36 mt-8" data-aos="fade-up" data-aos-delay="300">
         <div class="bg-brand-primary/90 backdrop-blur-xl border border-brand-accent/40 p-6 sm:p-8 rounded-sm shadow-2xl">
-          <form action="reserve.html" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
+          <form id="quickReserveForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
             <div class="text-left">
               <label class="block text-xs uppercase tracking-widest text-brand-accent font-serif mb-1"><i class="fas fa-calendar-alt mr-1"></i> Date</label>
-              <input type="date" class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition" required />
+              <input type="date" id="resDate" class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition" required />
             </div>
             <div class="text-left">
               <label class="block text-xs uppercase tracking-widest text-brand-accent font-serif mb-1"><i class="fas fa-clock mr-1"></i> Time</label>
-              <select class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition">
+              <select id="resTime" class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition">
                 <option value="18:00" class="text-black">6:00 PM (Dinner)</option>
                 <option value="19:00" class="text-black" selected>7:00 PM (Dinner)</option>
                 <option value="20:00" class="text-black">8:00 PM (Dinner)</option>
@@ -154,11 +154,11 @@
             </div>
             <div class="text-left">
               <label class="block text-xs uppercase tracking-widest text-brand-accent font-serif mb-1"><i class="fas fa-users mr-1"></i> Guests</label>
-              <select class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition">
-                <option value="2" class="text-black" selected>2 Guests</option>
-                <option value="4" class="text-black">4 Guests</option>
-                <option value="6" class="text-black">6 Guests</option>
-                <option value="8+" class="text-black">8+ Private Dining</option>
+              <select id="resGuests" class="w-full bg-black/40 border border-white/20 rounded-sm py-2.5 px-3 text-white text-sm focus:outline-none focus:border-brand-accent transition">
+                <option value="2 Guests" class="text-black" selected>2 Guests</option>
+                <option value="4 Guests" class="text-black">4 Guests</option>
+                <option value="6 Guests" class="text-black">6 Guests</option>
+                <option value="8+ Private Dining" class="text-black">8+ Private Dining</option>
               </select>
             </div>
             <div class="pt-2 sm:pt-5">
@@ -176,7 +176,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div class="hover-zoom rounded-sm overflow-hidden shadow-2xl" data-aos="fade-right">
-            <img src="assets/images/chef.jpg" alt="Chef preparing meal" class="w-full h-auto object-cover aspect-[4/5]" />
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80" alt="Chef preparing meal" class="w-full h-auto object-cover aspect-[4/5]" />
           </div>
           <div data-aos="fade-left">
             <h4 class="font-serif italic text-brand-accent text-xl mb-2">Our Story</h4>
@@ -198,41 +198,48 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
           <h4 class="font-serif italic text-brand-accent text-xl mb-2">Discover</h4>
-          <h2 class="text-4xl md:text-5xl font-serif text-brand-primary">Chef's Recommendations</h2>
+          <h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-8">Chef's Recommendations</h2>
+          <!-- Course Category Filter -->
+          <div class="flex flex-wrap justify-center gap-3 mb-4">
+            <button class="course-tab active px-6 py-2 border border-brand-accent bg-brand-accent text-white font-serif text-sm rounded-sm transition shadow" data-course="all">All Courses</button>
+            <button class="course-tab px-6 py-2 border border-gray-300 hover:border-brand-accent text-brand-primary font-serif text-sm rounded-sm transition" data-course="mains">Main Entrées</button>
+            <button class="course-tab px-6 py-2 border border-gray-300 hover:border-brand-accent text-brand-primary font-serif text-sm rounded-sm transition" data-course="seafood">Seafood</button>
+            <button class="course-tab px-6 py-2 border border-gray-300 hover:border-brand-accent text-brand-primary font-serif text-sm rounded-sm transition" data-course="dessert">Dessert & Sommelier</button>
+          </div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="menuCardsGrid">
           <!-- Dish 1 -->
-          <div class="bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-aos="fade-up" data-aos-delay="100">
+          <div class="dish-card bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-course="mains" data-aos="fade-up" data-aos-delay="100">
             <div class="hover-zoom h-64">
-              <img src="assets/images/dish1.jpg" alt="Signature Steak" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Signature Steak" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
             </div>
             <div class="p-8 text-center relative">
               <span class="absolute -top-5 right-6 bg-brand-accent text-white font-serif italic px-4 py-1 rounded-sm shadow-md group-hover:bg-brand-accent-hover transition">$45</span>
-              <h3 class="text-2xl mb-3 font-serif">Signature Steak</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-6">Juicy and tender premium cut cooked to perfection, served with seasonal vegetables and our rich signature demi-glace.</p>
+              <h3 class="text-2xl mb-3 font-serif">Signature Wagyu Tenderloin</h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-6">Juicy and tender A5 Japanese Wagyu cut cooked to your exact preference, served with seasonal truffle vegetables and our rich signature demi-glace.</p>
             </div>
           </div>
           <!-- Dish 2 -->
-          <div class="bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-aos="fade-up" data-aos-delay="200">
+          <div class="dish-card bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-course="seafood" data-aos="fade-up" data-aos-delay="200">
             <div class="hover-zoom h-64">
-              <img src="assets/images/dish2.jpg" alt="Seafood Platter" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+              <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80" alt="Seafood Platter" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
             </div>
             <div class="p-8 text-center relative">
               <span class="absolute -top-5 right-6 bg-brand-accent text-white font-serif italic px-4 py-1 rounded-sm shadow-md group-hover:bg-brand-accent-hover transition">$55</span>
-              <h3 class="text-2xl mb-3 font-serif">Seafood Platter</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-6">A delightful assortment of fresh ocean catch, including grilled prawns, calamari, and line-caught fish with citrus aioli.</p>
+              <h3 class="text-2xl mb-3 font-serif">Royal Seafood Symphony</h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-6">A delightful assortment of fresh ocean catch, including grilled Mediterranean prawns, calamari, and line-caught wild sea bass with saffron aioli.</p>
             </div>
           </div>
           <!-- Dish 3 -->
-          <div class="bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-aos="fade-up" data-aos-delay="300">
+          <div class="dish-card bg-brand-light rounded-sm overflow-hidden card-lift border border-brand-accent/30 hover:border-brand-accent transition-all duration-500 shadow-xl group" data-course="dessert" data-aos="fade-up" data-aos-delay="300">
             <div class="hover-zoom h-64">
-              <img src="assets/images/dish1.jpg" alt="Decadent Dessert" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+              <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80" alt="Decadent Dessert" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
             </div>
             <div class="p-8 text-center relative">
               <span class="absolute -top-5 right-6 bg-brand-accent text-white font-serif italic px-4 py-1 rounded-sm shadow-md group-hover:bg-brand-accent-hover transition">$18</span>
-              <h3 class="text-2xl mb-3 font-serif">Decadent Dessert</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-6">A rich dark chocolate delight layered with velvety ganache, topped with fresh seasonal berries and gold leaf.</p>
+              <h3 class="text-2xl mb-3 font-serif">Valrhona Gold Ganache</h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-6">A rich dark chocolate delight layered with velvety ganache, topped with fresh seasonal blackberries, Madagascar vanilla bean gelato, and edible 24k gold leaf.</p>
             </div>
           </div>
         </div>
@@ -315,9 +322,60 @@
       // Mobile Menu Toggle
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
-      mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Course Tab Filtering Logic
+      const courseTabs = document.querySelectorAll('.course-tab');
+      const dishCards = document.querySelectorAll('.dish-card');
+      courseTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          courseTabs.forEach(t => {
+            t.classList.remove('active', 'bg-brand-accent', 'text-white');
+            t.classList.add('border-gray-300', 'text-brand-primary');
+          });
+          tab.classList.add('active', 'bg-brand-accent', 'text-white');
+          tab.classList.remove('border-gray-300', 'text-brand-primary');
+          
+          const course = tab.getAttribute('data-course');
+          dishCards.forEach(card => {
+            if (course === 'all' || card.getAttribute('data-course') === course) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
       });
+
+      // Quick Table Reservation VIP Confirmation Toast/Modal
+      const quickForm = document.getElementById('quickReserveForm');
+      if (quickForm) {
+        quickForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const date = document.getElementById('resDate').value || 'This Friday';
+          const time = document.getElementById('resTime').value || '7:00 PM';
+          const guests = document.getElementById('resGuests').value || '2 Guests';
+
+          // Create dynamic VIP confirmation toast
+          const toast = document.createElement('div');
+          toast.className = 'fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-brand-primary border-2 border-brand-accent text-white px-8 py-5 rounded-sm shadow-2xl flex items-center space-x-4 animate-bounce';
+          toast.innerHTML = `
+            <div class="text-brand-accent text-3xl"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <h4 class="font-serif text-lg font-bold text-white">Table Availability Confirmed!</h4>
+              <p class="text-sm text-gray-300">Reserved for <strong class="text-brand-accent">${guests}</strong> on <strong class="text-white">${date}</strong> at <strong class="text-white">${time}</strong>. Redirecting to table selection...</p>
+            </div>
+          `;
+          document.body.appendChild(toast);
+          setTimeout(() => {
+            window.location.href = `reserve.html?date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&guests=${encodeURIComponent(guests)}`;
+          }, 2200);
+        });
+      }
     </script>
   </body>
 </html>
