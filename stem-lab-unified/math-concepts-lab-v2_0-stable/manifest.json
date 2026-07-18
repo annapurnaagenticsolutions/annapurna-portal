@@ -1,0 +1,10 @@
+{
+  "name": "Math Concepts Lab v2.0",
+  "short_name": "Math Lab",
+  "description": "Stable Class 1 to Class 10 visual math learning with activities, bridge coaching, exam readiness, chapter mini tests, maps, progress, and GitHub Pages readiness.",
+  "start_url": "./index.html#home",
+  "display": "standalone",
+  "background_color": "#f8fbff",
+  "theme_color": "#2563eb",
+  "icons": []
+}

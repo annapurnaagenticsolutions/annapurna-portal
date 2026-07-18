@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physics Concepts Lab — Class 1 to 10</title>
+  <style>
+    :root {
+      --bg: #f7f6ef;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #667085;
+      --line: #e6e0d2;
+      --brand: #3157d5;
+      --brand-2: #f59e0b;
+      --brand-3: #10b981;
+      --brand-4: #ef4444;
+      --soft-blue: #eaf0ff;
+      --soft-amber: #fff5db;
+      --soft-green: #eafaf3;
+      --soft-red: #fff1f1;
+      --shadow: 0 18px 45px rgba(30, 41, 59, .10);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 0% 0%, #fff8dc 0, transparent 34%),
+        radial-gradient(circle at 100% 12%, #dfe8ff 0, transparent 31%),
+        linear-gradient(180deg, #fbfaf4 0%, var(--bg) 100%);
+      min-height: 100vh;
+    }
+
+    .app-shell { max-width: 1420px; margin: 0 auto; padding: 24px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(230,224,210,.78);
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero:after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -160px;
+      top: -190px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(49,87,213,.20), rgba(245,158,11,.16));
+      pointer-events: none;
+    }
+
+    .eyebrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .03em;
+      color: #22305a;
+      background: var(--soft-blue);
+      border: 1px solid #d9e3ff;
+    }
+    .pill.orange { color: #7a3d00; background: var(--soft-amber); border-color: #ffe0a3; }
+    .pill.green { color: #0b5f41; background: var(--soft-green); border-color: #caf1df; }
+
+    h1 { margin: 0; font-size: clamp(34px, 4.5vw, 66px); line-height: .96; letter-spacing: -0.06em; }
+    h1 span { color: var(--brand); }
+    .hero-copy { color: var(--muted); font-size: 18px; line-height: 1.65; max-width: 820px; margin: 16px 0 0; }
+
+    .hero-card {
+      align-self: stretch;
+      background: #101828;
+      border-radius: 26px;
+      color: white;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      min-height: 260px;
+    }
+    .hero-card:before {
+      content: "";
+      position: absolute;
+      inset: -80px -60px auto auto;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: rgba(245,158,11,.28);
+    }
+    .hero-card h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: -.02em; }
+    .flow-mini { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 16px; position: relative; z-index: 2; }
+    .flow-mini div {
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      border-radius: 15px;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,.92);
+    }
+
+    .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 18px; margin-top: 18px; }
+    aside, main > section, .card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 10px 30px rgba(30, 41, 59, .06);
+      backdrop-filter: blur(16px);
+    }
+    aside { padding: 18px; align-self: start; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; }
+
+    .section-title { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    .section-title h3 { margin: 0; font-size: 16px; letter-spacing: -.015em; }
+    .section-title p { margin: 4px 0 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+    .class-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 14px 0 16px; }
+    .class-btn, .chapter-btn, .step-btn, .mode-btn, .action-btn, .answer-btn {
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform .15s ease, background .15s ease, border .15s ease, box-shadow .15s ease;
+    }
+    .class-btn {
+      aspect-ratio: 1;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 900;
+      color: #344054;
+    }
+    .class-btn:hover, .chapter-btn:hover, .step-btn:hover, .mode-btn:hover, .action-btn:hover, .answer-btn:hover { transform: translateY(-1px); }
+    .class-btn.active { background: var(--brand); color: white; box-shadow: 0 10px 20px rgba(49,87,213,.25); border-color: var(--brand); }
+
+    .mode-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .mode-btn { padding: 11px; border-radius: 14px; border: 1px solid var(--line); background: #fff; font-weight: 800; color: #475467; }
+    .mode-btn.active { background: #101828; color: #fff; border-color: #101828; }
+
+    .chapter-list { display: grid; gap: 8px; margin-top: 10px; }
+    .chapter-btn {
+      text-align: left;
+      padding: 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #344054;
+    }
+    .chapter-btn b { display: block; font-size: 13px; margin-bottom: 4px; }
+    .chapter-btn span { font-size: 12px; color: var(--muted); }
+    .chapter-btn.active { border-color: var(--brand); background: var(--soft-blue); }
+
+    .progress-card { margin-top: 16px; padding: 14px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+    .progressbar { height: 10px; border-radius: 999px; background: #eef2f6; overflow: hidden; margin: 10px 0; }
+    .progressbar span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--brand), var(--brand-3)); transition: width .25s ease; }
+    .small-muted { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    main { display: grid; gap: 18px; }
+    .lesson-top { padding: 22px; display: grid; gap: 18px; }
+    .lesson-title-row { display: flex; gap: 16px; justify-content: space-between; align-items: flex-start; }
+    .lesson-title-row h2 { margin: 0; font-size: clamp(26px, 3vw, 42px); letter-spacing: -.045em; line-height: 1.05; }
+    .lesson-title-row p { color: var(--muted); line-height: 1.55; margin: 8px 0 0; max-width: 820px; }
+    .badge-stack { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+
+    .stepper { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
+    .step-btn { padding: 11px 8px; border-radius: 15px; border: 1px solid var(--line); background: #fff; color: #475467; font-size: 12px; font-weight: 900; }
+    .step-btn.active { background: #101828; color: #fff; border-color: #101828; }
+    .step-btn.done { background: var(--soft-green); border-color: #c8eedc; color: #087443; }
+
+    .content-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); gap: 18px; }
+    .learning-card { padding: 22px; min-height: 490px; }
+    .learning-card h3 { font-size: 28px; margin: 0 0 10px; letter-spacing: -.035em; }
+    .learning-card p { line-height: 1.7; color: #475467; font-size: 16px; }
+    .callout { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: #fff; margin-top: 14px; }
+    .callout h4 { margin: 0 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: #344054; }
+    .callout p, .callout li { font-size: 14px; line-height: 1.6; color: #475467; }
+    .callout ul, .callout ol { margin: 8px 0 0 18px; padding: 0; }
+    .callout.equation { background: var(--soft-blue); border-color: #d9e3ff; }
+    .callout.warn { background: var(--soft-red); border-color: #ffd1d1; }
+    .callout.green { background: var(--soft-green); border-color: #caefdf; }
+    .equation-box { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 25px; font-weight: 900; color: #19327f; margin: 8px 0; letter-spacing: -.02em; }
+
+    .visual-panel { padding: 18px; display: grid; gap: 14px; }
+    .visual-stage { background: linear-gradient(180deg, #fff 0%, #f7faff 100%); border: 1px solid var(--line); border-radius: 24px; min-height: 320px; padding: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .visual-caption { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    svg { max-width: 100%; height: auto; }
+
+    .controls { display: grid; gap: 10px; }
+    .control-row { display: grid; grid-template-columns: 120px 1fr 58px; align-items: center; gap: 8px; font-size: 13px; color: #475467; }
+    input[type="range"] { width: 100%; accent-color: var(--brand); }
+    .control-value { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-weight: 900; color: #101828; }
+
+    .action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .action-btn { padding: 12px 15px; border-radius: 15px; background: #101828; color: #fff; font-weight: 900; }
+    .action-btn.secondary { background: #fff; color: #344054; border: 1px solid var(--line); }
+
+    .try-box { display: grid; gap: 12px; margin-top: 14px; }
+    .try-box input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); font: inherit; font-weight: 700; }
+    .feedback { min-height: 30px; font-size: 14px; font-weight: 800; color: #344054; }
+    .answers { display: grid; gap: 10px; margin-top: 12px; }
+    .answer-btn { text-align: left; padding: 14px; border-radius: 15px; border: 1px solid var(--line); background: #fff; font-weight: 750; color: #344054; }
+    .answer-btn.correct { background: var(--soft-green); border-color: #8fe2ba; }
+    .answer-btn.wrong { background: var(--soft-red); border-color: #ffc9c9; }
+
+    .tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .mini-tool { padding: 16px; border-radius: 20px; border: 1px solid var(--line); background: #fff; }
+    .mini-tool h4 { margin: 0 0 8px; font-size: 15px; }
+    .mini-tool p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 13px; }
+
+    .map { padding: 22px; }
+    .curriculum-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .curriculum-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 15px; min-height: 160px; }
+    .curriculum-card h4 { margin: 0 0 8px; font-size: 15px; }
+    .curriculum-card ul { margin: 0 0 0 16px; padding: 0; color: #667085; line-height: 1.55; font-size: 12px; }
+
+    .teacher-note { display: none; }
+    body.teacher-mode .teacher-note { display: block; }
+
+    .footer-note { padding: 16px 8px 0; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+
+    @media (max-width: 1100px) {
+      .hero, .layout, .content-grid { grid-template-columns: 1fr; }
+      aside { position: static; max-height: none; }
+      .stepper { grid-template-columns: repeat(4, 1fr); }
+      .curriculum-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 640px) {
+      .app-shell { padding: 12px; }
+      .hero { padding: 18px; border-radius: 24px; }
+      .class-grid { grid-template-columns: repeat(5, 1fr); }
+      .stepper, .tool-grid, .curriculum-grid { grid-template-columns: 1fr; }
+      .lesson-title-row { flex-direction: column; }
+      .badge-stack { justify-content: flex-start; }
+      .control-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <div class="eyebrow">
+          <span class="pill">STEM LAB</span>
+          <span class="pill orange">Physics first</span>
+          <span class="pill green">Class 1–10</span>
+        </div>
+        <h1>Physics Concepts <span>Lab</span></h1>
+        <p class="hero-copy">A guided, visual-first learning prototype for young learners. It moves from everyday observation in Classes 1–5 to formal equations, graphs, circuits, ray diagrams, and numerical solving in Classes 6–10.</p>
+      </div>
+      <div class="hero-card">
+        <h2>Learning flow</h2>
+        <p class="visual-caption" style="color:rgba(255,255,255,.75)">The same pattern is reused across all classes, but the depth changes with age.</p>
+        <div class="flow-mini">
+          <div>1. Observe</div><div>2. Concept</div><div>3. Visual</div><div>4. Equation / Rule</div><div>5. Why</div><div>6. Solve</div><div>7. Try</div><div>8. Mini Test</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside>
+        <div class="section-title">
+          <div>
+            <h3>Choose Class</h3>
+            <p>Class 1–5: observe and explain. Class 6–10: formal Physics.</p>
+          </div>
+        </div>
+        <div class="class-grid" id="classGrid"></div>
+
+        <div class="mode-row">
+          <button class="mode-btn active" id="studentMode">Student</button>
+          <button class="mode-btn" id="teacherMode">Teacher</button>
+        </div>
+
+        <div class="section-title">
+          <div>
+            <h3>Choose Chapter</h3>
+            <p>Only Physics-aligned topics are shown.</p>
+          </div>
+        </div>
+        <div class="chapter-list" id="chapterList"></div>
+
+        <div class="progress-card">
+          <b>Lesson progress</b>
+          <div class="progressbar"><span id="progressFill"></span></div>
+          <div class="small-muted" id="progressText">Step 1 of 8</div>
+        </div>
+      </aside>
+
+      <main>
+        <section class="lesson-top">
+          <div class="lesson-title-row">
+            <div>
+              <h2 id="lessonTitle"></h2>
+              <p id="lessonObjective"></p>
+            </div>
+            <div class="badge-stack" id="badgeStack"></div>
+          </div>
+          <div class="stepper" id="stepper"></div>
+        </section>
+
+        <section class="content-grid">
+          <div class="learning-card card" id="learningCard"></div>
+          <div class="visual-panel card">
+            <div class="section-title">
+              <div>
+                <h3>Interactive Visual</h3>
+                <p id="visualCaptionTop">Move sliders and watch the idea change.</p>
+              </div>
+            </div>
+            <div class="visual-stage" id="visualStage"></div>
+            <div class="controls" id="visualControls"></div>
+            <p class="visual-caption" id="visualCaption"></p>
+          </div>
+        </section>
+
+        <section class="map">
+          <div class="section-title">
+            <div>
+              <h3>Class 1–10 Physics Roadmap</h3>
+              <p>Designed as one continuous learning ladder, not isolated chapters.</p>
+            </div>
+          </div>
+          <div class="curriculum-grid" id="curriculumGrid"></div>
+        </section>
+
+        <div class="footer-note">Prototype  — static HTML/CSS/JS. Use this as the Physics foundation before starting the separate Chemistry visual system.</div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const steps = ["Observe", "Concept", "Visual", "Equation", "Why", "Solve", "Try", "Mini Test"];
+
+    const lessons = [
+      { grade: 1, chapter: "Things that Move", title: "Push and Pull", strand: "Forces", visual: "force", objective: "Notice that objects start, stop, or change direction when we push or pull them.", observe: "Place a toy car on the floor. Push it gently, then push it harder. Pull it back with a string. What changed?", concept: "A push moves something away from us. A pull brings something toward us. Both are simple examples of force.", equation: "Rule: bigger push or pull → bigger change in motion", decoder: ["Force means push or pull.", "Motion means change in position."], why: "Children first need to see force as an action. The formal unit, newton, comes later.", solve: ["Question: A box is not moving. What can you do to move it?", "Answer: Push it or pull it. That action applies force."], tryPrompt: "Write one push example from home.", tryAnswer: "door", mini: { q: "Which is a pull?", options: ["Kicking a ball", "Opening a drawer", "Blowing air", "Pressing a switch"], answer: 1 }, misconception: "Force is not only hitting. Gentle pushing and pulling are also forces.", experiment: "Use two toy cars. Push one gently and one strongly. Compare how far they move.", unitCoach: "No numerical unit yet. Use words: small push, big push, gentle pull, strong pull.", teacher: "Focus on vocabulary and observation, not formulas." },
+      { grade: 1, chapter: "Light Around Us", title: "Light Helps Us See", strand: "Light", visual: "light", objective: "Understand that we see objects when light reaches them and then reaches our eyes.", observe: "Look under a table in a dark room, then use a torch. What becomes visible?", concept: "Light helps us see. Some things give light, like the Sun or a lamp. Some things only reflect light.", equation: "Rule: light source → object → eye", decoder: ["Source: where light comes from.", "Reflect: light bounces from a surface."], why: "This prepares students for shadows, reflection, and ray diagrams in later classes.", solve: ["Question: Can we see a book clearly in complete darkness?", "Answer: No. We need light to see it."], tryPrompt: "Name one natural light source.", tryAnswer: "sun", mini: { q: "Which object gives its own light?", options: ["Moon", "Book", "Sun", "Chair"], answer: 2 }, misconception: "The Moon looks bright, but it does not make its own light like the Sun. It reflects sunlight.", experiment: "Keep a toy in a box. Look without a torch, then with a torch.", unitCoach: "No unit required. Use source, object, eye.", teacher: "Avoid saying eyes send light to objects; correct this early." },
+      { grade: 1, chapter: "Sound Around Us", title: "Loud and Soft Sounds", strand: "Sound", visual: "sound", objective: "Recognize that sounds can be loud, soft, pleasant, or unpleasant.", observe: "Tap a table softly, then strongly. Clap slowly, then loudly. What changes?", concept: "Sound is what we hear. Some sounds are soft, some are loud. Very loud sound can be uncomfortable.", equation: "Rule: stronger vibration → louder sound", decoder: ["Vibration: quick back-and-forth movement.", "Loudness: how strong a sound feels."], why: "This prepares students for vibration, amplitude, and sound waves.", solve: ["Question: Why is a gentle tap softer than a hard tap?", "Answer: The hard tap creates stronger vibration."], tryPrompt: "Name one soft sound.", tryAnswer: "whisper", mini: { q: "Which sound is usually soft?", options: ["Thunder", "Whisper", "Firecracker", "Drum hit"], answer: 1 }, misconception: "Sound is not only produced by machines. Our voice, birds, and claps also produce sound.", experiment: "Stretch a rubber band and pluck it gently and strongly.", unitCoach: "No numerical unit yet. Use loud, soft, high, low.", teacher: "Keep safety: do not ask children to produce painfully loud sounds." },
+
+      { grade: 2, chapter: "Motion in Daily Life", title: "Fast and Slow", strand: "Motion", visual: "motion", objective: "Compare motion using everyday language: fast, slow, near, far.", observe: "Roll two balls from the same point. Which reaches the wall first?", concept: "A moving object changes its position. Some objects move faster than others.", equation: "Rule: more distance in the same time → faster", decoder: ["Distance: how far something moves.", "Time: how long it takes."], why: "This builds intuition for speed before the formula is introduced.", solve: ["Question: Two children run for 10 seconds. Asha reaches farther than Ravi. Who was faster?", "Answer: Asha, because she covered more distance in the same time."], tryPrompt: "Name one slow-moving object.", tryAnswer: "snail", mini: { q: "A bicycle and a walking child move for the same time. The bicycle goes farther. Which is faster?", options: ["Bicycle", "Child", "Both same", "Cannot move"], answer: 0 }, misconception: "Fast does not mean big. A small toy car can move faster than a big cart.", experiment: "Race a marble and a pencil by rolling them gently on a smooth floor.", unitCoach: "Use words first. Numbers come later: metre and second.", teacher: "Use classroom races with safe walking lines, not running in narrow spaces." },
+      { grade: 2, chapter: "Heat and Cold", title: "Hot, Warm, and Cold", strand: "Heat", visual: "heat", objective: "Classify objects by thermal feeling and learn safe observation.", observe: "Touch a metal spoon and a wooden pencil kept in the same room. Do they feel the same?", concept: "Hot and cold describe how something feels, but our skin can be fooled. Some materials feel colder because they take heat away faster.", equation: "Rule: do not test very hot objects by touching", decoder: ["Heat: energy that can move from warm things to cooler things.", "Safe test: use adult help and tools."], why: "This prepares students for temperature and heat transfer.", solve: ["Question: Should you touch a hot pan to check if it is hot?", "Answer: No. Use adult help and safe tools."], tryPrompt: "Name one thing that feels cold.", tryAnswer: "ice", mini: { q: "Which is the safest way to check hot tea?", options: ["Touch it quickly", "Ask an adult/use caution", "Put finger inside", "Ignore steam"], answer: 1 }, misconception: "Cold is not a substance entering the hand. Heat leaves the hand toward colder objects.", experiment: "Place a metal spoon and wooden spoon in the same room. Compare how they feel without heating them.", unitCoach: "Temperature units come later: °C. For now, use hot, warm, cool, cold.", teacher: "Emphasize safety and supervised observation." },
+      { grade: 2, chapter: "Magnets", title: "Magnet Attracts", strand: "Magnetism", visual: "magnet", objective: "Observe that magnets pull some materials but not all materials.", observe: "Bring a magnet near a paper clip, pencil, coin, eraser, and leaf.", concept: "A magnet attracts some materials, especially iron and steel. It does not attract everything.", equation: "Rule: magnet + iron/steel → attraction", decoder: ["Attract: pull toward.", "Magnetic material: material pulled by a magnet."], why: "This prepares students for poles, magnetic field lines, and electromagnets.", solve: ["Question: Will a magnet pull a wooden pencil?", "Answer: Usually no, unless it has a steel part."], tryPrompt: "Name one thing a magnet can attract.", tryAnswer: "paper clip", mini: { q: "Which object is most likely to be attracted by a magnet?", options: ["Paper clip", "Leaf", "Rubber", "Plastic spoon"], answer: 0 }, misconception: "Magnets do not attract all metals equally. Iron and steel are common magnetic materials.", experiment: "Sort classroom objects into attracted/not attracted groups.", unitCoach: "No unit yet. Use attracted, not attracted, strong pull, weak pull.", teacher: "Do not use tiny magnets with very young children without supervision." },
+
+      { grade: 3, chapter: "Force and Change", title: "Force Can Change Shape", strand: "Forces", visual: "force", objective: "See that force can change shape, speed, or direction.", observe: "Press a sponge, stretch a rubber band, and roll a ball toward a wall.", concept: "A force can start motion, stop motion, change direction, or change shape.", equation: "Rule: force can change motion or shape", decoder: ["Shape change: squeezing, stretching, bending.", "Motion change: start, stop, speed up, slow down, turn."], why: "This broadens force beyond push/pull movement only.", solve: ["Question: What happens when you press a sponge?", "Answer: Its shape changes because force acts on it."], tryPrompt: "Give one example where force changes shape.", tryAnswer: "sponge", mini: { q: "Which shows force changing shape?", options: ["Squeezing clay", "Watching TV", "Reading book", "Looking at moon"], answer: 0 }, misconception: "If something does not move far, force may still be acting, for example when squeezing clay.", experiment: "Compare sponge, clay, and stone under gentle pressing.", unitCoach: "Formal unit is newton, but for this class use small/large force.", teacher: "Introduce safety: never test force on people or fragile objects." },
+      { grade: 3, chapter: "Shadows", title: "How Shadows Form", strand: "Light", visual: "shadow", objective: "Understand that shadows form when an object blocks light.", observe: "Put your hand between a torch and a wall. Move it closer to the torch and then closer to the wall.", concept: "A shadow forms when light is blocked by an object. The shadow changes size when the object moves closer to or farther from the light source.", equation: "Rule: light + blocking object + screen → shadow", decoder: ["Opaque: blocks light.", "Screen: surface where shadow appears."], why: "This is the foundation for straight-line travel of light and eclipses.", solve: ["Question: Why does your hand make a shadow on the wall?", "Answer: It blocks light from reaching part of the wall."], tryPrompt: "Name one opaque object.", tryAnswer: "book", mini: { q: "A clear glass makes a weak shadow because it mostly...", options: ["Blocks all light", "Lets light pass", "Makes sound", "Becomes magnet"], answer: 1 }, misconception: "A shadow is not a black object. It is a region where less light reaches.", experiment: "Use torch, toy, and wall. Move the toy and compare shadow size.", unitCoach: "Use bigger/smaller, near/far. Measurements come later.", teacher: "Use transparent, translucent, opaque as enrichment if students are ready." },
+      { grade: 3, chapter: "Sound", title: "Sound Comes from Vibration", strand: "Sound", visual: "sound", objective: "Connect sound production with vibration.", observe: "Touch your throat gently while humming. What do you feel?", concept: "Most sounds are produced when something vibrates. The vibration travels through air to our ears.", equation: "Rule: vibration → sound", decoder: ["Vibrate: move quickly back and forth.", "Ear: receives sound."], why: "This prepares students for frequency, amplitude, and wave diagrams.", solve: ["Question: Why does a rubber band make sound when plucked?", "Answer: It vibrates and makes the air vibrate."], tryPrompt: "Name one vibrating object that makes sound.", tryAnswer: "drum", mini: { q: "When you hum, what vibrates?", options: ["Vocal cords", "Hair", "Shoes", "Book"], answer: 0 }, misconception: "Air is usually needed for sound to travel to us; sound is not simply 'floating words'.", experiment: "Put rice grains on a stretched plastic sheet and tap nearby gently to see movement.", unitCoach: "No hertz yet. Use faster/slower vibration, louder/softer sound.", teacher: "Avoid overformal wave terminology at this stage." },
+
+      { grade: 4, chapter: "Simple Machines", title: "Levers Make Work Easier", strand: "Machines", visual: "lever", objective: "See how a lever helps lift or move objects with less effort.", observe: "Use a ruler over a pencil as a seesaw. Put an eraser on one side and press the other side.", concept: "A lever is a simple machine. It turns around a support point called the fulcrum and can make lifting easier.", equation: "Rule: longer effort arm → less effort needed", decoder: ["Fulcrum: turning point.", "Load: object being moved.", "Effort: force we apply."], why: "This prepares students for torque and mechanical advantage later.", solve: ["Question: Where should the fulcrum be to lift a heavy eraser more easily?", "Answer: Closer to the eraser/load."], tryPrompt: "Name one lever used at home or school.", tryAnswer: "scissors", mini: { q: "Which is a lever?", options: ["Seesaw", "Glass of water", "Cloud", "Torch light"], answer: 0 }, misconception: "A lever does not remove work. It helps by changing how force is applied.", experiment: "Move the pencil fulcrum under a ruler and compare the effort needed.", unitCoach: "Use load, effort, fulcrum. Numerical torque comes in higher classes.", teacher: "Good examples: seesaw, scissors, bottle opener, crowbar." },
+      { grade: 4, chapter: "Electricity Safety", title: "Open and Closed Circuit", strand: "Electricity", visual: "circuit", objective: "Understand that a bulb glows only when the path is complete.", observe: "Look at a torch. The switch completes or breaks the path for electricity.", concept: "A circuit is a path for electric current. If the path is closed, current can flow. If the path is open, current cannot flow.", equation: "Rule: closed circuit → bulb glows; open circuit → bulb off", decoder: ["Circuit: path for electricity.", "Switch: opens or closes the path."], why: "This prepares students for current, voltage, resistance, and circuit diagrams.", solve: ["Question: A bulb and battery are connected, but one wire is loose. Will the bulb glow?", "Answer: No. The circuit is open."], tryPrompt: "Type open or closed: A switch is ON in a complete circuit.", tryAnswer: "closed", mini: { q: "What is needed for a bulb to glow?", options: ["Broken path", "Closed path", "No battery", "Only one wire"], answer: 1 }, misconception: "Electricity is not used up by the first component; current flows around a complete path.", experiment: "Use a low-voltage cell, small bulb, and wires under adult supervision.", unitCoach: "No formula yet. Use current path, open, closed.", teacher: "Use only safe low-voltage cells, never mains electricity." },
+      { grade: 4, chapter: "Measurement", title: "Measuring Distance", strand: "Measurement", visual: "ruler", objective: "Learn why standard units are needed for fair measurement.", observe: "Measure a table using hand spans. Compare with another student's hand spans.", concept: "Standard units help everyone measure in the same way. For distance, common units are centimetre, metre, and kilometre.", equation: "Rule: 100 cm = 1 m; 1000 m = 1 km", decoder: ["cm: small length unit.", "m: standard length unit.", "km: long distance unit."], why: "Measurement is necessary before speed and graphing can make sense.", solve: ["Question: Which unit is better for classroom length, cm or m?", "Answer: metre, because the classroom is much longer than a small object."], tryPrompt: "How many centimetres are in 1 metre?", tryAnswer: "100", mini: { q: "Which unit is best for distance between two cities?", options: ["cm", "m", "km", "mm"], answer: 2 }, misconception: "Using body parts to measure can be useful for estimation, but it is not standard.", experiment: "Measure a desk using hand span and ruler; compare results.", unitCoach: "cm → m → km: use the unit that fits the object size.", teacher: "Let students experience why standardization matters." },
+
+      { grade: 5, chapter: "Earth and Sky", title: "Day and Night", strand: "Astronomy", visual: "earth", objective: "Explain day and night using Earth's rotation.", observe: "Shine a torch on a ball. Rotate the ball slowly. Which side is lit?", concept: "Earth rotates. The side facing the Sun has day, and the side turned away has night.", equation: "Rule: one Earth rotation ≈ 24 hours", decoder: ["Rotate: spin around an axis.", "Axis: imaginary line through Earth."], why: "This prepares students for seasons, shadows, and celestial motion.", solve: ["Question: Is night caused because the Sun switches off?", "Answer: No. Our side of Earth turns away from the Sun."], tryPrompt: "About how many hours are in one day-night cycle?", tryAnswer: "24", mini: { q: "Day and night happen mainly because Earth...", options: ["Stops moving", "Rotates", "Melts", "Changes color"], answer: 1 }, misconception: "The Sun does not go around the Earth every day; apparent motion is due to Earth's rotation.", experiment: "Use torch as Sun and ball as Earth. Mark a point as your city.", unitCoach: "Use hour and day. 24 hours is an approximate daily cycle.", teacher: "Do not overcomplicate with orbital motion before rotation is clear." },
+      { grade: 5, chapter: "Energy", title: "Energy Changes Form", strand: "Energy", visual: "energy", objective: "Track energy changes in common devices and activities.", observe: "Look at a fan, torch, bicycle, and plant. What energy changes do you notice?", concept: "Energy can change from one form to another. A battery can give electrical energy, a fan changes it into motion, and a bulb changes it into light and heat.", equation: "Rule: energy is transferred and transformed", decoder: ["Transfer: moves from one place/object to another.", "Transform: changes form."], why: "This prepares students for work, kinetic energy, potential energy, and conservation of energy.", solve: ["Question: In a torch, what energy change happens?", "Answer: Chemical energy in the cell changes to electrical energy, then light and heat."], tryPrompt: "Name one device that changes electrical energy into motion.", tryAnswer: "fan", mini: { q: "A fan mainly changes electrical energy into...", options: ["Motion", "Food", "Water", "Shadow"], answer: 0 }, misconception: "Energy does not appear from nowhere in a device; it comes from a source and changes form.", experiment: "Make an energy chain for a bicycle: food → muscles → pedal motion → wheel motion.", unitCoach: "Formal unit joule comes later. Use source → change → output.", teacher: "Use arrows for energy flow maps." },
+      { grade: 5, chapter: "Floating and Sinking", title: "Why Things Float", strand: "Fluids", visual: "float", objective: "Observe that some objects float and some sink depending on material, shape, and water push.", observe: "Place a leaf, coin, plastic cap, and clay ball in water.", concept: "Water pushes upward on objects. Some objects float when the upward push can balance their weight.", equation: "Rule: upward water push can support objects", decoder: ["Weight: downward pull due to gravity.", "Upthrust: upward push of water."], why: "This prepares students for pressure, buoyancy, and density.", solve: ["Question: Why can a large empty plastic bottle float?", "Answer: Its shape traps air and water can support it."], tryPrompt: "Name one object that floats in water.", tryAnswer: "leaf", mini: { q: "Which object is most likely to sink?", options: ["Dry leaf", "Steel coin", "Plastic cap", "Cork"], answer: 1 }, misconception: "Heavy things do not always sink. A ship is heavy but floats because of shape and displaced water.", experiment: "Shape clay as a ball, then as a small boat. Test floating under supervision.", unitCoach: "No density formula yet. Use float, sink, upward push, weight.", teacher: "Great bridge toward Archimedes without naming the law yet." },
+
+      { grade: 6, chapter: "Motion and Measurement", title: "Speed as Distance per Time", strand: "Motion", visual: "motion", objective: "Move from fast/slow language to the speed formula.", observe: "Walk 10 m slowly, then quickly. Record the time for both trials.", concept: "Speed tells how much distance is covered in a given time. More distance in less time means greater speed.", equation: "speed = distance ÷ time", decoder: ["distance in metre or kilometre", "time in second or hour", "speed in m/s or km/h"], why: "Speed converts everyday comparison into measurable Physics.", solve: ["Given: distance = 100 m, time = 20 s", "speed = 100 ÷ 20 = 5 m/s"], tryPrompt: "A cycle covers 60 m in 10 s. What is the speed in m/s?", tryAnswer: "6", mini: { q: "A car covers 120 km in 2 h. Its speed is...", options: ["60 km/h", "240 km/h", "122 km/h", "118 km/h"], answer: 0 }, misconception: "Speed is not distance only. It must include time.", experiment: "Measure a 5 m path and time how long a toy car takes to cross it.", unitCoach: "m/s = metre per second; km/h = kilometre per hour.", teacher: "Start graphing only after students understand distance and time units." },
+      { grade: 6, chapter: "Light, Shadows, Reflection", title: "Light Travels in Straight Lines", strand: "Light", visual: "ray", objective: "Understand light rays, shadows, and reflection using straight-line paths.", observe: "Use three cardboard sheets with aligned holes and a torch. Shift one sheet and see what happens.", concept: "Light usually travels in straight lines. When blocked, it forms shadows. When it hits a mirror, it reflects.", equation: "Rule: straight ray + obstacle → shadow", decoder: ["Ray: line showing light direction.", "Reflection: bouncing of light."], why: "Ray diagrams become a core tool in Class 8–10 optics.", solve: ["Question: Why does shifting one cardboard hole stop light?", "Answer: The straight path is blocked."], tryPrompt: "Type the word: Light path is often shown by a ____.", tryAnswer: "ray", mini: { q: "A shadow forms because light is...", options: ["Blocked", "Heated", "Magnetised", "Heard"], answer: 0 }, misconception: "A ray diagram is a model, not a physical string of light.", experiment: "Torch + cardboard holes + wall; check alignment.", unitCoach: "No formula. Use ray arrows to show direction.", teacher: "Good place to teach arrow direction in diagrams." },
+      { grade: 6, chapter: "Electricity and Circuits", title: "Simple Circuit", strand: "Electricity", visual: "circuit", objective: "Draw and reason about a simple battery-switch-bulb circuit.", observe: "Use a cell, wires, bulb, and switch. Test open and closed switch states.", concept: "Electric current flows only when the circuit is complete. Circuit diagrams use symbols to represent real parts.", equation: "Rule: complete conducting loop → current flows", decoder: ["Cell: source of electrical energy.", "Conductor: allows current to pass.", "Insulator: resists current flow."], why: "This is the base for current, voltage, resistance, and Ohm's law.", solve: ["Question: Why does a plastic gap stop current?", "Answer: Plastic is an insulator and breaks the conducting path."], tryPrompt: "Type open or closed: Bulb glows when switch is ____.", tryAnswer: "closed", mini: { q: "Which material is usually a conductor?", options: ["Copper", "Rubber", "Plastic", "Wood"], answer: 0 }, misconception: "Current needs a full loop; one wire alone is not enough.", experiment: "Test conductor/insulator samples with a low-voltage cell circuit.", unitCoach: "Current unit ampere comes later. Focus on path first.", teacher: "Use schematic symbols after real component observation." },
+
+      { grade: 7, chapter: "Heat", title: "Temperature and Heat Transfer", strand: "Heat", visual: "heat", objective: "Differentiate temperature from heat transfer and identify conduction, convection, radiation.", observe: "Place a metal spoon in warm water and feel the other end carefully after some time.", concept: "Heat flows from hotter objects to colder objects. Temperature tells how hot or cold something is. Heat can move by conduction, convection, or radiation.", equation: "Rule: heat flows hot → cold", decoder: ["Temperature: measured in °C.", "Conduction: heat through solids.", "Convection: heat carried by moving fluid.", "Radiation: heat transfer without contact."], why: "This helps explain cooking, sea breeze, insulation, and weather effects.", solve: ["Question: Why does a metal spoon become warm in hot water?", "Answer: Heat conducts through the metal."], tryPrompt: "What unit is commonly used for temperature in school labs?", tryAnswer: "c", mini: { q: "Heat naturally flows from...", options: ["Cold to hot", "Hot to cold", "Only upward", "Only metal to wood"], answer: 1 }, misconception: "Temperature and heat are related but not identical. Temperature is a measure; heat is energy transfer.", experiment: "Compare metal and wooden spoon ends in warm water with adult supervision.", unitCoach: "Temperature: °C. Heat energy: joule in higher classes.", teacher: "Use careful safety boundaries for hot water activities." },
+      { grade: 7, chapter: "Electric Current", title: "Heating Effect of Current", strand: "Electricity", visual: "circuit", objective: "Understand that electric current can produce heat in some materials.", observe: "Think of toaster, iron, kettle, or fuse wire. Why do they heat?", concept: "When current passes through resistance, electrical energy can transform into heat. This is useful in heaters but wasteful in some circuits.", equation: "Rule: current through resistance → heating", decoder: ["Current: flow of electric charge.", "Resistance: opposition to current.", "Heating effect: electrical energy becoming heat."], why: "This prepares students for power, resistance, and safety devices.", solve: ["Question: Why does a fuse wire melt during excessive current?", "Answer: Too much current causes heating, so the fuse melts and breaks the circuit."], tryPrompt: "Name one device that uses heating effect.", tryAnswer: "iron", mini: { q: "A fuse protects a circuit by...", options: ["Melting when current is too high", "Cooling wires", "Making light brighter", "Increasing voltage"], answer: 0 }, misconception: "Heating effect is not always good; in many wires it means energy loss and risk.", experiment: "Observe a low-voltage bulb filament glow under supervision; do not touch hot bulbs.", unitCoach: "Current: ampere (A); resistance: ohm (Ω) in later detail.", teacher: "Do not run unsafe DIY heating experiments with mains electricity." },
+      { grade: 7, chapter: "Light", title: "Reflection from Mirrors", strand: "Light", visual: "ray", objective: "Use incident and reflected rays to explain reflection.", observe: "Shine a torch on a mirror and observe where the light spot moves.", concept: "When light hits a smooth mirror, it reflects in a predictable direction. The incoming ray is the incident ray; the outgoing ray is the reflected ray.", equation: "angle of incidence = angle of reflection", decoder: ["Incident ray: ray arriving at mirror.", "Reflected ray: ray leaving mirror.", "Normal: line perpendicular to mirror."], why: "This is the base for plane mirrors, periscopes, and ray diagrams.", solve: ["Given: angle of incidence = 35°", "Angle of reflection = 35°"], tryPrompt: "If angle of incidence is 50°, angle of reflection is?", tryAnswer: "50", mini: { q: "The normal is drawn...", options: ["Parallel to mirror", "Perpendicular to mirror", "Only curved", "Behind the eye"], answer: 1 }, misconception: "Angles in reflection are measured from the normal, not from the mirror surface.", experiment: "Use mirror, paper, and torch to trace incident/reflected paths.", unitCoach: "Angles are measured in degrees (°).", teacher: "Train students to draw the normal first." },
+
+      { grade: 8, chapter: "Force and Pressure", title: "Pressure Depends on Area", strand: "Forces", visual: "pressure", objective: "Understand why the same force can create different pressure depending on contact area.", observe: "Press a pencil tip and pencil eraser gently against clay. Which mark is deeper?", concept: "Pressure is force applied per unit area. Smaller area gives greater pressure for the same force.", equation: "pressure = force ÷ area", decoder: ["force in newton (N)", "area in square metre (m²)", "pressure in pascal (Pa)"], why: "This explains sharp knives, broad school bag straps, snow shoes, and drawing pins.", solve: ["Given: force = 20 N, area = 4 m²", "pressure = 20 ÷ 4 = 5 Pa"], tryPrompt: "A 30 N force acts over 5 m². Pressure = ? Pa", tryAnswer: "6", mini: { q: "For the same force, pressure is higher when area is...", options: ["Smaller", "Larger", "Zero motion", "Brighter"], answer: 0 }, misconception: "Force and pressure are not the same. Pressure depends on area too.", experiment: "Use clay and two ends of a pencil to compare marks.", unitCoach: "N/m² is called pascal (Pa).", teacher: "Use contact-area visuals before formula substitution." },
+      { grade: 8, chapter: "Friction", title: "Friction Opposes Motion", strand: "Forces", visual: "friction", objective: "Explain friction as a contact force that opposes relative motion.", observe: "Slide a book on a smooth table and then on a rough cloth.", concept: "Friction acts between surfaces in contact and opposes relative motion. It can be useful or wasteful.", equation: "Rule: rougher surfaces → usually more friction", decoder: ["Friction: force opposing sliding/rolling.", "Lubricant: reduces friction."], why: "Friction explains walking, braking, tyre grip, and machine wear.", solve: ["Question: Why is it harder to slide a box on rough ground?", "Answer: Rough ground usually creates more friction."], tryPrompt: "Name one situation where friction is useful.", tryAnswer: "walking", mini: { q: "Oil in a machine usually...", options: ["Increases friction", "Reduces friction", "Stops gravity", "Creates light"], answer: 1 }, misconception: "Friction is not always bad. Without friction, walking and braking would be difficult.", experiment: "Measure how far a toy car rolls on smooth floor versus carpet.", unitCoach: "Friction is a force, so its formal unit is newton (N).", teacher: "Discuss useful vs harmful friction explicitly." },
+      { grade: 8, chapter: "Sound", title: "Frequency and Loudness", strand: "Sound", visual: "sound", objective: "Link frequency with pitch and amplitude with loudness.", observe: "Pluck a tight rubber band and a loose rubber band. Compare sound.", concept: "Sound is produced by vibration. Faster vibration usually gives higher pitch. Larger vibration gives louder sound.", equation: "frequency = vibrations per second", decoder: ["Frequency unit: hertz (Hz).", "Amplitude: size of vibration.", "Pitch: highness or lowness of sound."], why: "This prepares students for wave diagrams and sound numericals.", solve: ["Given: 200 vibrations in 2 s", "frequency = 200 ÷ 2 = 100 Hz"], tryPrompt: "A source makes 300 vibrations in 3 s. Frequency = ? Hz", tryAnswer: "100", mini: { q: "Frequency is measured in...", options: ["Hz", "N", "J", "Pa"], answer: 0 }, misconception: "Loudness and pitch are different. A sound can be soft but high-pitched.", experiment: "Use a ruler over a desk edge; change free length and pluck gently.", unitCoach: "Hz means per second.", teacher: "Use wave visuals to separate amplitude and frequency." },
+
+      { grade: 9, chapter: "Motion", title: "Uniform Acceleration", strand: "Motion", visual: "graph", objective: "Use speed-time graphs and equations to reason about accelerated motion.", observe: "Think of a bicycle starting from rest and gradually speeding up.", concept: "Acceleration is the rate of change of velocity. If velocity changes by equal amounts in equal time intervals, acceleration is uniform.", equation: "a = (v - u) ÷ t", decoder: ["u: initial velocity", "v: final velocity", "t: time", "a: acceleration"], why: "Acceleration helps explain starting, stopping, falling, and vehicle motion.", solve: ["Given: u = 0 m/s, v = 20 m/s, t = 5 s", "a = (20 - 0) ÷ 5 = 4 m/s²"], tryPrompt: "u=2 m/s, v=12 m/s, t=5 s. a = ? m/s²", tryAnswer: "2", mini: { q: "If velocity increases uniformly, acceleration is...", options: ["Zero", "Constant", "Always negative", "Not measurable"], answer: 1 }, misconception: "Acceleration does not only mean speeding up; slowing down is negative acceleration/deceleration.", experiment: "Use a ball rolling down a ramp and mark positions at equal time intervals using video frames.", unitCoach: "Acceleration unit: m/s².", teacher: "Use graphs before equations: slope of velocity-time graph represents acceleration." },
+      { grade: 9, chapter: "Force and Laws", title: "Newton's Second Law", strand: "Forces", visual: "newton", objective: "Connect force, mass, and acceleration using F = ma.", observe: "Push an empty cart and then a loaded cart with similar effort. Which accelerates more?", concept: "The acceleration produced by a force depends on the force applied and the object's mass. More force gives more acceleration; more mass gives less acceleration for the same force.", equation: "F = m × a", decoder: ["F: force in newton (N)", "m: mass in kilogram (kg)", "a: acceleration in m/s²"], why: "This law links motion changes to the cause: net force.", solve: ["Given: m = 5 kg, a = 2 m/s²", "F = 5 × 2 = 10 N"], tryPrompt: "m=8 kg and a=3 m/s². Force = ? N", tryAnswer: "24", mini: { q: "For the same force, a heavier object usually has...", options: ["More acceleration", "Less acceleration", "No mass", "More light"], answer: 1 }, misconception: "Force is linked to acceleration, not necessarily constant speed. An object can move at constant speed with balanced forces.", experiment: "Use carts of different masses and compare acceleration under similar pull.", unitCoach: "1 N = 1 kg·m/s².", teacher: "Emphasize net force, not just any single force." },
+      { grade: 9, chapter: "Work and Energy", title: "Work Done by a Force", strand: "Energy", visual: "work", objective: "Calculate work when force and displacement are in the same direction.", observe: "Push a box gently across the floor. Then push a wall. Where is scientific work done?", concept: "In Physics, work is done when a force causes displacement in the direction of the force. If there is force but no displacement, work may be zero.", equation: "W = F × s", decoder: ["W: work in joule (J)", "F: force in newton (N)", "s: displacement in metre (m)"], why: "The scientific meaning of work is precise and different from everyday usage.", solve: ["Given: F = 7 N, s = 8 m", "W = 7 × 8 = 56 J"], tryPrompt: "A 5 N force moves an object 3 m. Work = ? J", tryAnswer: "15", mini: { q: "If displacement is zero, work done by a force in that direction is...", options: ["Zero", "Always huge", "Equal to mass", "Measured in °C"], answer: 0 }, misconception: "Feeling tired does not always mean scientific work is done. A displacement in the force direction is required.", experiment: "Push a small object over measured distance and calculate work from estimated force under guidance.", unitCoach: "1 J = 1 N·m.", teacher: "Use examples where effort exists but displacement is zero to clarify the definition." },
+      { grade: 9, chapter: "Gravitation", title: "Weight and Mass", strand: "Gravity", visual: "gravity", objective: "Distinguish mass from weight and use W = mg.", observe: "A school bag has the same mass on Earth and Moon, but its weight changes.", concept: "Mass is the amount of matter. Weight is the gravitational force on that mass. Weight depends on gravitational acceleration.", equation: "W = m × g", decoder: ["W: weight in newton (N)", "m: mass in kg", "g: gravitational acceleration in m/s²"], why: "This prevents confusion between kg and newton.", solve: ["Given: m = 10 kg, g = 9.8 m/s²", "W = 10 × 9.8 = 98 N"], tryPrompt: "m=5 kg, g≈10 m/s². Weight = ? N", tryAnswer: "50", mini: { q: "Mass is measured in...", options: ["kg", "N", "J", "Pa"], answer: 0 }, misconception: "Weight is not measured in kg in Physics; kg is mass. Weight is a force measured in newton.", experiment: "Compare spring balance reading and mass labels on objects.", unitCoach: "Mass: kg. Weight/force: N.", teacher: "Use Moon example carefully: mass same, weight less." },
+
+      { grade: 10, chapter: "Light", title: "Reflection from Curved Mirrors", strand: "Optics", visual: "mirror", objective: "Use ray diagrams to predict images formed by concave and convex mirrors.", observe: "Look at your reflection in a spoon's inner and outer surfaces.", concept: "Curved mirrors reflect rays differently from plane mirrors. Concave mirrors can converge parallel rays; convex mirrors diverge rays and give wider field of view.", equation: "1/f = 1/v + 1/u", decoder: ["f: focal length", "u: object distance", "v: image distance", "use sign convention carefully"], why: "Mirror formula connects ray diagrams with numerical image prediction.", solve: ["Given: f = -10 cm, u = -20 cm", "1/v = 1/f - 1/u = -1/10 + 1/20 = -1/20, so v = -20 cm"], tryPrompt: "A convex mirror is commonly used as rear-view mirror. Type why in one word: field of ____", tryAnswer: "view", mini: { q: "A concave mirror can make parallel rays...", options: ["Converge", "Stop existing", "Turn into sound", "Become magnetic"], answer: 0 }, misconception: "Do not memorize images blindly; draw principal rays and use sign convention.", experiment: "Use a steel spoon as rough mirror demo; avoid reflecting sunlight into eyes.", unitCoach: "Use cm consistently if all distances are in cm.", teacher: "Keep separate: ray diagram concept first, formula second." },
+      { grade: 10, chapter: "Electricity", title: "Ohm's Law", strand: "Electricity", visual: "ohm", objective: "Relate voltage, current, and resistance using Ohm's law.", observe: "A higher voltage across the same resistor usually drives more current.", concept: "For many conductors at constant temperature, current is proportional to potential difference. Resistance is the opposition to current.", equation: "V = I × R", decoder: ["V: potential difference in volt (V)", "I: current in ampere (A)", "R: resistance in ohm (Ω)"], why: "Ohm's law is the central quantitative rule for simple electric circuits.", solve: ["Given: I = 2 A, R = 5 Ω", "V = 2 × 5 = 10 V"], tryPrompt: "I=0.5 A, R=20 Ω. V = ? V", tryAnswer: "10", mini: { q: "Resistance is measured in...", options: ["ohm", "joule", "newton", "hertz"], answer: 0 }, misconception: "Ohm's law is not universal for every material under every condition; temperature and material behavior matter.", experiment: "Use a simulation or supervised low-voltage circuit to observe V-I relation.", unitCoach: "Volt = V, ampere = A, ohm = Ω.", teacher: "Students often confuse symbols V and voltage unit V; clarify by context." },
+      { grade: 10, chapter: "Magnetic Effects", title: "Current Creates Magnetic Field", strand: "Magnetism", visual: "electromagnet", objective: "Understand that electric current in a wire produces a magnetic field.", observe: "A compass needle deflects near a current-carrying wire.", concept: "Moving electric charge creates magnetic effects. Around a straight current-carrying wire, magnetic field lines form circles.", equation: "Rule: current in wire → magnetic field around wire", decoder: ["Current: moving electric charge.", "Magnetic field: region where magnetic force can act.", "Right-hand thumb rule: direction guide."], why: "This connects electricity and magnetism and leads to motors, generators, and electromagnets.", solve: ["Question: What happens if current direction is reversed?", "Answer: Magnetic field direction reverses."], tryPrompt: "Type the instrument that detects magnetic field direction: ____", tryAnswer: "compass", mini: { q: "Magnetic field lines around a straight current-carrying wire are...", options: ["Circles", "Squares", "Only straight vertical lines", "Invisible because absent"], answer: 0 }, misconception: "A wire without current does not show the same magnetic field pattern due to current; current is the key cause here.", experiment: "Use compass and low-voltage circuit only under teacher supervision.", unitCoach: "Current: A. Magnetic field unit tesla is beyond basic needs here.", teacher: "Use field-line direction rules only after field shape is understood." },
+      { grade: 10, chapter: "Energy Sources", title: "Energy Conversion and Power", strand: "Energy", visual: "power", objective: "Connect energy use with power and practical devices.", observe: "Compare a 9 W LED bulb and a 1000 W electric kettle. Which uses energy faster?", concept: "Power is the rate of doing work or using energy. A higher-power device transfers more energy per second.", equation: "P = E ÷ t", decoder: ["P: power in watt (W)", "E: energy in joule (J)", "t: time in second (s)", "1 W = 1 J/s"], why: "This helps students interpret electricity bills, device ratings, and energy efficiency.", solve: ["Given: E = 600 J, t = 30 s", "P = 600 ÷ 30 = 20 W"], tryPrompt: "A device uses 1000 J in 50 s. Power = ? W", tryAnswer: "20", mini: { q: "A watt is equal to...", options: ["J/s", "N/m", "kg/s", "Hz/m"], answer: 0 }, misconception: "Power and energy are not the same. Power tells how fast energy is transferred.", experiment: "Compare appliance labels and sort them by watt rating.", unitCoach: "Energy: J or kWh. Power: W or kW.", teacher: "Use household examples but avoid encouraging unsafe electrical measurements." }
+    ];
+
+    const roadmap = {
+      1: ["Push/pull", "Light source", "Soft/loud sound"],
+      2: ["Fast/slow", "Hot/cold", "Magnet attracts"],
+      3: ["Force changes shape", "Shadows", "Vibration makes sound"],
+      4: ["Levers", "Open/closed circuits", "Distance units"],
+      5: ["Day/night", "Energy changes", "Floating/sinking"],
+      6: ["Speed", "Straight-line light", "Simple circuits"],
+      7: ["Heat transfer", "Current heating", "Reflection"],
+      8: ["Pressure", "Friction", "Frequency"],
+      9: ["Acceleration", "Newton's laws", "Work/energy", "Gravity"],
+      10: ["Mirror/lens optics", "Ohm's law", "Magnetism", "Power"]
+    };
+
+    let state = { grade: 1, lessonIndex: 0, step: 0, teacher: false, controls: { force: 40, mass: 5, speed: 4, angle: 35, voltage: 6, resistance: 3, heat: 55, frequency: 4, area: 5 } };
+
+    const $ = (id) => document.getElementById(id);
+    const safe = (txt) => String(txt).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+    function init() {
+      renderClassGrid();
+      renderRoadmap();
+      bindModes();
+      selectGrade(1);
+    }
+
+    function bindModes() {
+      $('studentMode').addEventListener('click', () => setMode(false));
+      $('teacherMode').addEventListener('click', () => setMode(true));
+    }
+
+    function setMode(isTeacher) {
+      state.teacher = isTeacher;
+      document.body.classList.toggle('teacher-mode', isTeacher);
+      $('studentMode').classList.toggle('active', !isTeacher);
+      $('teacherMode').classList.toggle('active', isTeacher);
+      renderContent();
+    }
+
+    function renderClassGrid() {
+      $('classGrid').innerHTML = Array.from({length: 10}, (_, i) => {
+        const g = i + 1;
+        return `<button class="class-btn" data-grade="${g}">${g}</button>`;
+      }).join('');
+      document.querySelectorAll('.class-btn').forEach(btn => btn.addEventListener('click', () => selectGrade(Number(btn.dataset.grade))));
+    }
+
+    function selectGrade(grade) {
+      state.grade = grade;
+      state.lessonIndex = 0;
+      state.step = 0;
+      document.querySelectorAll('.class-btn').forEach(btn => btn.classList.toggle('active', Number(btn.dataset.grade) === grade));
+      renderChapters();
+      renderLesson();
+    }
+
+    function currentLessons() { return lessons.filter(l => l.grade === state.grade); }
+    function currentLesson() { return currentLessons()[state.lessonIndex] || lessons[0]; }
+
+    function renderChapters() {
+      const list = currentLessons();
+      $('chapterList').innerHTML = list.map((l, idx) => `
+        <button class="chapter-btn ${idx === state.lessonIndex ? 'active' : ''}" data-idx="${idx}">
+          <b>${safe(l.chapter)}</b><span>${safe(l.title)} · ${safe(l.strand)}</span>
+        </button>
+      `).join('');
+      document.querySelectorAll('.chapter-btn').forEach(btn => btn.addEventListener('click', () => {
+        state.lessonIndex = Number(btn.dataset.idx);
+        state.step = 0;
+        renderLesson();
+      }));
+    }
+
+    function renderLesson() {
+      const l = currentLesson();
+      $('lessonTitle').textContent = l.title;
+      $('lessonObjective').textContent = l.objective;
+      $('badgeStack').innerHTML = `
+        <span class="pill">Class ${l.grade}</span>
+        <span class="pill orange">${safe(l.strand)}</span>
+        <span class="pill green">${state.grade <= 5 ? 'Observation-first' : 'Equation-ready'}</span>
+      `;
+      renderStepper();
+      renderContent();
+      renderVisual();
+      renderChapters();
+    }
+
+    function renderStepper() {
+      $('stepper').innerHTML = steps.map((s, idx) => `
+        <button class="step-btn ${idx === state.step ? 'active' : ''} ${idx < state.step ? 'done' : ''}" data-step="${idx}">${idx + 1}. ${s}</button>
+      `).join('');
+      document.querySelectorAll('.step-btn').forEach(btn => btn.addEventListener('click', () => {
+        state.step = Number(btn.dataset.step);
+        renderContent();
+        renderStepper();
+      }));
+      const pct = ((state.step + 1) / steps.length) * 100;
+      $('progressFill').style.width = pct + '%';
+      $('progressText').textContent = `Step ${state.step + 1} of ${steps.length}: ${steps[state.step]}`;
+    }
+
+    function renderContent() {
+      const l = currentLesson();
+      const step = steps[state.step];
+      let html = '';
+      if (step === 'Observe') {
+        html = `<h3>Observe first</h3><p>${safe(l.observe)}</p>${navButtons()}`;
+      } else if (step === 'Concept') {
+        html = `<h3>Concept</h3><p>${safe(l.concept)}</p><div class="callout green"><h4>Common misconception coach</h4><p>${safe(l.misconception)}</p></div><div class="teacher-note callout"><h4>Teacher note</h4><p>${safe(l.teacher)}</p></div>${navButtons()}`;
+      } else if (step === 'Visual') {
+        html = `<h3>Visual thinking</h3><p>Use the diagram on the right. Change the sliders, then explain what changed and what stayed the same.</p><div class="callout"><h4>Visual question</h4><p>${visualQuestion(l.visual)}</p></div>${navButtons()}`;
+      } else if (step === 'Equation') {
+        html = `<h3>${state.grade <= 5 ? 'Rule' : 'Equation / Rule'}</h3><div class="callout equation"><h4>Main relation</h4><div class="equation-box">${safe(l.equation)}</div></div><div class="callout"><h4>Formula decoder</h4><ul>${l.decoder.map(d => `<li>${safe(d)}</li>`).join('')}</ul></div><div class="callout green"><h4>Unit coach</h4><p>${safe(l.unitCoach)}</p></div>${navButtons()}`;
+      } else if (step === 'Why') {
+        html = `<h3>Why this matters</h3><p>${safe(l.why)}</p><div class="callout"><h4>Experiment corner</h4><p>${safe(l.experiment)}</p></div>${navButtons()}`;
+      } else if (step === 'Solve') {
+        html = `<h3>Solve with guidance</h3><div class="callout equation"><h4>Worked example</h4><ol>${l.solve.map(x => `<li>${safe(x)}</li>`).join('')}</ol></div><div class="callout"><h4>Method</h4><ol><li>Read the question.</li><li>Identify known values or key observations.</li><li>Choose the rule/equation.</li><li>Substitute carefully.</li><li>Check unit and meaning.</li></ol></div>${navButtons()}`;
+      } else if (step === 'Try') {
+        html = `<h3>Try it yourself</h3><p>${safe(l.tryPrompt)}</p><div class="try-box"><input id="tryInput" placeholder="Type your answer here" /><button class="action-btn" id="checkTry">Check answer</button><div class="feedback" id="tryFeedback"></div></div>${navButtons()}`;
+      } else if (step === 'Mini Test') {
+        html = `<h3>Mini Test</h3><p>${safe(l.mini.q)}</p><div class="answers">${l.mini.options.map((o, i) => `<button class="answer-btn" data-answer="${i}">${safe(o)}</button>`).join('')}</div><div class="feedback" id="quizFeedback"></div>${navButtons(false)}`;
+      }
+      $('learningCard').innerHTML = html;
+      bindContentActions();
+      renderStepper();
+    }
+
+    function navButtons(showComplete=true) {
+      return `<div class="action-row">
+        <button class="action-btn secondary" id="prevStep">Previous</button>
+        <button class="action-btn" id="nextStep">${state.step === steps.length - 1 ? 'Restart Lesson' : 'Next Step'}</button>
+        ${showComplete ? '<button class="action-btn secondary" id="jumpTest">Jump to Mini Test</button>' : ''}
+      </div>`;
+    }
+
+    function bindContentActions() {
+      const prev = $('prevStep');
+      const next = $('nextStep');
+      const jump = $('jumpTest');
+      if (prev) prev.onclick = () => { state.step = Math.max(0, state.step - 1); renderContent(); };
+      if (next) next.onclick = () => { state.step = state.step === steps.length - 1 ? 0 : state.step + 1; renderContent(); };
+      if (jump) jump.onclick = () => { state.step = steps.length - 1; renderContent(); };
+      const check = $('checkTry');
+      if (check) check.onclick = () => checkTry();
+      document.querySelectorAll('.answer-btn').forEach(btn => btn.addEventListener('click', () => checkQuiz(Number(btn.dataset.answer), btn)));
+    }
+
+    function checkTry() {
+      const l = currentLesson();
+      const input = $('tryInput').value.trim().toLowerCase();
+      const answer = String(l.tryAnswer).toLowerCase();
+      const numeric = !isNaN(Number(answer));
+      const ok = numeric ? Math.abs(Number(input) - Number(answer)) < 0.01 : input.includes(answer) || answer.includes(input);
+      $('tryFeedback').textContent = ok ? 'Correct. Now explain the reasoning aloud.' : `Check again. Hint: use the relation/rule: ${l.equation}`;
+      $('tryFeedback').style.color = ok ? '#087443' : '#b42318';
+    }
+
+    function checkQuiz(index, btn) {
+      const l = currentLesson();
+      document.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('correct','wrong'));
+      if (index === l.mini.answer) {
+        btn.classList.add('correct');
+        $('quizFeedback').textContent = 'Correct. You can move to the next chapter or class.';
+        $('quizFeedback').style.color = '#087443';
+      } else {
+        btn.classList.add('wrong');
+        $('quizFeedback').textContent = 'Not yet. Revisit Concept and Equation/Rule.';
+        $('quizFeedback').style.color = '#b42318';
+      }
+    }
+
+    function visualQuestion(type) {
+      const map = {
+        force: 'What happens to acceleration when force increases but mass is unchanged?',
+        light: 'Trace the path: where does light start and where does it end?',
+        sound: 'What changes when vibration becomes larger or faster?',
+        motion: 'How does the graph change when speed increases?',
+        heat: 'Which direction does heat move?',
+        magnet: 'Which objects are pulled toward the magnet?',
+        shadow: 'What happens to shadow size when the object moves closer to the light?',
+        lever: 'Where should the fulcrum move to make lifting easier?',
+        circuit: 'Why does opening the switch stop the bulb from glowing?',
+        ruler: 'Why is a ruler fairer than hand spans?',
+        earth: 'Which side of Earth has day?',
+        energy: 'Follow the arrows: what is the input energy and output energy?',
+        float: 'Which force acts upward on the object in water?',
+        ray: 'Where should the normal be drawn?',
+        pressure: 'Why does smaller area make a deeper mark?',
+        friction: 'Which surface creates more opposition to sliding?',
+        graph: 'What does the slope of the velocity-time graph show?',
+        newton: 'How do mass and force affect acceleration?',
+        work: 'Is there displacement in the direction of force?',
+        gravity: 'What changes if g becomes smaller?',
+        mirror: 'Do rays converge or diverge?',
+        ohm: 'What happens to current if resistance increases at the same voltage?',
+        electromagnet: 'What happens when current reverses?',
+        power: 'Which device uses energy faster?'
+      };
+      return map[type] || 'What changed in the visual?';
+    }
+
+    function control(name, label, min, max, step, unit='') {
+      const value = state.controls[name];
+      return `<div class="control-row"><label>${label}</label><input type="range" min="${min}" max="${max}" step="${step}" value="${value}" data-control="${name}"><span class="control-value">${value}${unit}</span></div>`;
+    }
+
+    function bindControls() {
+      document.querySelectorAll('[data-control]').forEach(input => input.addEventListener('input', (e) => {
+        state.controls[e.target.dataset.control] = Number(e.target.value);
+        renderVisual();
+      }));
+    }
+
+    function renderVisual() {
+      const l = currentLesson();
+      const c = state.controls;
+      const type = l.visual;
+      let svg = '', controls = '', caption = '';
+
+      if (['force','newton'].includes(type)) {
+        const acc = Math.max(1, Math.round((c.force / Math.max(c.mass, 1)) * 10) / 10);
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Force arrows">
+          <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3157d5"/></marker></defs>
+          <rect x="0" y="230" width="520" height="18" rx="9" fill="#d7e3f8"/>
+          <rect x="210" y="160" width="120" height="70" rx="14" fill="#f59e0b" stroke="#9a5a00" stroke-width="3"/>
+          <circle cx="235" cy="240" r="14" fill="#101828"/><circle cx="305" cy="240" r="14" fill="#101828"/>
+          <line x1="95" y1="195" x2="190" y2="195" stroke="#3157d5" stroke-width="${Math.max(6, c.force/5)}" marker-end="url(#arrow)"/>
+          <text x="80" y="180" font-size="18" font-weight="800" fill="#3157d5">Force ${c.force} N</text>
+          <text x="214" y="151" font-size="17" font-weight="800" fill="#475467">mass ${c.mass} kg</text>
+          <text x="345" y="202" font-size="22" font-weight="900" fill="#10b981">a ≈ ${acc} m/s²</text>
+        </svg>`;
+        controls = control('force','Force',10,100,5,'N') + control('mass','Mass',1,20,1,'kg');
+        caption = 'A larger net force increases acceleration. A larger mass reduces acceleration for the same force.';
+      } else if (['motion','graph'].includes(type)) {
+        const speed = c.speed;
+        const endY = 240 - speed * 24;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Distance time graph">
+          <line x1="70" y1="240" x2="470" y2="240" stroke="#101828" stroke-width="3"/>
+          <line x1="70" y1="240" x2="70" y2="40" stroke="#101828" stroke-width="3"/>
+          <path d="M70 240 L450 ${endY}" stroke="#3157d5" stroke-width="6" fill="none"/>
+          <circle cx="450" cy="${endY}" r="8" fill="#f59e0b"/>
+          <text x="210" y="280" font-size="16" font-weight="800">time</text>
+          <text x="20" y="140" font-size="16" font-weight="800" transform="rotate(-90 20 140)">distance</text>
+          <text x="220" y="80" font-size="18" font-weight="900" fill="#3157d5">steeper line = higher speed</text>
+          <rect x="115" y="205" width="55" height="25" rx="8" fill="#10b981"/>
+          <circle cx="128" cy="236" r="9" fill="#101828"/><circle cx="158" cy="236" r="9" fill="#101828"/>
+        </svg>`;
+        controls = control('speed','Speed',1,8,1,'');
+        caption = 'On a distance-time graph, a steeper line means the object covers more distance in the same time.';
+      } else if (['light','ray'].includes(type)) {
+        const angle = c.angle;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Ray diagram reflection">
+          <defs><marker id="rayarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3157d5"/></marker></defs>
+          <line x1="80" y1="210" x2="440" y2="210" stroke="#101828" stroke-width="5"/>
+          <line x1="260" y1="50" x2="260" y2="255" stroke="#98a2b3" stroke-dasharray="7 7" stroke-width="3"/>
+          <line x1="${260 - angle*3}" y1="75" x2="260" y2="210" stroke="#3157d5" stroke-width="5" marker-end="url(#rayarrow)"/>
+          <line x1="260" y1="210" x2="${260 + angle*3}" y2="75" stroke="#f59e0b" stroke-width="5" marker-end="url(#rayarrow)"/>
+          <text x="218" y="42" font-size="16" font-weight="800" fill="#667085">normal</text>
+          <text x="92" y="92" font-size="16" font-weight="900" fill="#3157d5">incident ray</text>
+          <text x="320" y="92" font-size="16" font-weight="900" fill="#b45309">reflected ray</text>
+          <text x="197" y="196" font-size="17" font-weight="900">${angle}°</text>
+          <text x="290" y="196" font-size="17" font-weight="900">${angle}°</text>
+        </svg>`;
+        controls = control('angle','Angle',15,65,5,'°');
+        caption = 'For reflection, the incident angle equals the reflected angle. Both are measured from the normal.';
+      } else if (type === 'shadow') {
+        const dist = c.speed;
+        const objX = 170 + dist * 22;
+        const shadow = 140 - dist * 10;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Shadow formation">
+          <circle cx="75" cy="125" r="34" fill="#f59e0b"/><text x="42" y="190" font-size="15" font-weight="800">light</text>
+          <rect x="${objX}" y="95" width="38" height="90" rx="18" fill="#3157d5"/>
+          <rect x="430" y="55" width="18" height="185" rx="9" fill="#101828"/>
+          <ellipse cx="438" cy="145" rx="${shadow/2}" ry="58" fill="rgba(16,24,40,.25)"/>
+          <line x1="105" y1="95" x2="430" y2="88" stroke="#fbbf24" stroke-width="3"/>
+          <line x1="105" y1="155" x2="430" y2="200" stroke="#fbbf24" stroke-width="3"/>
+          <text x="190" y="260" font-size="16" font-weight="900">Move object: shadow size changes</text>
+        </svg>`;
+        controls = control('speed','Object distance',1,8,1,'');
+        caption = 'A shadow forms because an opaque object blocks part of the light.';
+      } else if (type === 'sound') {
+        const freq = c.frequency;
+        const amp = c.force / 2;
+        let path = 'M20 150 ';
+        for (let x=20; x<=500; x+=10) {
+          const y = 150 + Math.sin((x/500)*Math.PI*2*freq) * amp;
+          path += `L${x} ${y.toFixed(1)} `;
+        }
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Sound wave">
+          <path d="${path}" stroke="#3157d5" stroke-width="5" fill="none"/>
+          <line x1="20" y1="150" x2="500" y2="150" stroke="#98a2b3" stroke-dasharray="7 7"/>
+          <circle cx="84" cy="150" r="34" fill="#f59e0b" opacity=".20"/><circle cx="84" cy="150" r="18" fill="#f59e0b"/>
+          <text x="58" y="222" font-size="16" font-weight="900">vibration source</text>
+          <text x="270" y="70" font-size="18" font-weight="900" fill="#3157d5">frequency ${freq} units</text>
+          <text x="270" y="95" font-size="18" font-weight="900" fill="#10b981">amplitude ${Math.round(amp)}</text>
+        </svg>`;
+        controls = control('frequency','Frequency',1,8,1,'') + control('force','Amplitude',10,100,5,'');
+        caption = 'Frequency controls pitch. Amplitude controls loudness.';
+      } else if (type === 'heat') {
+        const temp = c.heat;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Heat transfer">
+          <defs><marker id="heatarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+          <rect x="70" y="80" width="130" height="130" rx="24" fill="#fee2e2" stroke="#ef4444" stroke-width="4"/>
+          <rect x="320" y="80" width="130" height="130" rx="24" fill="#dbeafe" stroke="#3157d5" stroke-width="4"/>
+          <line x1="210" y1="145" x2="310" y2="145" stroke="#ef4444" stroke-width="8" marker-end="url(#heatarrow)"/>
+          <text x="92" y="150" font-size="25" font-weight="900" fill="#b42318">${temp}°C</text>
+          <text x="348" y="150" font-size="25" font-weight="900" fill="#19327f">25°C</text>
+          <text x="205" y="115" font-size="16" font-weight="900">heat flow</text>
+        </svg>`;
+        controls = control('heat','Hot object temp',35,90,5,'°C');
+        caption = 'Heat flows from the hotter object to the colder object until thermal balance is approached.';
+      } else if (type === 'circuit' || type === 'ohm') {
+        const closed = c.speed > 4;
+        const current = Math.round((c.voltage / c.resistance) * 100)/100;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Circuit diagram">
+          <line x1="110" y1="80" x2="380" y2="80" stroke="#101828" stroke-width="5"/>
+          <line x1="110" y1="220" x2="380" y2="220" stroke="#101828" stroke-width="5"/>
+          <line x1="110" y1="80" x2="110" y2="220" stroke="#101828" stroke-width="5"/>
+          <line x1="380" y1="80" x2="380" y2="125" stroke="#101828" stroke-width="5"/>
+          <line x1="380" y1="175" x2="380" y2="220" stroke="#101828" stroke-width="5"/>
+          <line x1="355" y1="150" x2="${closed ? 380 : 330}" y2="${closed ? 150 : 125}" stroke="#101828" stroke-width="5"/>
+          <circle cx="245" cy="80" r="38" fill="${closed ? '#fef3c7' : '#f2f4f7'}" stroke="#f59e0b" stroke-width="5"/>
+          <path d="M225 80 Q245 45 265 80 Q245 115 225 80" fill="none" stroke="#f59e0b" stroke-width="4"/>
+          <line x1="95" y1="135" x2="125" y2="135" stroke="#101828" stroke-width="5"/><line x1="102" y1="160" x2="118" y2="160" stroke="#101828" stroke-width="5"/>
+          <text x="205" y="150" font-size="18" font-weight="900" fill="${closed ? '#b45309' : '#667085'}">${closed ? 'Bulb ON' : 'Bulb OFF'}</text>
+          <text x="185" y="260" font-size="16" font-weight="900" fill="#3157d5">I ≈ ${current} A</text>
+        </svg>`;
+        controls = control('speed','Switch',1,8,1,'') + control('voltage','Voltage',1,12,1,'V') + control('resistance','Resistance',1,12,1,'Ω');
+        caption = closed ? 'Closed circuit: current flows. Ohm’s law links V, I, and R.' : 'Open circuit: path is broken, so current cannot complete the loop.';
+      } else if (type === 'magnet' || type === 'electromagnet') {
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Magnet field">
+          <rect x="190" y="110" width="140" height="70" rx="18" fill="#ef4444"/><rect x="260" y="110" width="70" height="70" rx="18" fill="#3157d5"/>
+          <text x="215" y="153" font-size="26" font-weight="900" fill="white">N</text><text x="286" y="153" font-size="26" font-weight="900" fill="white">S</text>
+          ${[0,1,2].map((i)=>`<ellipse cx="260" cy="145" rx="${90+i*48}" ry="${45+i*28}" fill="none" stroke="#98a2b3" stroke-width="3" stroke-dasharray="8 8"/>`).join('')}
+          <circle cx="110" cy="150" r="18" fill="#101828"/><text x="82" y="195" font-size="15" font-weight="800">paper clip</text>
+          <rect x="395" y="130" width="48" height="35" rx="8" fill="#f59e0b"/><text x="396" y="195" font-size="15" font-weight="800">wood</text>
+          <text x="150" y="250" font-size="17" font-weight="900" fill="#3157d5">Magnetic pull acts on magnetic materials</text>
+        </svg>`;
+        controls = '';
+        caption = 'Magnets attract some materials. Field lines are a model for magnetic influence around the magnet.';
+      } else if (type === 'lever') {
+        const pos = 260 - c.speed*15;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Lever">
+          <polygon points="${pos},195 ${pos-28},240 ${pos+28},240" fill="#101828"/>
+          <line x1="90" y1="185" x2="430" y2="155" stroke="#8b5e34" stroke-width="18" stroke-linecap="round"/>
+          <rect x="370" y="105" width="58" height="58" rx="12" fill="#3157d5"/><text x="365" y="94" font-size="16" font-weight="900">load</text>
+          <line x1="125" y1="120" x2="125" y2="175" stroke="#ef4444" stroke-width="7"/><path d="M110 165 L125 190 L140 165" fill="#ef4444"/>
+          <text x="92" y="105" font-size="16" font-weight="900" fill="#ef4444">effort</text>
+          <text x="${pos-32}" y="260" font-size="16" font-weight="900">fulcrum</text>
+        </svg>`;
+        controls = control('speed','Fulcrum position',1,8,1,'');
+        caption = 'Moving the fulcrum changes effort needed. Closer fulcrum to load can make lifting easier.';
+      } else if (type === 'ruler') {
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Ruler measurement">
+          <rect x="70" y="120" width="380" height="60" rx="14" fill="#fde68a" stroke="#b45309" stroke-width="3"/>
+          ${Array.from({length:20},(_,i)=>`<line x1="${85+i*18}" y1="120" x2="${85+i*18}" y2="${i%5===0?160:145}" stroke="#101828" stroke-width="2"/>`).join('')}
+          <text x="115" y="215" font-size="18" font-weight="900">Standard units make measurement fair</text>
+          <path d="M115 88 C155 58 190 58 230 88" stroke="#3157d5" stroke-width="5" fill="none"/><text x="125" y="54" font-size="15" font-weight="900" fill="#3157d5">hand span varies</text>
+        </svg>`;
+        controls = '';
+        caption = 'A ruler uses standard units, unlike hand spans that vary from person to person.';
+      } else if (type === 'earth') {
+        const rot = c.angle;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Day night rotation">
+          <circle cx="100" cy="150" r="38" fill="#f59e0b"/><text x="78" y="215" font-size="16" font-weight="900">Sun</text>
+          <circle cx="330" cy="150" r="75" fill="#3157d5"/>
+          <path d="M330 75 A75 75 0 0 1 330 225 Z" fill="rgba(16,24,40,.42)"/>
+          <line x1="145" y1="150" x2="245" y2="150" stroke="#fbbf24" stroke-width="7"/>
+          <circle cx="${330 + Math.cos(rot*Math.PI/180)*55}" cy="${150 + Math.sin(rot*Math.PI/180)*55}" r="7" fill="#fff"/>
+          <text x="268" y="255" font-size="17" font-weight="900">Earth rotates → day/night</text>
+        </svg>`;
+        controls = control('angle','City position',0,360,15,'°');
+        caption = 'The side facing the Sun has day. The opposite side has night.';
+      } else if (type === 'energy' || type === 'power') {
+        const power = Math.round((c.force * 10) / Math.max(c.speed,1));
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Energy flow">
+          <defs><marker id="enarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#10b981"/></marker></defs>
+          <rect x="40" y="105" width="105" height="80" rx="18" fill="#fff7ed" stroke="#f59e0b" stroke-width="3"/><text x="65" y="152" font-size="17" font-weight="900">Source</text>
+          <line x1="150" y1="145" x2="225" y2="145" stroke="#10b981" stroke-width="7" marker-end="url(#enarrow)"/>
+          <rect x="235" y="105" width="105" height="80" rx="18" fill="#eaf0ff" stroke="#3157d5" stroke-width="3"/><text x="260" y="152" font-size="17" font-weight="900">Device</text>
+          <line x1="345" y1="145" x2="420" y2="145" stroke="#10b981" stroke-width="7" marker-end="url(#enarrow)"/>
+          <rect x="430" y="105" width="70" height="80" rx="18" fill="#ecfdf3" stroke="#10b981" stroke-width="3"/><text x="445" y="152" font-size="17" font-weight="900">Use</text>
+          <text x="160" y="235" font-size="18" font-weight="900" fill="#3157d5">Power example ≈ ${power} W</text>
+        </svg>`;
+        controls = control('force','Energy amount',10,100,5,'J') + control('speed','Time',1,10,1,'s');
+        caption = 'Energy flows from a source through a system and changes form. Power tells how fast the energy transfer happens.';
+      } else if (type === 'float') {
+        const up = c.force;
+        const down = c.mass*8;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Floating sinking forces">
+          <rect x="40" y="170" width="440" height="90" fill="#bfdbfe" opacity=".8"/>
+          <rect x="220" y="135" width="90" height="60" rx="14" fill="#f59e0b" stroke="#b45309" stroke-width="3"/>
+          <line x1="265" y1="132" x2="265" y2="${132-up}" stroke="#3157d5" stroke-width="7"/><path d="M248 ${132-up+15} L265 ${132-up-8} L282 ${132-up+15}" fill="#3157d5"/>
+          <line x1="265" y1="198" x2="265" y2="${198+down/3}" stroke="#ef4444" stroke-width="7"/><path d="M248 ${198+down/3-15} L265 ${198+down/3+8} L282 ${198+down/3-15}" fill="#ef4444"/>
+          <text x="300" y="105" font-size="16" font-weight="900" fill="#3157d5">upthrust</text>
+          <text x="300" y="245" font-size="16" font-weight="900" fill="#ef4444">weight</text>
+        </svg>`;
+        controls = control('force','Water push',20,100,5,'') + control('mass','Weight effect',1,20,1,'');
+        caption = 'Floating depends on the balance between downward weight and upward push from water.';
+      } else if (type === 'pressure') {
+        const area = c.area;
+        const pressure = Math.round(c.force / area * 10) / 10;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Pressure area">
+          <rect x="70" y="220" width="380" height="35" rx="12" fill="#d7b98a"/>
+          <rect x="${250-area*10}" y="105" width="${area*20}" height="115" rx="10" fill="#3157d5"/>
+          <line x1="260" y1="60" x2="260" y2="100" stroke="#ef4444" stroke-width="8"/><path d="M242 92 L260 120 L278 92" fill="#ef4444"/>
+          <text x="95" y="80" font-size="18" font-weight="900" fill="#ef4444">Force ${c.force} N</text>
+          <text x="310" y="80" font-size="18" font-weight="900" fill="#3157d5">Pressure ${pressure} Pa</text>
+        </svg>`;
+        controls = control('force','Force',10,100,5,'N') + control('area','Area',1,10,1,'m²');
+        caption = 'For the same force, a smaller contact area produces greater pressure.';
+      } else if (type === 'friction') {
+        const rough = c.area;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Friction surface">
+          <defs><marker id="farrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+          <rect x="60" y="220" width="400" height="25" fill="#d7e3f8"/>
+          ${Array.from({length: rough*3},(_,i)=>`<path d="M${70+i*13} 220 l7 -${5+(i%3)*5} l7 ${5+(i%3)*5}" stroke="#667085" stroke-width="2" fill="none"/>`).join('')}
+          <rect x="215" y="150" width="110" height="70" rx="14" fill="#f59e0b" stroke="#b45309" stroke-width="3"/>
+          <line x1="340" y1="185" x2="420" y2="185" stroke="#3157d5" stroke-width="7" marker-end="url(#farrow)"/><text x="365" y="170" font-size="15" font-weight="900" fill="#3157d5">motion</text>
+          <line x1="205" y1="185" x2="130" y2="185" stroke="#ef4444" stroke-width="7" marker-end="url(#farrow)"/><text x="105" y="170" font-size="15" font-weight="900" fill="#ef4444">friction</text>
+        </svg>`;
+        controls = control('area','Roughness',1,10,1,'');
+        caption = 'Friction acts opposite to relative motion and tends to be larger for rougher contact.';
+      } else if (type === 'work') {
+        const work = c.force * c.speed;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Work force displacement">
+          <defs><marker id="warrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3157d5"/></marker></defs>
+          <rect x="210" y="150" width="100" height="65" rx="13" fill="#f59e0b" stroke="#b45309" stroke-width="3"/>
+          <line x1="120" y1="182" x2="200" y2="182" stroke="#3157d5" stroke-width="8" marker-end="url(#warrow)"/><text x="105" y="160" font-size="15" font-weight="900" fill="#3157d5">F ${c.force} N</text>
+          <line x1="215" y1="238" x2="${215+c.speed*28}" y2="238" stroke="#10b981" stroke-width="7" marker-end="url(#warrow)"/><text x="260" y="265" font-size="15" font-weight="900" fill="#087443">s ${c.speed} m</text>
+          <text x="195" y="90" font-size="22" font-weight="900" fill="#101828">W = ${work} J</text>
+        </svg>`;
+        controls = control('force','Force',1,50,1,'N') + control('speed','Displacement',1,10,1,'m');
+        caption = 'Work is force multiplied by displacement in the direction of the force.';
+      } else if (type === 'gravity') {
+        const mass = c.mass;
+        const g = c.speed + 5;
+        const weight = mass * g;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Weight mass gravity">
+          <circle cx="260" cy="110" r="42" fill="#3157d5"/>
+          <line x1="260" y1="155" x2="260" y2="230" stroke="#ef4444" stroke-width="9"/><path d="M240 214 L260 245 L280 214" fill="#ef4444"/>
+          <text x="198" y="65" font-size="19" font-weight="900">mass ${mass} kg</text>
+          <text x="300" y="205" font-size="19" font-weight="900" fill="#ef4444">W = ${weight} N</text>
+          <rect x="90" y="248" width="340" height="18" rx="9" fill="#d7e3f8"/>
+        </svg>`;
+        controls = control('mass','Mass',1,20,1,'kg') + control('speed','g value',1,10,1,'');
+        caption = 'Weight is gravitational force: W = mg. Mass stays the same; weight changes if g changes.';
+      } else if (type === 'mirror') {
+        const f = 160;
+        svg = `<svg viewBox="0 0 520 300" role="img" aria-label="Concave mirror ray diagram">
+          <defs><marker id="marrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3157d5"/></marker></defs>
+          <path d="M390 60 Q330 150 390 240" stroke="#101828" stroke-width="5" fill="none"/>
+          <line x1="70" y1="150" x2="430" y2="150" stroke="#98a2b3" stroke-dasharray="8 8"/>
+          <line x1="140" y1="85" x2="350" y2="85" stroke="#3157d5" stroke-width="4" marker-end="url(#marrow)"/>
+          <line x1="350" y1="85" x2="${f}" y2="150" stroke="#f59e0b" stroke-width="4" marker-end="url(#marrow)"/>
+          <line x1="140" y1="215" x2="350" y2="85" stroke="#10b981" stroke-width="4"/>
+          <circle cx="160" cy="150" r="6" fill="#ef4444"/><text x="150" y="174" font-size="15" font-weight="900">F</text>
+          <text x="215" y="50" font-size="17" font-weight="900">Concave mirror converges rays</text>
+        </svg>`;
+        controls = '';
+        caption = 'Ray diagrams show how image position and type can be predicted geometrically.';
+      }
+
+      $('visualStage').innerHTML = svg;
+      $('visualControls').innerHTML = controls || '<div class="small-muted">This visual is observation-based. No slider is needed for this lesson.</div>';
+      $('visualCaption').textContent = caption;
+      $('visualCaptionTop').textContent = state.grade <= 5 ? 'Observe the idea visually before naming it formally.' : 'Use the visual to connect concept, formula, and unit.';
+      bindControls();
+    }
+
+    function renderRoadmap() {
+      $('curriculumGrid').innerHTML = Object.entries(roadmap).map(([g, items]) => `
+        <div class="curriculum-card">
+          <h4>Class ${g}</h4>
+          <ul>${items.map(i => `<li>${safe(i)}</li>`).join('')}</ul>
+        </div>
+      `).join('');
+    }
+
+    init();
+  </script>
+</body>
+</html>
+
