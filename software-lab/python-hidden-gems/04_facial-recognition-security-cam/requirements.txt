@@ -1,0 +1,3 @@
+# Optional — requires system dlib installation
+# Install with: pip install opencv-python face-recognition
+opencv-python>=4.8.0

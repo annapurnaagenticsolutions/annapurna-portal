@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://annapurnaagenticsolutions.github.io/python-hidden-gems/sitemap.xml

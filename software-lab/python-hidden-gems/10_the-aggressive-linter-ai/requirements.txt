@@ -1,0 +1,2 @@
+# Optional: pip install ruff for full linting power
+# The built-in simple linter requires no dependencies

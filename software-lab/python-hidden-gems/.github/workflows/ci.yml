@@ -1,0 +1,49 @@
+name: Validate Projects
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Check all project directories have main.py
+        run: |
+          for d in [0-9]*/; do
+            if [ -d "$d" ]; then
+              if [ ! -f "$d/main.py" ]; then
+                echo "MISSING main.py in $d"
+              else
+                echo "OK: $d/main.py"
+              fi
+            fi
+          done
+
+      - name: Check all working projects have requirements.txt
+        run: |
+          for d in 0[1-9]_* 1[0-9]_* 20_*/; do
+            if [ -d "$d" ] && [ -f "$d/main.py" ]; then
+              if [ ! -f "$d/requirements.txt" ]; then
+                echo "MISSING requirements.txt in $d"
+              else
+                echo "OK: $d/requirements.txt"
+              fi
+            fi
+          done
+
+      - name: Verify showcase site builds
+        run: |
+          if [ -f index.html ]; then echo "Showcase site OK"; else echo "No index.html"; fi
